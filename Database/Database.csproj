@@ -50,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="category.cs">
+      <DependentUpon>DB_diagram.tt</DependentUpon>
+    </Compile>
+    <Compile Include="customer_orders.cs">
+      <DependentUpon>DB_diagram.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB_diagram.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -65,9 +71,48 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DB_diagram.edmx</DependentUpon>
     </Compile>
+    <Compile Include="filter.cs">
+      <DependentUpon>DB_diagram.tt</DependentUpon>
+    </Compile>
+    <Compile Include="filter_values.cs">
+      <DependentUpon>DB_diagram.tt</DependentUpon>
+    </Compile>
+    <Compile Include="order.cs">
+      <DependentUpon>DB_diagram.tt</DependentUpon>
+    </Compile>
+    <Compile Include="order_status.cs">
+      <DependentUpon>DB_diagram.tt</DependentUpon>
+    </Compile>
+    <Compile Include="payment.cs">
+      <DependentUpon>DB_diagram.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pic.cs">
+      <DependentUpon>DB_diagram.tt</DependentUpon>
+    </Compile>
+    <Compile Include="privilege.cs">
+      <DependentUpon>DB_diagram.tt</DependentUpon>
+    </Compile>
+    <Compile Include="product.cs">
+      <DependentUpon>DB_diagram.tt</DependentUpon>
+    </Compile>
+    <Compile Include="product_list.cs">
+      <DependentUpon>DB_diagram.tt</DependentUpon>
+    </Compile>
+    <Compile Include="product_type.cs">
+      <DependentUpon>DB_diagram.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="test1.cs">
+    <Compile Include="review.cs">
+      <DependentUpon>DB_diagram.tt</DependentUpon>
+    </Compile>
+    <Compile Include="shipping.cs">
+      <DependentUpon>DB_diagram.tt</DependentUpon>
+    </Compile>
+    <Compile Include="subcategory.cs">
+      <DependentUpon>DB_diagram.tt</DependentUpon>
+    </Compile>
+    <Compile Include="user.cs">
       <DependentUpon>DB_diagram.tt</DependentUpon>
     </Compile>
   </ItemGroup>

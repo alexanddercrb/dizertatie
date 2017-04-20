@@ -22,3 +22,15 @@ E:\dizertatie\Business\bin\Debug\EntityFramework.SqlServer.xml
 E:\dizertatie\Business\obj\Debug\Business.csprojResolveAssemblyReference.cache
 E:\dizertatie\Business\obj\Debug\Business.exe
 E:\dizertatie\Business\obj\Debug\Business.pdb
+D:\Dizertatie_app\Business\bin\Debug\Business.exe.config
+D:\Dizertatie_app\Business\bin\Debug\Business.exe
+D:\Dizertatie_app\Business\bin\Debug\Business.pdb
+D:\Dizertatie_app\Business\bin\Debug\Database.exe
+D:\Dizertatie_app\Business\bin\Debug\EntityFramework.dll
+D:\Dizertatie_app\Business\bin\Debug\EntityFramework.SqlServer.dll
+D:\Dizertatie_app\Business\bin\Debug\Database.pdb
+D:\Dizertatie_app\Business\bin\Debug\EntityFramework.xml
+D:\Dizertatie_app\Business\bin\Debug\EntityFramework.SqlServer.xml
+D:\Dizertatie_app\Business\obj\Debug\Business.csprojResolveAssemblyReference.cache
+D:\Dizertatie_app\Business\obj\Debug\Business.exe
+D:\Dizertatie_app\Business\obj\Debug\Business.pdb

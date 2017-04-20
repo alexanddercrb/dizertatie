@@ -12,8 +12,16 @@ namespace Database
     using System;
     using System.Collections.Generic;
     
-    public partial class test1
+    public partial class privilege
     {
+        public privilege()
+        {
+            this.users = new HashSet<user>();
+        }
+    
         public int id { get; set; }
+        public string name { get; set; }
+    
+        public virtual ICollection<user> users { get; set; }
     }
 }

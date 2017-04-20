@@ -16,3 +16,12 @@ E:\dizertatie\Database\bin\Debug\EntityFramework.xml
 E:\dizertatie\Database\bin\Debug\EntityFramework.SqlServer.xml
 E:\dizertatie\Database\obj\Debug\Database.exe
 E:\dizertatie\Database\obj\Debug\Database.pdb
+D:\Dizertatie_app\Database\bin\Debug\Database.exe.config
+D:\Dizertatie_app\Database\bin\Debug\Database.exe
+D:\Dizertatie_app\Database\bin\Debug\Database.pdb
+D:\Dizertatie_app\Database\bin\Debug\EntityFramework.dll
+D:\Dizertatie_app\Database\bin\Debug\EntityFramework.SqlServer.dll
+D:\Dizertatie_app\Database\bin\Debug\EntityFramework.xml
+D:\Dizertatie_app\Database\bin\Debug\EntityFramework.SqlServer.xml
+D:\Dizertatie_app\Database\obj\Debug\Database.exe
+D:\Dizertatie_app\Database\obj\Debug\Database.pdb

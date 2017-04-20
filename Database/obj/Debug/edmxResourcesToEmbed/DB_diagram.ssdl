@@ -1,12 +1,405 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="disertatieModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="test1">
+  <EntityType Name="category">
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <EntityType Name="customer_orders">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customer_id" Type="int" />
+    <Property Name="order_id" Type="int" />
+  </EntityType>
+  <EntityType Name="filter">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="prodtype_id" Type="int" />
+  </EntityType>
+  <EntityType Name="filter_values">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="filter_id" Type="int" />
+    <Property Name="value" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="order_status">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="orders">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="first_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="last_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="location" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="phone" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="status_id" Type="int" />
+    <Property Name="total" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="dt" Type="datetime" Nullable="false" />
+    <Property Name="shipping_id" Type="int" />
+    <Property Name="payment_id" Type="int" />
+  </EntityType>
+  <EntityType Name="payment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="pics">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pic_path" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="product_id" Type="int" />
+  </EntityType>
+  <EntityType Name="privileges">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="specs" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="price" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="offer" Type="numeric" Precision="10" Scale="2" />
+    <Property Name="prodtype_id" Type="int" />
+    <Property Name="items" Type="int" />
+  </EntityType>
+  <EntityType Name="product_list">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="order_id" Type="int" />
+    <Property Name="product_id" Type="int" />
+    <Property Name="no_items" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="product_type">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="subcategory_id" Type="int" />
+  </EntityType>
+  <EntityType Name="review">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="comment" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="product_id" Type="int" />
+    <Property Name="stars" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="shipping">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="cost" Type="numeric" Precision="5" Scale="2" />
+  </EntityType>
+  <EntityType Name="subcategory">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="category_id" Type="int" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="first_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="last_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="privileges" Type="int" />
+    <Property Name="location" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="phone" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__customer___custo__35BCFE0A">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="customer_orders" Type="Self.customer_orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="customer_orders">
+        <PropertyRef Name="customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__customer___order__36B12243">
+    <End Role="orders" Type="Self.orders" Multiplicity="0..1" />
+    <End Role="customer_orders" Type="Self.customer_orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orders">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="customer_orders">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__filter__prodtype__182C9B23">
+    <End Role="product_type" Type="Self.product_type" Multiplicity="0..1" />
+    <End Role="filter" Type="Self.filter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product_type">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="filter">
+        <PropertyRef Name="prodtype_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__filter_va__filte__1B0907CE">
+    <End Role="filter" Type="Self.filter" Multiplicity="0..1" />
+    <End Role="filter_values" Type="Self.filter_values" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="filter">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="filter_values">
+        <PropertyRef Name="filter_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__orders__payment___32E0915F">
+    <End Role="payment" Type="Self.payment" Multiplicity="0..1" />
+    <End Role="orders" Type="Self.orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="payment">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="payment_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__orders__shipping__31EC6D26">
+    <End Role="shipping" Type="Self.shipping" Multiplicity="0..1" />
+    <End Role="orders" Type="Self.orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="shipping">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="shipping_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__orders__status_i__30F848ED">
+    <End Role="order_status" Type="Self.order_status" Multiplicity="0..1" />
+    <End Role="orders" Type="Self.orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order_status">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="status_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__pics__product_id__239E4DCF">
+    <End Role="product" Type="Self.product" Multiplicity="0..1" />
+    <End Role="pics" Type="Self.pics" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pics">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__product__prodtyp__1DE57479">
+    <End Role="product_type" Type="Self.product_type" Multiplicity="0..1" />
+    <End Role="product" Type="Self.product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product_type">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="product">
+        <PropertyRef Name="prodtype_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__product_l__order__398D8EEE">
+    <End Role="orders" Type="Self.orders" Multiplicity="0..1" />
+    <End Role="product_list" Type="Self.product_list" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orders">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="product_list">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__product_l__produ__3A81B327">
+    <End Role="product" Type="Self.product" Multiplicity="0..1" />
+    <End Role="product_list" Type="Self.product_list" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="product_list">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__product_t__subca__15502E78">
+    <End Role="subcategory" Type="Self.subcategory" Multiplicity="0..1" />
+    <End Role="product_type" Type="Self.product_type" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="subcategory">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="product_type">
+        <PropertyRef Name="subcategory_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__review__product___20C1E124">
+    <End Role="product" Type="Self.product" Multiplicity="0..1" />
+    <End Role="review" Type="Self.review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="review">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__subcatego__categ__1273C1CD">
+    <End Role="category" Type="Self.category" Multiplicity="0..1" />
+    <End Role="subcategory" Type="Self.subcategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="subcategory">
+        <PropertyRef Name="category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__users__privilege__286302EC">
+    <End Role="privileges" Type="Self.privileges" Multiplicity="0..1" />
+    <End Role="users" Type="Self.users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="privileges">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="privileges" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="disertatieModelStoreContainer">
-    <EntitySet Name="test1" EntityType="Self.test1" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="customer_orders" EntityType="Self.customer_orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="filter" EntityType="Self.filter" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="filter_values" EntityType="Self.filter_values" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="order_status" EntityType="Self.order_status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="orders" EntityType="Self.orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="payment" EntityType="Self.payment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="pics" EntityType="Self.pics" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="privileges" EntityType="Self.privileges" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="product" EntityType="Self.product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="product_list" EntityType="Self.product_list" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="product_type" EntityType="Self.product_type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="review" EntityType="Self.review" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="shipping" EntityType="Self.shipping" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="subcategory" EntityType="Self.subcategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__customer___custo__35BCFE0A" Association="Self.FK__customer___custo__35BCFE0A">
+      <End Role="users" EntitySet="users" />
+      <End Role="customer_orders" EntitySet="customer_orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__customer___order__36B12243" Association="Self.FK__customer___order__36B12243">
+      <End Role="orders" EntitySet="orders" />
+      <End Role="customer_orders" EntitySet="customer_orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__filter__prodtype__182C9B23" Association="Self.FK__filter__prodtype__182C9B23">
+      <End Role="product_type" EntitySet="product_type" />
+      <End Role="filter" EntitySet="filter" />
+    </AssociationSet>
+    <AssociationSet Name="FK__filter_va__filte__1B0907CE" Association="Self.FK__filter_va__filte__1B0907CE">
+      <End Role="filter" EntitySet="filter" />
+      <End Role="filter_values" EntitySet="filter_values" />
+    </AssociationSet>
+    <AssociationSet Name="FK__orders__payment___32E0915F" Association="Self.FK__orders__payment___32E0915F">
+      <End Role="payment" EntitySet="payment" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__orders__shipping__31EC6D26" Association="Self.FK__orders__shipping__31EC6D26">
+      <End Role="shipping" EntitySet="shipping" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__orders__status_i__30F848ED" Association="Self.FK__orders__status_i__30F848ED">
+      <End Role="order_status" EntitySet="order_status" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__pics__product_id__239E4DCF" Association="Self.FK__pics__product_id__239E4DCF">
+      <End Role="product" EntitySet="product" />
+      <End Role="pics" EntitySet="pics" />
+    </AssociationSet>
+    <AssociationSet Name="FK__product__prodtyp__1DE57479" Association="Self.FK__product__prodtyp__1DE57479">
+      <End Role="product_type" EntitySet="product_type" />
+      <End Role="product" EntitySet="product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__product_l__order__398D8EEE" Association="Self.FK__product_l__order__398D8EEE">
+      <End Role="orders" EntitySet="orders" />
+      <End Role="product_list" EntitySet="product_list" />
+    </AssociationSet>
+    <AssociationSet Name="FK__product_l__produ__3A81B327" Association="Self.FK__product_l__produ__3A81B327">
+      <End Role="product" EntitySet="product" />
+      <End Role="product_list" EntitySet="product_list" />
+    </AssociationSet>
+    <AssociationSet Name="FK__product_t__subca__15502E78" Association="Self.FK__product_t__subca__15502E78">
+      <End Role="subcategory" EntitySet="subcategory" />
+      <End Role="product_type" EntitySet="product_type" />
+    </AssociationSet>
+    <AssociationSet Name="FK__review__product___20C1E124" Association="Self.FK__review__product___20C1E124">
+      <End Role="product" EntitySet="product" />
+      <End Role="review" EntitySet="review" />
+    </AssociationSet>
+    <AssociationSet Name="FK__subcatego__categ__1273C1CD" Association="Self.FK__subcatego__categ__1273C1CD">
+      <End Role="category" EntitySet="category" />
+      <End Role="subcategory" EntitySet="subcategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK__users__privilege__286302EC" Association="Self.FK__users__privilege__286302EC">
+      <End Role="privileges" EntitySet="privileges" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

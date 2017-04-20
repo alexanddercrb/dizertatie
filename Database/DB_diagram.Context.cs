@@ -25,6 +25,21 @@ namespace Database
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<test1> test1 { get; set; }
+        public virtual DbSet<category> categories { get; set; }
+        public virtual DbSet<customer_orders> customer_orders { get; set; }
+        public virtual DbSet<filter> filters { get; set; }
+        public virtual DbSet<filter_values> filter_values { get; set; }
+        public virtual DbSet<order_status> order_status { get; set; }
+        public virtual DbSet<order> orders { get; set; }
+        public virtual DbSet<payment> payments { get; set; }
+        public virtual DbSet<pic> pics { get; set; }
+        public virtual DbSet<privilege> privileges { get; set; }
+        public virtual DbSet<product> products { get; set; }
+        public virtual DbSet<product_list> product_list { get; set; }
+        public virtual DbSet<product_type> product_type { get; set; }
+        public virtual DbSet<review> reviews { get; set; }
+        public virtual DbSet<shipping> shippings { get; set; }
+        public virtual DbSet<subcategory> subcategories { get; set; }
+        public virtual DbSet<user> users { get; set; }
     }
 }

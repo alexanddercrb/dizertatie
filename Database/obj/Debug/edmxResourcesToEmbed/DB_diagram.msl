@@ -1,9 +1,162 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="disertatieModelStoreContainer" CdmEntityContainer="DB_entities">
-    <EntitySetMapping Name="test1">
-      <EntityTypeMapping TypeName="disertatieModel.test1">
-        <MappingFragment StoreEntitySet="test1">
+    <EntitySetMapping Name="categories">
+      <EntityTypeMapping TypeName="disertatieModel.category">
+        <MappingFragment StoreEntitySet="category">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customer_orders">
+      <EntityTypeMapping TypeName="disertatieModel.customer_orders">
+        <MappingFragment StoreEntitySet="customer_orders">
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="filters">
+      <EntityTypeMapping TypeName="disertatieModel.filter">
+        <MappingFragment StoreEntitySet="filter">
+          <ScalarProperty Name="prodtype_id" ColumnName="prodtype_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="filter_values">
+      <EntityTypeMapping TypeName="disertatieModel.filter_values">
+        <MappingFragment StoreEntitySet="filter_values">
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="filter_id" ColumnName="filter_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="order_status">
+      <EntityTypeMapping TypeName="disertatieModel.order_status">
+        <MappingFragment StoreEntitySet="order_status">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orders">
+      <EntityTypeMapping TypeName="disertatieModel.order">
+        <MappingFragment StoreEntitySet="orders">
+          <ScalarProperty Name="payment_id" ColumnName="payment_id" />
+          <ScalarProperty Name="shipping_id" ColumnName="shipping_id" />
+          <ScalarProperty Name="dt" ColumnName="dt" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="payments">
+      <EntityTypeMapping TypeName="disertatieModel.payment">
+        <MappingFragment StoreEntitySet="payment">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pics">
+      <EntityTypeMapping TypeName="disertatieModel.pic">
+        <MappingFragment StoreEntitySet="pics">
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="pic_path" ColumnName="pic_path" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="privileges">
+      <EntityTypeMapping TypeName="disertatieModel.privilege">
+        <MappingFragment StoreEntitySet="privileges">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="products">
+      <EntityTypeMapping TypeName="disertatieModel.product">
+        <MappingFragment StoreEntitySet="product">
+          <ScalarProperty Name="items" ColumnName="items" />
+          <ScalarProperty Name="prodtype_id" ColumnName="prodtype_id" />
+          <ScalarProperty Name="offer" ColumnName="offer" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="specs" ColumnName="specs" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="product_list">
+      <EntityTypeMapping TypeName="disertatieModel.product_list">
+        <MappingFragment StoreEntitySet="product_list">
+          <ScalarProperty Name="no_items" ColumnName="no_items" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="product_type">
+      <EntityTypeMapping TypeName="disertatieModel.product_type">
+        <MappingFragment StoreEntitySet="product_type">
+          <ScalarProperty Name="subcategory_id" ColumnName="subcategory_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="reviews">
+      <EntityTypeMapping TypeName="disertatieModel.review">
+        <MappingFragment StoreEntitySet="review">
+          <ScalarProperty Name="stars" ColumnName="stars" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="comment" ColumnName="comment" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="shippings">
+      <EntityTypeMapping TypeName="disertatieModel.shipping">
+        <MappingFragment StoreEntitySet="shipping">
+          <ScalarProperty Name="cost" ColumnName="cost" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="subcategories">
+      <EntityTypeMapping TypeName="disertatieModel.subcategory">
+        <MappingFragment StoreEntitySet="subcategory">
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="disertatieModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="privileges" ColumnName="privileges" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>

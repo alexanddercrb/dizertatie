@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
-    <script src="js/jquery.js" type="text/javascript"></script>
+    <script src="../js/jquery.js" type="text/javascript"></script>
     <script>
         $(document).ready(function () {
            $.ajax({
-                type: "POST",
+                type: "GET",
                 contentType: "application/json; charset=utf-8",
-                url: 'WebService.svc/ReturnFromDatabase',
+                url: '../WebService.svc/ReturnFromDatabase',
                 data: "",
                 processData: true,
                 dataType: "json",

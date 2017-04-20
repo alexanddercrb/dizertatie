@@ -7,3 +7,12 @@ C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\Database\b
 C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\Database\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\Database\obj\Debug\Database.exe
 C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\Database\obj\Debug\Database.pdb
+E:\dizertatie\Database\bin\Debug\Database.exe.config
+E:\dizertatie\Database\bin\Debug\Database.exe
+E:\dizertatie\Database\bin\Debug\Database.pdb
+E:\dizertatie\Database\bin\Debug\EntityFramework.dll
+E:\dizertatie\Database\bin\Debug\EntityFramework.SqlServer.dll
+E:\dizertatie\Database\bin\Debug\EntityFramework.xml
+E:\dizertatie\Database\bin\Debug\EntityFramework.SqlServer.xml
+E:\dizertatie\Database\obj\Debug\Database.exe
+E:\dizertatie\Database\obj\Debug\Database.pdb

@@ -12,3 +12,17 @@ C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\WebSite\bi
 C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\WebSite\obj\Debug\WebSite.csprojResolveAssemblyReference.cache
 C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\WebSite\obj\Debug\WebSite.dll
 C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\WebSite\obj\Debug\WebSite.pdb
+E:\dizertatie\WebSite\bin\WebSite.dll.config
+E:\dizertatie\WebSite\bin\WebSite.dll
+E:\dizertatie\WebSite\bin\WebSite.pdb
+E:\dizertatie\WebSite\bin\Business.exe
+E:\dizertatie\WebSite\bin\EntityFramework.dll
+E:\dizertatie\WebSite\bin\EntityFramework.SqlServer.dll
+E:\dizertatie\WebSite\bin\Database.exe
+E:\dizertatie\WebSite\bin\Business.pdb
+E:\dizertatie\WebSite\bin\EntityFramework.xml
+E:\dizertatie\WebSite\bin\EntityFramework.SqlServer.xml
+E:\dizertatie\WebSite\bin\Database.pdb
+E:\dizertatie\WebSite\obj\Debug\WebSite.csprojResolveAssemblyReference.cache
+E:\dizertatie\WebSite\obj\Debug\WebSite.dll
+E:\dizertatie\WebSite\obj\Debug\WebSite.pdb

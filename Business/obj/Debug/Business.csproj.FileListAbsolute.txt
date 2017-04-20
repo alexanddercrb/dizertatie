@@ -10,3 +10,15 @@ C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\Business\b
 C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\Business\obj\Debug\Business.csprojResolveAssemblyReference.cache
 C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\Business\obj\Debug\Business.exe
 C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\Business\obj\Debug\Business.pdb
+E:\dizertatie\Business\bin\Debug\Business.exe.config
+E:\dizertatie\Business\bin\Debug\Business.exe
+E:\dizertatie\Business\bin\Debug\Business.pdb
+E:\dizertatie\Business\bin\Debug\Database.exe
+E:\dizertatie\Business\bin\Debug\EntityFramework.dll
+E:\dizertatie\Business\bin\Debug\EntityFramework.SqlServer.dll
+E:\dizertatie\Business\bin\Debug\Database.pdb
+E:\dizertatie\Business\bin\Debug\EntityFramework.xml
+E:\dizertatie\Business\bin\Debug\EntityFramework.SqlServer.xml
+E:\dizertatie\Business\obj\Debug\Business.csprojResolveAssemblyReference.cache
+E:\dizertatie\Business\obj\Debug\Business.exe
+E:\dizertatie\Business\obj\Debug\Business.pdb

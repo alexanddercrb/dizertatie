@@ -1,0 +1,12 @@
+C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\Business\bin\Debug\Business.exe.config
+C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\Business\bin\Debug\Business.exe
+C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\Business\bin\Debug\Business.pdb
+C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\Business\bin\Debug\Database.exe
+C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\Business\bin\Debug\EntityFramework.dll
+C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\Business\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\Business\bin\Debug\Database.pdb
+C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\Business\bin\Debug\EntityFramework.xml
+C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\Business\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\Business\obj\Debug\Business.csprojResolveAssemblyReference.cache
+C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\Business\obj\Debug\Business.exe
+C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\Business\obj\Debug\Business.pdb

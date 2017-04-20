@@ -1,0 +1,14 @@
+C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\WebSite\bin\WebSite.dll.config
+C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\WebSite\bin\WebSite.dll
+C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\WebSite\bin\WebSite.pdb
+C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\WebSite\bin\Business.exe
+C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\WebSite\bin\EntityFramework.dll
+C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\WebSite\bin\EntityFramework.SqlServer.dll
+C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\WebSite\bin\Database.exe
+C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\WebSite\bin\Business.pdb
+C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\WebSite\bin\EntityFramework.xml
+C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\WebSite\bin\EntityFramework.SqlServer.xml
+C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\WebSite\bin\Database.pdb
+C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\WebSite\obj\Debug\WebSite.csprojResolveAssemblyReference.cache
+C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\WebSite\obj\Debug\WebSite.dll
+C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\WebSite\obj\Debug\WebSite.pdb

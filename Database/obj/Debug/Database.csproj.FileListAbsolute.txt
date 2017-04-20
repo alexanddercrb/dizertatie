@@ -1,0 +1,9 @@
+C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\Database\bin\Debug\Database.exe.config
+C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\Database\bin\Debug\Database.exe
+C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\Database\bin\Debug\Database.pdb
+C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\Database\bin\Debug\EntityFramework.dll
+C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\Database\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\Database\bin\Debug\EntityFramework.xml
+C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\Database\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\Database\obj\Debug\Database.exe
+C:\Users\Crb\Documents\Visual Studio 2013\Projects\dizertatie-backend\Database\obj\Debug\Database.pdb

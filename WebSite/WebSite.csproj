@@ -70,9 +70,12 @@
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\shop-homepage.css" />
+    <Content Include="html\base_template.html" />
     <Content Include="html\index.html" />
+    <Content Include="js\angular.js" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\pages\index.js" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -87,6 +90,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="templates\index.html" />
     <Content Include="WebService.svc" />
     <Content Include="html\ajax_test.html" />
     <Content Include="js\jquery.js" />
@@ -105,6 +109,10 @@
     <ProjectReference Include="..\Business\Business.csproj">
       <Project>{f5358805-bb30-4325-9b64-b2d72d891dcc}</Project>
       <Name>Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Database\Database.csproj">
+      <Project>{257745d9-87db-4416-b1a2-0a5917840709}</Project>
+      <Name>Database</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

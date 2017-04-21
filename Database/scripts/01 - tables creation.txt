@@ -45,8 +45,10 @@ price numeric(10,2) not null,
 offer numeric (10,2),
 prodtype_id int,
 items int,
+filter_value int,
 primary key (id),
-foreign key (prodtype_id) references product_type(id)
+foreign key (prodtype_id) references product_type(id),
+foreign key (filter_value) references filter_values(id)
 )
 
 create table review (

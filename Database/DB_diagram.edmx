@@ -411,7 +411,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="disertatieModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="DB_entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DB_entities" annotation:LazyLoadingEnabled="false">
           <EntitySet Name="categories" EntityType="disertatieModel.category" />
           <EntitySet Name="customer_orders" EntityType="disertatieModel.customer_orders" />
           <EntitySet Name="filters" EntityType="disertatieModel.filter" />

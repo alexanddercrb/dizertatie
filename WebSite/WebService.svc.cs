@@ -7,6 +7,8 @@ using System.ServiceModel.Activation;
 using System.ServiceModel.Web;
 using System.Text;
 using Business;
+using Database;
+using System.Web.Script.Serialization;
 
 namespace WebSite
 {
@@ -33,6 +35,20 @@ namespace WebSite
             return test.getValue();
         }
 
+        [OperationContract]
+        [WebGet(ResponseFormat = WebMessageFormat.Json)] //remove for post
+        public string returnProduct()
+        {
+            return convertToJson(test.getProduct());
+        }
+
+
+        private string convertToJson(object obj)
+        {
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            string json = js.Serialize(obj);
+            return json;
+        }
         // Add more operations here and mark them with [OperationContract]
     }
 }

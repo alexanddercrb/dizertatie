@@ -14,10 +14,16 @@ namespace Database
     
     public partial class filter_values
     {
+        public filter_values()
+        {
+            this.products = new HashSet<product>();
+        }
+    
         public int id { get; set; }
-        public Nullable<int> filter_id { get; set; }
+        public int filter_id { get; set; }
         public string value { get; set; }
     
         public virtual filter filter { get; set; }
+        public virtual ICollection<product> products { get; set; }
     }
 }

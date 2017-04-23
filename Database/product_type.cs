@@ -22,7 +22,7 @@ namespace Database
     
         public int id { get; set; }
         public string name { get; set; }
-        public Nullable<int> subcategory_id { get; set; }
+        public int subcategory_id { get; set; }
     
         public virtual ICollection<filter> filters { get; set; }
         public virtual ICollection<product> products { get; set; }

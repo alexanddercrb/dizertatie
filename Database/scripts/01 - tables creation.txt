@@ -15,7 +15,7 @@ foreign key (category_id) references category(id)
 create table product_type (
 id int NOT NULL IDENTITY (1,1),
 name varchar(50) not null,
-subcategory_id int,
+subcategory_id int  not null,
 primary key (id),
 foreign key (subcategory_id) references subcategory(id)
 )
@@ -23,14 +23,14 @@ foreign key (subcategory_id) references subcategory(id)
 create table filter (
 id int NOT NULL IDENTITY (1,1),
 name varchar(50) not null,
-prodtype_id int,
+prodtype_id int  not null,
 primary key (id),
 foreign key (prodtype_id) references product_type (id)
 )
 
 create table filter_values (
 id int NOT NULL IDENTITY (1,1),
-filter_id int,
+filter_id int  not null,
 value varchar(20) not null,
 primary key (id),
 foreign key (filter_id) references filter(id)
@@ -41,15 +41,18 @@ id int NOT NULL IDENTITY (1,1),
 name varchar(200) not null,
 code varchar(50) not null,
 specs varchar (1000) not null,
-price numeric(10,2) not null, 
-offer numeric (10,2),
-prodtype_id int,
-items int,
-filter_value int,
+price float(10) not null, 
+offer float(10),
+prodtype_id int  not null,
+items int  not null,
+filter_value int  not null,
 primary key (id),
 foreign key (prodtype_id) references product_type(id),
 foreign key (filter_value) references filter_values(id)
 )
+
+CREATE INDEX idx_prodCode
+ON product(code);
 
 create table review (
 id int NOT NULL IDENTITY (1,1),
@@ -64,10 +67,13 @@ foreign key (product_id) references product(id)
 create table pics (
 id int NOT NULL IDENTITY (1,1),
 pic_path varchar(200) not null,
-product_id int,
+product_id int  not null,
 primary key (id),
 foreign key (product_id) references product(id)
 )
+
+CREATE INDEX idx_picPath
+ON pics(pic_path);
 
 create table privileges (
 id int NOT NULL IDENTITY (1,1),
@@ -79,7 +85,7 @@ create table users (
 id int NOT NULL IDENTITY (1,1),
 first_name varchar(50) not null,
 last_name varchar(50) not null,
-privileges int,
+privileges int  not null,
 location varchar(100) not null,
 phone varchar(12) not null,
 email varchar(30) not null,
@@ -87,10 +93,13 @@ primary key(id),
 foreign key(privileges) references privileges(id)
 )
 
+CREATE INDEX idx_userEmail
+ON users(email);
+
 create table shipping (
 id int NOT NULL IDENTITY (1,1),
 name varchar(50) not null,
-cost numeric(5,2),
+cost float(5) not null,
 primary key(id)
 )
 
@@ -113,10 +122,10 @@ last_name varchar(50) not null,
 location varchar(100) not null,
 phone varchar(12) not null,
 email varchar(30) not null,
-status_id int,
-total numeric (10,2) not null,
+status_id int  not null,
+total float(10) not null,
 dt datetime not null,
-shipping_id int,
+shipping_id int  not null,
 payment_id int,
 primary key (id),
 foreign key (status_id) references order_status(id),

@@ -25,11 +25,13 @@ namespace Database
         public string name { get; set; }
         public string code { get; set; }
         public string specs { get; set; }
-        public decimal price { get; set; }
-        public Nullable<decimal> offer { get; set; }
-        public Nullable<int> prodtype_id { get; set; }
-        public Nullable<int> items { get; set; }
+        public float price { get; set; }
+        public Nullable<float> offer { get; set; }
+        public int prodtype_id { get; set; }
+        public int items { get; set; }
+        public int filter_value { get; set; }
     
+        public virtual filter_values filter_values { get; set; }
         public virtual ICollection<pic> pics { get; set; }
         public virtual product_type product_type { get; set; }
         public virtual ICollection<product_list> product_list { get; set; }

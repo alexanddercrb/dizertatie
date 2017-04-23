@@ -21,7 +21,7 @@ namespace Database
     
         public int id { get; set; }
         public string name { get; set; }
-        public Nullable<int> prodtype_id { get; set; }
+        public int prodtype_id { get; set; }
     
         public virtual product_type product_type { get; set; }
         public virtual ICollection<filter_values> filter_values { get; set; }

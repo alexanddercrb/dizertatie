@@ -16,7 +16,7 @@ namespace Database
     {
         public int id { get; set; }
         public string pic_path { get; set; }
-        public Nullable<int> product_id { get; set; }
+        public int product_id { get; set; }
     
         public virtual product product { get; set; }
     }

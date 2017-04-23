@@ -21,7 +21,7 @@ namespace Database
     
         public int id { get; set; }
         public string name { get; set; }
-        public Nullable<decimal> cost { get; set; }
+        public float cost { get; set; }
     
         public virtual ICollection<order> orders { get; set; }
     }

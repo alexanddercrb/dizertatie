@@ -5,36 +5,37 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="6cb884abe9724dce8a5e408bcce11ef6" Name="Diagram1">
-        <EntityTypeShape EntityType="disertatieModel.category" Width="1.5" PointX="1.5" PointY="24.75" />
-        <EntityTypeShape EntityType="disertatieModel.customer_orders" Width="1.5" PointX="5.25" PointY="1.5" />
-        <EntityTypeShape EntityType="disertatieModel.filter" Width="1.5" PointX="3" PointY="9.75" />
-        <EntityTypeShape EntityType="disertatieModel.filter_values" Width="1.5" PointX="5.25" PointY="9.875" />
-        <EntityTypeShape EntityType="disertatieModel.order_status" Width="1.5" PointX="0.75" PointY="9.875" />
-        <EntityTypeShape EntityType="disertatieModel.order" Width="1.5" PointX="3" PointY="3.5" />
-        <EntityTypeShape EntityType="disertatieModel.payment" Width="1.5" PointX="0.75" PointY="7.5" />
-        <EntityTypeShape EntityType="disertatieModel.pic" Width="1.5" PointX="5.25" PointY="19.125" />
-        <EntityTypeShape EntityType="disertatieModel.privilege" Width="1.5" PointX="0.75" PointY="13.75" />
-        <EntityTypeShape EntityType="disertatieModel.product" Width="1.5" PointX="3" PointY="16.875" />
-        <EntityTypeShape EntityType="disertatieModel.product_list" Width="1.5" PointX="5.25" PointY="4.375" />
-        <EntityTypeShape EntityType="disertatieModel.product_type" Width="1.5" PointX="0.75" PointY="17.375" />
-        <EntityTypeShape EntityType="disertatieModel.review" Width="1.5" PointX="5.25" PointY="16.125" />
-        <EntityTypeShape EntityType="disertatieModel.shipping" Width="1.5" PointX="0.75" PointY="4.625" />
-        <EntityTypeShape EntityType="disertatieModel.subcategory" Width="1.5" PointX="1.5" PointY="21.5" />
-        <EntityTypeShape EntityType="disertatieModel.user" Width="1.5" PointX="3" PointY="13.125" />
+        <EntityTypeShape EntityType="disertatieModel.category" Width="1.5" PointX="0.75" PointY="4.25" />
+        <EntityTypeShape EntityType="disertatieModel.customer_orders" Width="1.5" PointX="14.25" PointY="11.625" />
+        <EntityTypeShape EntityType="disertatieModel.filter" Width="1.5" PointX="7.5" PointY="4" />
+        <EntityTypeShape EntityType="disertatieModel.filter_values" Width="1.5" PointX="9.75" PointY="4" />
+        <EntityTypeShape EntityType="disertatieModel.order_status" Width="1.5" PointX="9.75" PointY="7.875" />
+        <EntityTypeShape EntityType="disertatieModel.order" Width="1.5" PointX="12" PointY="9" />
+        <EntityTypeShape EntityType="disertatieModel.payment" Width="1.5" PointX="9.75" PointY="10.25" />
+        <EntityTypeShape EntityType="disertatieModel.pic" Width="1.5" PointX="14.25" PointY="5.625" />
+        <EntityTypeShape EntityType="disertatieModel.privilege" Width="1.5" PointX="0.75" PointY="8.5" />
+        <EntityTypeShape EntityType="disertatieModel.product" Width="1.5" PointX="12" PointY="3.125" />
+        <EntityTypeShape EntityType="disertatieModel.product_list" Width="1.5" PointX="14.25" PointY="1.875" />
+        <EntityTypeShape EntityType="disertatieModel.product_type" Width="1.5" PointX="5.25" PointY="3.875" />
+        <EntityTypeShape EntityType="disertatieModel.review" Width="1.5" PointX="14.25" PointY="8.125" />
+        <EntityTypeShape EntityType="disertatieModel.shipping" Width="1.5" PointX="9.75" PointY="12.5" />
+        <EntityTypeShape EntityType="disertatieModel.subcategory" Width="1.5" PointX="3" PointY="4" />
+        <EntityTypeShape EntityType="disertatieModel.user" Width="1.5" PointX="3" PointY="8" />
         <AssociationConnector Association="disertatieModel.FK__subcatego__categ__1273C1CD" />
-        <AssociationConnector Association="disertatieModel.FK__customer___custo__35BCFE0A" />
-        <AssociationConnector Association="disertatieModel.FK__customer___order__36B12243" />
+        <AssociationConnector Association="disertatieModel.FK__customer___custo__36B12243" />
+        <AssociationConnector Association="disertatieModel.FK__customer___order__37A5467C" />
         <AssociationConnector Association="disertatieModel.FK__filter__prodtype__182C9B23" />
         <AssociationConnector Association="disertatieModel.FK__filter_va__filte__1B0907CE" />
-        <AssociationConnector Association="disertatieModel.FK__orders__status_i__30F848ED" />
-        <AssociationConnector Association="disertatieModel.FK__orders__payment___32E0915F" />
-        <AssociationConnector Association="disertatieModel.FK__orders__shipping__31EC6D26" />
-        <AssociationConnector Association="disertatieModel.FK__product_l__order__398D8EEE" />
-        <AssociationConnector Association="disertatieModel.FK__pics__product_id__239E4DCF" />
-        <AssociationConnector Association="disertatieModel.FK__users__privilege__286302EC" />
+        <AssociationConnector Association="disertatieModel.FK__product__filter___1ED998B2" />
+        <AssociationConnector Association="disertatieModel.FK__orders__status_i__31EC6D26" />
+        <AssociationConnector Association="disertatieModel.FK__orders__payment___33D4B598" />
+        <AssociationConnector Association="disertatieModel.FK__orders__shipping__32E0915F" />
+        <AssociationConnector Association="disertatieModel.FK__product_l__order__3A81B327" />
+        <AssociationConnector Association="disertatieModel.FK__pics__product_id__24927208" />
+        <AssociationConnector Association="disertatieModel.FK__users__privilege__29572725" />
         <AssociationConnector Association="disertatieModel.FK__product__prodtyp__1DE57479" />
-        <AssociationConnector Association="disertatieModel.FK__product_l__produ__3A81B327" />
-        <AssociationConnector Association="disertatieModel.FK__review__product___20C1E124" />
+        <AssociationConnector Association="disertatieModel.FK__product_l__produ__3B75D760" />
+        <AssociationConnector Association="disertatieModel.FK__review__product___21B6055D" />
         <AssociationConnector Association="disertatieModel.FK__product_t__subca__15502E78" />
       </Diagram>
     </edmx:Diagrams>

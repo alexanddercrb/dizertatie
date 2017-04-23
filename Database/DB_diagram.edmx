@@ -26,14 +26,14 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="prodtype_id" Type="int" />
+          <Property Name="prodtype_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="filter_values">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="filter_id" Type="int" />
+          <Property Name="filter_id" Type="int" Nullable="false" />
           <Property Name="value" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="order_status">
@@ -53,10 +53,10 @@
           <Property Name="location" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="phone" Type="varchar" MaxLength="12" Nullable="false" />
           <Property Name="email" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="status_id" Type="int" />
-          <Property Name="total" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="status_id" Type="int" Nullable="false" />
+          <Property Name="total" Type="real" Nullable="false" />
           <Property Name="dt" Type="datetime" Nullable="false" />
-          <Property Name="shipping_id" Type="int" />
+          <Property Name="shipping_id" Type="int" Nullable="false" />
           <Property Name="payment_id" Type="int" />
         </EntityType>
         <EntityType Name="payment">
@@ -72,7 +72,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="pic_path" Type="varchar" MaxLength="200" Nullable="false" />
-          <Property Name="product_id" Type="int" />
+          <Property Name="product_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="privileges">
           <Key>
@@ -89,10 +89,11 @@
           <Property Name="name" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="specs" Type="varchar" MaxLength="1000" Nullable="false" />
-          <Property Name="price" Type="numeric" Precision="10" Scale="2" Nullable="false" />
-          <Property Name="offer" Type="numeric" Precision="10" Scale="2" />
-          <Property Name="prodtype_id" Type="int" />
-          <Property Name="items" Type="int" />
+          <Property Name="price" Type="real" Nullable="false" />
+          <Property Name="offer" Type="real" />
+          <Property Name="prodtype_id" Type="int" Nullable="false" />
+          <Property Name="items" Type="int" Nullable="false" />
+          <Property Name="filter_value" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="product_list">
           <Key>
@@ -109,7 +110,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="subcategory_id" Type="int" />
+          <Property Name="subcategory_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="review">
           <Key>
@@ -127,7 +128,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="cost" Type="numeric" Precision="5" Scale="2" />
+          <Property Name="cost" Type="real" Nullable="false" />
         </EntityType>
         <EntityType Name="subcategory">
           <Key>
@@ -144,12 +145,12 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="first_name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="last_name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="privileges" Type="int" />
+          <Property Name="privileges" Type="int" Nullable="false" />
           <Property Name="location" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="phone" Type="varchar" MaxLength="12" Nullable="false" />
           <Property Name="email" Type="varchar" MaxLength="30" Nullable="false" />
         </EntityType>
-        <Association Name="FK__customer___custo__35BCFE0A">
+        <Association Name="FK__customer___custo__36B12243">
           <End Role="users" Type="Self.users" Multiplicity="0..1" />
           <End Role="customer_orders" Type="Self.customer_orders" Multiplicity="*" />
           <ReferentialConstraint>
@@ -161,7 +162,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__customer___order__36B12243">
+        <Association Name="FK__customer___order__37A5467C">
           <End Role="orders" Type="Self.orders" Multiplicity="0..1" />
           <End Role="customer_orders" Type="Self.customer_orders" Multiplicity="*" />
           <ReferentialConstraint>
@@ -174,7 +175,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__filter__prodtype__182C9B23">
-          <End Role="product_type" Type="Self.product_type" Multiplicity="0..1" />
+          <End Role="product_type" Type="Self.product_type" Multiplicity="1" />
           <End Role="filter" Type="Self.filter" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="product_type">
@@ -186,7 +187,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__filter_va__filte__1B0907CE">
-          <End Role="filter" Type="Self.filter" Multiplicity="0..1" />
+          <End Role="filter" Type="Self.filter" Multiplicity="1" />
           <End Role="filter_values" Type="Self.filter_values" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="filter">
@@ -197,7 +198,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__orders__payment___32E0915F">
+        <Association Name="FK__orders__payment___33D4B598">
           <End Role="payment" Type="Self.payment" Multiplicity="0..1" />
           <End Role="orders" Type="Self.orders" Multiplicity="*" />
           <ReferentialConstraint>
@@ -209,8 +210,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__orders__shipping__31EC6D26">
-          <End Role="shipping" Type="Self.shipping" Multiplicity="0..1" />
+        <Association Name="FK__orders__shipping__32E0915F">
+          <End Role="shipping" Type="Self.shipping" Multiplicity="1" />
           <End Role="orders" Type="Self.orders" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="shipping">
@@ -221,8 +222,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__orders__status_i__30F848ED">
-          <End Role="order_status" Type="Self.order_status" Multiplicity="0..1" />
+        <Association Name="FK__orders__status_i__31EC6D26">
+          <End Role="order_status" Type="Self.order_status" Multiplicity="1" />
           <End Role="orders" Type="Self.orders" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="order_status">
@@ -233,8 +234,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__pics__product_id__239E4DCF">
-          <End Role="product" Type="Self.product" Multiplicity="0..1" />
+        <Association Name="FK__pics__product_id__24927208">
+          <End Role="product" Type="Self.product" Multiplicity="1" />
           <End Role="pics" Type="Self.pics" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="product">
@@ -245,8 +246,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__product__filter___1ED998B2">
+          <End Role="filter_values" Type="Self.filter_values" Multiplicity="1" />
+          <End Role="product" Type="Self.product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="filter_values">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="product">
+              <PropertyRef Name="filter_value" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__product__prodtyp__1DE57479">
-          <End Role="product_type" Type="Self.product_type" Multiplicity="0..1" />
+          <End Role="product_type" Type="Self.product_type" Multiplicity="1" />
           <End Role="product" Type="Self.product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="product_type">
@@ -257,7 +270,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__product_l__order__398D8EEE">
+        <Association Name="FK__product_l__order__3A81B327">
           <End Role="orders" Type="Self.orders" Multiplicity="0..1" />
           <End Role="product_list" Type="Self.product_list" Multiplicity="*" />
           <ReferentialConstraint>
@@ -269,7 +282,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__product_l__produ__3A81B327">
+        <Association Name="FK__product_l__produ__3B75D760">
           <End Role="product" Type="Self.product" Multiplicity="0..1" />
           <End Role="product_list" Type="Self.product_list" Multiplicity="*" />
           <ReferentialConstraint>
@@ -282,7 +295,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__product_t__subca__15502E78">
-          <End Role="subcategory" Type="Self.subcategory" Multiplicity="0..1" />
+          <End Role="subcategory" Type="Self.subcategory" Multiplicity="1" />
           <End Role="product_type" Type="Self.product_type" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="subcategory">
@@ -293,7 +306,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__review__product___20C1E124">
+        <Association Name="FK__review__product___21B6055D">
           <End Role="product" Type="Self.product" Multiplicity="0..1" />
           <End Role="review" Type="Self.review" Multiplicity="*" />
           <ReferentialConstraint>
@@ -317,8 +330,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__users__privilege__286302EC">
-          <End Role="privileges" Type="Self.privileges" Multiplicity="0..1" />
+        <Association Name="FK__users__privilege__29572725">
+          <End Role="privileges" Type="Self.privileges" Multiplicity="1" />
           <End Role="users" Type="Self.users" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="privileges">
@@ -346,11 +359,11 @@
           <EntitySet Name="shipping" EntityType="Self.shipping" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="subcategory" EntityType="Self.subcategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__customer___custo__35BCFE0A" Association="Self.FK__customer___custo__35BCFE0A">
+          <AssociationSet Name="FK__customer___custo__36B12243" Association="Self.FK__customer___custo__36B12243">
             <End Role="users" EntitySet="users" />
             <End Role="customer_orders" EntitySet="customer_orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__customer___order__36B12243" Association="Self.FK__customer___order__36B12243">
+          <AssociationSet Name="FK__customer___order__37A5467C" Association="Self.FK__customer___order__37A5467C">
             <End Role="orders" EntitySet="orders" />
             <End Role="customer_orders" EntitySet="customer_orders" />
           </AssociationSet>
@@ -362,31 +375,35 @@
             <End Role="filter" EntitySet="filter" />
             <End Role="filter_values" EntitySet="filter_values" />
           </AssociationSet>
-          <AssociationSet Name="FK__orders__payment___32E0915F" Association="Self.FK__orders__payment___32E0915F">
+          <AssociationSet Name="FK__orders__payment___33D4B598" Association="Self.FK__orders__payment___33D4B598">
             <End Role="payment" EntitySet="payment" />
             <End Role="orders" EntitySet="orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__orders__shipping__31EC6D26" Association="Self.FK__orders__shipping__31EC6D26">
+          <AssociationSet Name="FK__orders__shipping__32E0915F" Association="Self.FK__orders__shipping__32E0915F">
             <End Role="shipping" EntitySet="shipping" />
             <End Role="orders" EntitySet="orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__orders__status_i__30F848ED" Association="Self.FK__orders__status_i__30F848ED">
+          <AssociationSet Name="FK__orders__status_i__31EC6D26" Association="Self.FK__orders__status_i__31EC6D26">
             <End Role="order_status" EntitySet="order_status" />
             <End Role="orders" EntitySet="orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__pics__product_id__239E4DCF" Association="Self.FK__pics__product_id__239E4DCF">
+          <AssociationSet Name="FK__pics__product_id__24927208" Association="Self.FK__pics__product_id__24927208">
             <End Role="product" EntitySet="product" />
             <End Role="pics" EntitySet="pics" />
+          </AssociationSet>
+          <AssociationSet Name="FK__product__filter___1ED998B2" Association="Self.FK__product__filter___1ED998B2">
+            <End Role="filter_values" EntitySet="filter_values" />
+            <End Role="product" EntitySet="product" />
           </AssociationSet>
           <AssociationSet Name="FK__product__prodtyp__1DE57479" Association="Self.FK__product__prodtyp__1DE57479">
             <End Role="product_type" EntitySet="product_type" />
             <End Role="product" EntitySet="product" />
           </AssociationSet>
-          <AssociationSet Name="FK__product_l__order__398D8EEE" Association="Self.FK__product_l__order__398D8EEE">
+          <AssociationSet Name="FK__product_l__order__3A81B327" Association="Self.FK__product_l__order__3A81B327">
             <End Role="orders" EntitySet="orders" />
             <End Role="product_list" EntitySet="product_list" />
           </AssociationSet>
-          <AssociationSet Name="FK__product_l__produ__3A81B327" Association="Self.FK__product_l__produ__3A81B327">
+          <AssociationSet Name="FK__product_l__produ__3B75D760" Association="Self.FK__product_l__produ__3B75D760">
             <End Role="product" EntitySet="product" />
             <End Role="product_list" EntitySet="product_list" />
           </AssociationSet>
@@ -394,7 +411,7 @@
             <End Role="subcategory" EntitySet="subcategory" />
             <End Role="product_type" EntitySet="product_type" />
           </AssociationSet>
-          <AssociationSet Name="FK__review__product___20C1E124" Association="Self.FK__review__product___20C1E124">
+          <AssociationSet Name="FK__review__product___21B6055D" Association="Self.FK__review__product___21B6055D">
             <End Role="product" EntitySet="product" />
             <End Role="review" EntitySet="review" />
           </AssociationSet>
@@ -402,7 +419,7 @@
             <End Role="category" EntitySet="category" />
             <End Role="subcategory" EntitySet="subcategory" />
           </AssociationSet>
-          <AssociationSet Name="FK__users__privilege__286302EC" Association="Self.FK__users__privilege__286302EC">
+          <AssociationSet Name="FK__users__privilege__29572725" Association="Self.FK__users__privilege__29572725">
             <End Role="privileges" EntitySet="privileges" />
             <End Role="users" EntitySet="users" />
           </AssociationSet>
@@ -432,11 +449,11 @@
             <End Role="category" EntitySet="categories" />
             <End Role="subcategory" EntitySet="subcategories" />
           </AssociationSet>
-          <AssociationSet Name="FK__customer___custo__35BCFE0A" Association="disertatieModel.FK__customer___custo__35BCFE0A">
+          <AssociationSet Name="FK__customer___custo__36B12243" Association="disertatieModel.FK__customer___custo__36B12243">
             <End Role="user" EntitySet="users" />
             <End Role="customer_orders" EntitySet="customer_orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__customer___order__36B12243" Association="disertatieModel.FK__customer___order__36B12243">
+          <AssociationSet Name="FK__customer___order__37A5467C" Association="disertatieModel.FK__customer___order__37A5467C">
             <End Role="order" EntitySet="orders" />
             <End Role="customer_orders" EntitySet="customer_orders" />
           </AssociationSet>
@@ -448,27 +465,31 @@
             <End Role="filter" EntitySet="filters" />
             <End Role="filter_values" EntitySet="filter_values" />
           </AssociationSet>
-          <AssociationSet Name="FK__orders__status_i__30F848ED" Association="disertatieModel.FK__orders__status_i__30F848ED">
+          <AssociationSet Name="FK__product__filter___1ED998B2" Association="disertatieModel.FK__product__filter___1ED998B2">
+            <End Role="filter_values" EntitySet="filter_values" />
+            <End Role="product" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__orders__status_i__31EC6D26" Association="disertatieModel.FK__orders__status_i__31EC6D26">
             <End Role="order_status" EntitySet="order_status" />
             <End Role="order" EntitySet="orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__orders__payment___32E0915F" Association="disertatieModel.FK__orders__payment___32E0915F">
+          <AssociationSet Name="FK__orders__payment___33D4B598" Association="disertatieModel.FK__orders__payment___33D4B598">
             <End Role="payment" EntitySet="payments" />
             <End Role="order" EntitySet="orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__orders__shipping__31EC6D26" Association="disertatieModel.FK__orders__shipping__31EC6D26">
+          <AssociationSet Name="FK__orders__shipping__32E0915F" Association="disertatieModel.FK__orders__shipping__32E0915F">
             <End Role="shipping" EntitySet="shippings" />
             <End Role="order" EntitySet="orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__product_l__order__398D8EEE" Association="disertatieModel.FK__product_l__order__398D8EEE">
+          <AssociationSet Name="FK__product_l__order__3A81B327" Association="disertatieModel.FK__product_l__order__3A81B327">
             <End Role="order" EntitySet="orders" />
             <End Role="product_list" EntitySet="product_list" />
           </AssociationSet>
-          <AssociationSet Name="FK__pics__product_id__239E4DCF" Association="disertatieModel.FK__pics__product_id__239E4DCF">
+          <AssociationSet Name="FK__pics__product_id__24927208" Association="disertatieModel.FK__pics__product_id__24927208">
             <End Role="product" EntitySet="products" />
             <End Role="pic" EntitySet="pics" />
           </AssociationSet>
-          <AssociationSet Name="FK__users__privilege__286302EC" Association="disertatieModel.FK__users__privilege__286302EC">
+          <AssociationSet Name="FK__users__privilege__29572725" Association="disertatieModel.FK__users__privilege__29572725">
             <End Role="privilege" EntitySet="privileges" />
             <End Role="user" EntitySet="users" />
           </AssociationSet>
@@ -476,11 +497,11 @@
             <End Role="product_type" EntitySet="product_type" />
             <End Role="product" EntitySet="products" />
           </AssociationSet>
-          <AssociationSet Name="FK__product_l__produ__3A81B327" Association="disertatieModel.FK__product_l__produ__3A81B327">
+          <AssociationSet Name="FK__product_l__produ__3B75D760" Association="disertatieModel.FK__product_l__produ__3B75D760">
             <End Role="product" EntitySet="products" />
             <End Role="product_list" EntitySet="product_list" />
           </AssociationSet>
-          <AssociationSet Name="FK__review__product___20C1E124" Association="disertatieModel.FK__review__product___20C1E124">
+          <AssociationSet Name="FK__review__product___21B6055D" Association="disertatieModel.FK__review__product___21B6055D">
             <End Role="product" EntitySet="products" />
             <End Role="review" EntitySet="reviews" />
           </AssociationSet>
@@ -504,8 +525,8 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="customer_id" Type="Int32" />
           <Property Name="order_id" Type="Int32" />
-          <NavigationProperty Name="user" Relationship="disertatieModel.FK__customer___custo__35BCFE0A" FromRole="customer_orders" ToRole="user" />
-          <NavigationProperty Name="order" Relationship="disertatieModel.FK__customer___order__36B12243" FromRole="customer_orders" ToRole="order" />
+          <NavigationProperty Name="user" Relationship="disertatieModel.FK__customer___custo__36B12243" FromRole="customer_orders" ToRole="user" />
+          <NavigationProperty Name="order" Relationship="disertatieModel.FK__customer___order__37A5467C" FromRole="customer_orders" ToRole="order" />
         </EntityType>
         <EntityType Name="filter">
           <Key>
@@ -513,7 +534,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="prodtype_id" Type="Int32" />
+          <Property Name="prodtype_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="product_type" Relationship="disertatieModel.FK__filter__prodtype__182C9B23" FromRole="filter" ToRole="product_type" />
           <NavigationProperty Name="filter_values" Relationship="disertatieModel.FK__filter_va__filte__1B0907CE" FromRole="filter" ToRole="filter_values" />
         </EntityType>
@@ -522,9 +543,10 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="filter_id" Type="Int32" />
+          <Property Name="filter_id" Type="Int32" Nullable="false" />
           <Property Name="value" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="filter" Relationship="disertatieModel.FK__filter_va__filte__1B0907CE" FromRole="filter_values" ToRole="filter" />
+          <NavigationProperty Name="products" Relationship="disertatieModel.FK__product__filter___1ED998B2" FromRole="filter_values" ToRole="product" />
         </EntityType>
         <EntityType Name="order_status">
           <Key>
@@ -532,7 +554,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="orders" Relationship="disertatieModel.FK__orders__status_i__30F848ED" FromRole="order_status" ToRole="order" />
+          <NavigationProperty Name="orders" Relationship="disertatieModel.FK__orders__status_i__31EC6D26" FromRole="order_status" ToRole="order" />
         </EntityType>
         <EntityType Name="order">
           <Key>
@@ -544,16 +566,16 @@
           <Property Name="location" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="phone" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
           <Property Name="email" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="status_id" Type="Int32" />
-          <Property Name="total" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="status_id" Type="Int32" Nullable="false" />
+          <Property Name="total" Type="Single" Nullable="false" />
           <Property Name="dt" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="shipping_id" Type="Int32" />
+          <Property Name="shipping_id" Type="Int32" Nullable="false" />
           <Property Name="payment_id" Type="Int32" />
-          <NavigationProperty Name="customer_orders" Relationship="disertatieModel.FK__customer___order__36B12243" FromRole="order" ToRole="customer_orders" />
-          <NavigationProperty Name="order_status" Relationship="disertatieModel.FK__orders__status_i__30F848ED" FromRole="order" ToRole="order_status" />
-          <NavigationProperty Name="payment" Relationship="disertatieModel.FK__orders__payment___32E0915F" FromRole="order" ToRole="payment" />
-          <NavigationProperty Name="shipping" Relationship="disertatieModel.FK__orders__shipping__31EC6D26" FromRole="order" ToRole="shipping" />
-          <NavigationProperty Name="product_list" Relationship="disertatieModel.FK__product_l__order__398D8EEE" FromRole="order" ToRole="product_list" />
+          <NavigationProperty Name="customer_orders" Relationship="disertatieModel.FK__customer___order__37A5467C" FromRole="order" ToRole="customer_orders" />
+          <NavigationProperty Name="order_status" Relationship="disertatieModel.FK__orders__status_i__31EC6D26" FromRole="order" ToRole="order_status" />
+          <NavigationProperty Name="payment" Relationship="disertatieModel.FK__orders__payment___33D4B598" FromRole="order" ToRole="payment" />
+          <NavigationProperty Name="shipping" Relationship="disertatieModel.FK__orders__shipping__32E0915F" FromRole="order" ToRole="shipping" />
+          <NavigationProperty Name="product_list" Relationship="disertatieModel.FK__product_l__order__3A81B327" FromRole="order" ToRole="product_list" />
         </EntityType>
         <EntityType Name="payment">
           <Key>
@@ -561,7 +583,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="orders" Relationship="disertatieModel.FK__orders__payment___32E0915F" FromRole="payment" ToRole="order" />
+          <NavigationProperty Name="orders" Relationship="disertatieModel.FK__orders__payment___33D4B598" FromRole="payment" ToRole="order" />
         </EntityType>
         <EntityType Name="pic">
           <Key>
@@ -569,8 +591,8 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="pic_path" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="product_id" Type="Int32" />
-          <NavigationProperty Name="product" Relationship="disertatieModel.FK__pics__product_id__239E4DCF" FromRole="pic" ToRole="product" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="product" Relationship="disertatieModel.FK__pics__product_id__24927208" FromRole="pic" ToRole="product" />
         </EntityType>
         <EntityType Name="privilege">
           <Key>
@@ -578,7 +600,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="users" Relationship="disertatieModel.FK__users__privilege__286302EC" FromRole="privilege" ToRole="user" />
+          <NavigationProperty Name="users" Relationship="disertatieModel.FK__users__privilege__29572725" FromRole="privilege" ToRole="user" />
         </EntityType>
         <EntityType Name="product">
           <Key>
@@ -588,14 +610,16 @@
           <Property Name="name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="specs" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <Property Name="price" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
-          <Property Name="offer" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="prodtype_id" Type="Int32" />
-          <Property Name="items" Type="Int32" />
-          <NavigationProperty Name="pics" Relationship="disertatieModel.FK__pics__product_id__239E4DCF" FromRole="product" ToRole="pic" />
+          <Property Name="price" Type="Single" Nullable="false" />
+          <Property Name="offer" Type="Single" />
+          <Property Name="prodtype_id" Type="Int32" Nullable="false" />
+          <Property Name="items" Type="Int32" Nullable="false" />
+          <Property Name="filter_value" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="filter_values" Relationship="disertatieModel.FK__product__filter___1ED998B2" FromRole="product" ToRole="filter_values" />
+          <NavigationProperty Name="pics" Relationship="disertatieModel.FK__pics__product_id__24927208" FromRole="product" ToRole="pic" />
           <NavigationProperty Name="product_type" Relationship="disertatieModel.FK__product__prodtyp__1DE57479" FromRole="product" ToRole="product_type" />
-          <NavigationProperty Name="product_list" Relationship="disertatieModel.FK__product_l__produ__3A81B327" FromRole="product" ToRole="product_list" />
-          <NavigationProperty Name="reviews" Relationship="disertatieModel.FK__review__product___20C1E124" FromRole="product" ToRole="review" />
+          <NavigationProperty Name="product_list" Relationship="disertatieModel.FK__product_l__produ__3B75D760" FromRole="product" ToRole="product_list" />
+          <NavigationProperty Name="reviews" Relationship="disertatieModel.FK__review__product___21B6055D" FromRole="product" ToRole="review" />
         </EntityType>
         <EntityType Name="product_list">
           <Key>
@@ -605,8 +629,8 @@
           <Property Name="order_id" Type="Int32" />
           <Property Name="product_id" Type="Int32" />
           <Property Name="no_items" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="order" Relationship="disertatieModel.FK__product_l__order__398D8EEE" FromRole="product_list" ToRole="order" />
-          <NavigationProperty Name="product" Relationship="disertatieModel.FK__product_l__produ__3A81B327" FromRole="product_list" ToRole="product" />
+          <NavigationProperty Name="order" Relationship="disertatieModel.FK__product_l__order__3A81B327" FromRole="product_list" ToRole="order" />
+          <NavigationProperty Name="product" Relationship="disertatieModel.FK__product_l__produ__3B75D760" FromRole="product_list" ToRole="product" />
         </EntityType>
         <EntityType Name="product_type">
           <Key>
@@ -614,7 +638,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="subcategory_id" Type="Int32" />
+          <Property Name="subcategory_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="filters" Relationship="disertatieModel.FK__filter__prodtype__182C9B23" FromRole="product_type" ToRole="filter" />
           <NavigationProperty Name="products" Relationship="disertatieModel.FK__product__prodtyp__1DE57479" FromRole="product_type" ToRole="product" />
           <NavigationProperty Name="subcategory" Relationship="disertatieModel.FK__product_t__subca__15502E78" FromRole="product_type" ToRole="subcategory" />
@@ -628,7 +652,7 @@
           <Property Name="comment" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="product_id" Type="Int32" />
           <Property Name="stars" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="product" Relationship="disertatieModel.FK__review__product___20C1E124" FromRole="review" ToRole="product" />
+          <NavigationProperty Name="product" Relationship="disertatieModel.FK__review__product___21B6055D" FromRole="review" ToRole="product" />
         </EntityType>
         <EntityType Name="shipping">
           <Key>
@@ -636,8 +660,8 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="cost" Type="Decimal" Precision="5" Scale="2" />
-          <NavigationProperty Name="orders" Relationship="disertatieModel.FK__orders__shipping__31EC6D26" FromRole="shipping" ToRole="order" />
+          <Property Name="cost" Type="Single" Nullable="false" />
+          <NavigationProperty Name="orders" Relationship="disertatieModel.FK__orders__shipping__32E0915F" FromRole="shipping" ToRole="order" />
         </EntityType>
         <EntityType Name="subcategory">
           <Key>
@@ -656,12 +680,12 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="first_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="last_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="privileges" Type="Int32" />
+          <Property Name="privileges" Type="Int32" Nullable="false" />
           <Property Name="location" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="phone" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
           <Property Name="email" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="customer_orders" Relationship="disertatieModel.FK__customer___custo__35BCFE0A" FromRole="user" ToRole="customer_orders" />
-          <NavigationProperty Name="privilege" Relationship="disertatieModel.FK__users__privilege__286302EC" FromRole="user" ToRole="privilege" />
+          <NavigationProperty Name="customer_orders" Relationship="disertatieModel.FK__customer___custo__36B12243" FromRole="user" ToRole="customer_orders" />
+          <NavigationProperty Name="privilege" Relationship="disertatieModel.FK__users__privilege__29572725" FromRole="user" ToRole="privilege" />
         </EntityType>
         <Association Name="FK__subcatego__categ__1273C1CD">
           <End Type="disertatieModel.category" Role="category" Multiplicity="0..1" />
@@ -675,7 +699,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__customer___custo__35BCFE0A">
+        <Association Name="FK__customer___custo__36B12243">
           <End Type="disertatieModel.user" Role="user" Multiplicity="0..1" />
           <End Type="disertatieModel.customer_orders" Role="customer_orders" Multiplicity="*" />
           <ReferentialConstraint>
@@ -687,7 +711,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__customer___order__36B12243">
+        <Association Name="FK__customer___order__37A5467C">
           <End Type="disertatieModel.order" Role="order" Multiplicity="0..1" />
           <End Type="disertatieModel.customer_orders" Role="customer_orders" Multiplicity="*" />
           <ReferentialConstraint>
@@ -700,7 +724,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__filter__prodtype__182C9B23">
-          <End Type="disertatieModel.product_type" Role="product_type" Multiplicity="0..1" />
+          <End Type="disertatieModel.product_type" Role="product_type" Multiplicity="1" />
           <End Type="disertatieModel.filter" Role="filter" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="product_type">
@@ -712,7 +736,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__filter_va__filte__1B0907CE">
-          <End Type="disertatieModel.filter" Role="filter" Multiplicity="0..1" />
+          <End Type="disertatieModel.filter" Role="filter" Multiplicity="1" />
           <End Type="disertatieModel.filter_values" Role="filter_values" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="filter">
@@ -723,8 +747,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__orders__status_i__30F848ED">
-          <End Type="disertatieModel.order_status" Role="order_status" Multiplicity="0..1" />
+        <Association Name="FK__product__filter___1ED998B2">
+          <End Type="disertatieModel.filter_values" Role="filter_values" Multiplicity="1" />
+          <End Type="disertatieModel.product" Role="product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="filter_values">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="product">
+              <PropertyRef Name="filter_value" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__orders__status_i__31EC6D26">
+          <End Type="disertatieModel.order_status" Role="order_status" Multiplicity="1" />
           <End Type="disertatieModel.order" Role="order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="order_status">
@@ -735,7 +771,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__orders__payment___32E0915F">
+        <Association Name="FK__orders__payment___33D4B598">
           <End Type="disertatieModel.payment" Role="payment" Multiplicity="0..1" />
           <End Type="disertatieModel.order" Role="order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -747,8 +783,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__orders__shipping__31EC6D26">
-          <End Type="disertatieModel.shipping" Role="shipping" Multiplicity="0..1" />
+        <Association Name="FK__orders__shipping__32E0915F">
+          <End Type="disertatieModel.shipping" Role="shipping" Multiplicity="1" />
           <End Type="disertatieModel.order" Role="order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="shipping">
@@ -759,7 +795,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__product_l__order__398D8EEE">
+        <Association Name="FK__product_l__order__3A81B327">
           <End Type="disertatieModel.order" Role="order" Multiplicity="0..1" />
           <End Type="disertatieModel.product_list" Role="product_list" Multiplicity="*" />
           <ReferentialConstraint>
@@ -771,8 +807,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__pics__product_id__239E4DCF">
-          <End Type="disertatieModel.product" Role="product" Multiplicity="0..1" />
+        <Association Name="FK__pics__product_id__24927208">
+          <End Type="disertatieModel.product" Role="product" Multiplicity="1" />
           <End Type="disertatieModel.pic" Role="pic" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="product">
@@ -783,8 +819,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__users__privilege__286302EC">
-          <End Type="disertatieModel.privilege" Role="privilege" Multiplicity="0..1" />
+        <Association Name="FK__users__privilege__29572725">
+          <End Type="disertatieModel.privilege" Role="privilege" Multiplicity="1" />
           <End Type="disertatieModel.user" Role="user" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="privilege">
@@ -796,7 +832,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__product__prodtyp__1DE57479">
-          <End Type="disertatieModel.product_type" Role="product_type" Multiplicity="0..1" />
+          <End Type="disertatieModel.product_type" Role="product_type" Multiplicity="1" />
           <End Type="disertatieModel.product" Role="product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="product_type">
@@ -807,7 +843,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__product_l__produ__3A81B327">
+        <Association Name="FK__product_l__produ__3B75D760">
           <End Type="disertatieModel.product" Role="product" Multiplicity="0..1" />
           <End Type="disertatieModel.product_list" Role="product_list" Multiplicity="*" />
           <ReferentialConstraint>
@@ -819,7 +855,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__review__product___20C1E124">
+        <Association Name="FK__review__product___21B6055D">
           <End Type="disertatieModel.product" Role="product" Multiplicity="0..1" />
           <End Type="disertatieModel.review" Role="review" Multiplicity="*" />
           <ReferentialConstraint>
@@ -832,7 +868,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__product_t__subca__15502E78">
-          <End Type="disertatieModel.subcategory" Role="subcategory" Multiplicity="0..1" />
+          <End Type="disertatieModel.subcategory" Role="subcategory" Multiplicity="1" />
           <End Type="disertatieModel.product_type" Role="product_type" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="subcategory">
@@ -843,13 +879,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="disertatieModelStoreContainer" CdmEntityContainer="DB_entities">
-        <EntitySetMapping Name="categories">
+          <EntitySetMapping Name="categories">
             <EntityTypeMapping TypeName="disertatieModel.category">
               <MappingFragment StoreEntitySet="category">
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -937,6 +973,7 @@
           <EntitySetMapping Name="products">
             <EntityTypeMapping TypeName="disertatieModel.product">
               <MappingFragment StoreEntitySet="product">
+                <ScalarProperty Name="filter_value" ColumnName="filter_value" />
                 <ScalarProperty Name="items" ColumnName="items" />
                 <ScalarProperty Name="prodtype_id" ColumnName="prodtype_id" />
                 <ScalarProperty Name="offer" ColumnName="offer" />

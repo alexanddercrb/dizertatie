@@ -22,8 +22,10 @@ function createFeaturedItem(str) {
 
         var template = $('#teaser-product').html();
         var item = $(template).clone();
+
+        //edit template
         $(item).find('#price').html(list[i].price + '$');
-        $(item).find('#ProductTitle').html(list[i].title);
+        $(item).find('#ProductTitle').html(list[i].name);
         $(item).find('#description').html(list[i].specs);
 
         var j = 1;

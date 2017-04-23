@@ -26,10 +26,10 @@ namespace Database
         public string location { get; set; }
         public string phone { get; set; }
         public string email { get; set; }
-        public Nullable<int> status_id { get; set; }
-        public decimal total { get; set; }
+        public int status_id { get; set; }
+        public float total { get; set; }
         public System.DateTime dt { get; set; }
-        public Nullable<int> shipping_id { get; set; }
+        public int shipping_id { get; set; }
         public Nullable<int> payment_id { get; set; }
     
         public virtual ICollection<customer_orders> customer_orders { get; set; }

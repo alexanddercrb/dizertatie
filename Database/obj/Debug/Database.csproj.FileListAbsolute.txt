@@ -25,4 +25,3 @@ D:\Dizertatie_app\Database\bin\Debug\EntityFramework.xml
 D:\Dizertatie_app\Database\bin\Debug\EntityFramework.SqlServer.xml
 D:\Dizertatie_app\Database\obj\Debug\Database.exe
 D:\Dizertatie_app\Database\obj\Debug\Database.pdb
-D:\Dizertatie_app\Database\obj\Debug\Database.csprojResolveAssemblyReference.cache

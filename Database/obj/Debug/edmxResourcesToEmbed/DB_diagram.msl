@@ -89,6 +89,7 @@
     <EntitySetMapping Name="products">
       <EntityTypeMapping TypeName="disertatieModel.product">
         <MappingFragment StoreEntitySet="product">
+          <ScalarProperty Name="filter_value" ColumnName="filter_value" />
           <ScalarProperty Name="items" ColumnName="items" />
           <ScalarProperty Name="prodtype_id" ColumnName="prodtype_id" />
           <ScalarProperty Name="offer" ColumnName="offer" />

@@ -21,14 +21,14 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="prodtype_id" Type="int" />
+    <Property Name="prodtype_id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="filter_values">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="filter_id" Type="int" />
+    <Property Name="filter_id" Type="int" Nullable="false" />
     <Property Name="value" Type="varchar" MaxLength="20" Nullable="false" />
   </EntityType>
   <EntityType Name="order_status">
@@ -48,10 +48,10 @@
     <Property Name="location" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="phone" Type="varchar" MaxLength="12" Nullable="false" />
     <Property Name="email" Type="varchar" MaxLength="30" Nullable="false" />
-    <Property Name="status_id" Type="int" />
-    <Property Name="total" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="status_id" Type="int" Nullable="false" />
+    <Property Name="total" Type="real" Nullable="false" />
     <Property Name="dt" Type="datetime" Nullable="false" />
-    <Property Name="shipping_id" Type="int" />
+    <Property Name="shipping_id" Type="int" Nullable="false" />
     <Property Name="payment_id" Type="int" />
   </EntityType>
   <EntityType Name="payment">
@@ -67,7 +67,7 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="pic_path" Type="varchar" MaxLength="200" Nullable="false" />
-    <Property Name="product_id" Type="int" />
+    <Property Name="product_id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="privileges">
     <Key>
@@ -84,10 +84,11 @@
     <Property Name="name" Type="varchar" MaxLength="200" Nullable="false" />
     <Property Name="code" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="specs" Type="varchar" MaxLength="1000" Nullable="false" />
-    <Property Name="price" Type="numeric" Precision="10" Scale="2" Nullable="false" />
-    <Property Name="offer" Type="numeric" Precision="10" Scale="2" />
-    <Property Name="prodtype_id" Type="int" />
-    <Property Name="items" Type="int" />
+    <Property Name="price" Type="real" Nullable="false" />
+    <Property Name="offer" Type="real" />
+    <Property Name="prodtype_id" Type="int" Nullable="false" />
+    <Property Name="items" Type="int" Nullable="false" />
+    <Property Name="filter_value" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="product_list">
     <Key>
@@ -104,7 +105,7 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="subcategory_id" Type="int" />
+    <Property Name="subcategory_id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="review">
     <Key>
@@ -122,7 +123,7 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="cost" Type="numeric" Precision="5" Scale="2" />
+    <Property Name="cost" Type="real" Nullable="false" />
   </EntityType>
   <EntityType Name="subcategory">
     <Key>
@@ -139,12 +140,12 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="first_name" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="last_name" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="privileges" Type="int" />
+    <Property Name="privileges" Type="int" Nullable="false" />
     <Property Name="location" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="phone" Type="varchar" MaxLength="12" Nullable="false" />
     <Property Name="email" Type="varchar" MaxLength="30" Nullable="false" />
   </EntityType>
-  <Association Name="FK__customer___custo__35BCFE0A">
+  <Association Name="FK__customer___custo__36B12243">
     <End Role="users" Type="Self.users" Multiplicity="0..1" />
     <End Role="customer_orders" Type="Self.customer_orders" Multiplicity="*" />
     <ReferentialConstraint>
@@ -156,7 +157,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__customer___order__36B12243">
+  <Association Name="FK__customer___order__37A5467C">
     <End Role="orders" Type="Self.orders" Multiplicity="0..1" />
     <End Role="customer_orders" Type="Self.customer_orders" Multiplicity="*" />
     <ReferentialConstraint>
@@ -169,7 +170,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__filter__prodtype__182C9B23">
-    <End Role="product_type" Type="Self.product_type" Multiplicity="0..1" />
+    <End Role="product_type" Type="Self.product_type" Multiplicity="1" />
     <End Role="filter" Type="Self.filter" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="product_type">
@@ -181,7 +182,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__filter_va__filte__1B0907CE">
-    <End Role="filter" Type="Self.filter" Multiplicity="0..1" />
+    <End Role="filter" Type="Self.filter" Multiplicity="1" />
     <End Role="filter_values" Type="Self.filter_values" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="filter">
@@ -192,7 +193,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__orders__payment___32E0915F">
+  <Association Name="FK__orders__payment___33D4B598">
     <End Role="payment" Type="Self.payment" Multiplicity="0..1" />
     <End Role="orders" Type="Self.orders" Multiplicity="*" />
     <ReferentialConstraint>
@@ -204,8 +205,8 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__orders__shipping__31EC6D26">
-    <End Role="shipping" Type="Self.shipping" Multiplicity="0..1" />
+  <Association Name="FK__orders__shipping__32E0915F">
+    <End Role="shipping" Type="Self.shipping" Multiplicity="1" />
     <End Role="orders" Type="Self.orders" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="shipping">
@@ -216,8 +217,8 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__orders__status_i__30F848ED">
-    <End Role="order_status" Type="Self.order_status" Multiplicity="0..1" />
+  <Association Name="FK__orders__status_i__31EC6D26">
+    <End Role="order_status" Type="Self.order_status" Multiplicity="1" />
     <End Role="orders" Type="Self.orders" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="order_status">
@@ -228,8 +229,8 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__pics__product_id__239E4DCF">
-    <End Role="product" Type="Self.product" Multiplicity="0..1" />
+  <Association Name="FK__pics__product_id__24927208">
+    <End Role="product" Type="Self.product" Multiplicity="1" />
     <End Role="pics" Type="Self.pics" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="product">
@@ -240,8 +241,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__product__filter___1ED998B2">
+    <End Role="filter_values" Type="Self.filter_values" Multiplicity="1" />
+    <End Role="product" Type="Self.product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="filter_values">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="product">
+        <PropertyRef Name="filter_value" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__product__prodtyp__1DE57479">
-    <End Role="product_type" Type="Self.product_type" Multiplicity="0..1" />
+    <End Role="product_type" Type="Self.product_type" Multiplicity="1" />
     <End Role="product" Type="Self.product" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="product_type">
@@ -252,7 +265,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__product_l__order__398D8EEE">
+  <Association Name="FK__product_l__order__3A81B327">
     <End Role="orders" Type="Self.orders" Multiplicity="0..1" />
     <End Role="product_list" Type="Self.product_list" Multiplicity="*" />
     <ReferentialConstraint>
@@ -264,7 +277,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__product_l__produ__3A81B327">
+  <Association Name="FK__product_l__produ__3B75D760">
     <End Role="product" Type="Self.product" Multiplicity="0..1" />
     <End Role="product_list" Type="Self.product_list" Multiplicity="*" />
     <ReferentialConstraint>
@@ -277,7 +290,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__product_t__subca__15502E78">
-    <End Role="subcategory" Type="Self.subcategory" Multiplicity="0..1" />
+    <End Role="subcategory" Type="Self.subcategory" Multiplicity="1" />
     <End Role="product_type" Type="Self.product_type" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="subcategory">
@@ -288,7 +301,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__review__product___20C1E124">
+  <Association Name="FK__review__product___21B6055D">
     <End Role="product" Type="Self.product" Multiplicity="0..1" />
     <End Role="review" Type="Self.review" Multiplicity="*" />
     <ReferentialConstraint>
@@ -312,8 +325,8 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__users__privilege__286302EC">
-    <End Role="privileges" Type="Self.privileges" Multiplicity="0..1" />
+  <Association Name="FK__users__privilege__29572725">
+    <End Role="privileges" Type="Self.privileges" Multiplicity="1" />
     <End Role="users" Type="Self.users" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="privileges">
@@ -341,11 +354,11 @@
     <EntitySet Name="shipping" EntityType="Self.shipping" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="subcategory" EntityType="Self.subcategory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__customer___custo__35BCFE0A" Association="Self.FK__customer___custo__35BCFE0A">
+    <AssociationSet Name="FK__customer___custo__36B12243" Association="Self.FK__customer___custo__36B12243">
       <End Role="users" EntitySet="users" />
       <End Role="customer_orders" EntitySet="customer_orders" />
     </AssociationSet>
-    <AssociationSet Name="FK__customer___order__36B12243" Association="Self.FK__customer___order__36B12243">
+    <AssociationSet Name="FK__customer___order__37A5467C" Association="Self.FK__customer___order__37A5467C">
       <End Role="orders" EntitySet="orders" />
       <End Role="customer_orders" EntitySet="customer_orders" />
     </AssociationSet>
@@ -357,31 +370,35 @@
       <End Role="filter" EntitySet="filter" />
       <End Role="filter_values" EntitySet="filter_values" />
     </AssociationSet>
-    <AssociationSet Name="FK__orders__payment___32E0915F" Association="Self.FK__orders__payment___32E0915F">
+    <AssociationSet Name="FK__orders__payment___33D4B598" Association="Self.FK__orders__payment___33D4B598">
       <End Role="payment" EntitySet="payment" />
       <End Role="orders" EntitySet="orders" />
     </AssociationSet>
-    <AssociationSet Name="FK__orders__shipping__31EC6D26" Association="Self.FK__orders__shipping__31EC6D26">
+    <AssociationSet Name="FK__orders__shipping__32E0915F" Association="Self.FK__orders__shipping__32E0915F">
       <End Role="shipping" EntitySet="shipping" />
       <End Role="orders" EntitySet="orders" />
     </AssociationSet>
-    <AssociationSet Name="FK__orders__status_i__30F848ED" Association="Self.FK__orders__status_i__30F848ED">
+    <AssociationSet Name="FK__orders__status_i__31EC6D26" Association="Self.FK__orders__status_i__31EC6D26">
       <End Role="order_status" EntitySet="order_status" />
       <End Role="orders" EntitySet="orders" />
     </AssociationSet>
-    <AssociationSet Name="FK__pics__product_id__239E4DCF" Association="Self.FK__pics__product_id__239E4DCF">
+    <AssociationSet Name="FK__pics__product_id__24927208" Association="Self.FK__pics__product_id__24927208">
       <End Role="product" EntitySet="product" />
       <End Role="pics" EntitySet="pics" />
+    </AssociationSet>
+    <AssociationSet Name="FK__product__filter___1ED998B2" Association="Self.FK__product__filter___1ED998B2">
+      <End Role="filter_values" EntitySet="filter_values" />
+      <End Role="product" EntitySet="product" />
     </AssociationSet>
     <AssociationSet Name="FK__product__prodtyp__1DE57479" Association="Self.FK__product__prodtyp__1DE57479">
       <End Role="product_type" EntitySet="product_type" />
       <End Role="product" EntitySet="product" />
     </AssociationSet>
-    <AssociationSet Name="FK__product_l__order__398D8EEE" Association="Self.FK__product_l__order__398D8EEE">
+    <AssociationSet Name="FK__product_l__order__3A81B327" Association="Self.FK__product_l__order__3A81B327">
       <End Role="orders" EntitySet="orders" />
       <End Role="product_list" EntitySet="product_list" />
     </AssociationSet>
-    <AssociationSet Name="FK__product_l__produ__3A81B327" Association="Self.FK__product_l__produ__3A81B327">
+    <AssociationSet Name="FK__product_l__produ__3B75D760" Association="Self.FK__product_l__produ__3B75D760">
       <End Role="product" EntitySet="product" />
       <End Role="product_list" EntitySet="product_list" />
     </AssociationSet>
@@ -389,7 +406,7 @@
       <End Role="subcategory" EntitySet="subcategory" />
       <End Role="product_type" EntitySet="product_type" />
     </AssociationSet>
-    <AssociationSet Name="FK__review__product___20C1E124" Association="Self.FK__review__product___20C1E124">
+    <AssociationSet Name="FK__review__product___21B6055D" Association="Self.FK__review__product___21B6055D">
       <End Role="product" EntitySet="product" />
       <End Role="review" EntitySet="review" />
     </AssociationSet>
@@ -397,7 +414,7 @@
       <End Role="category" EntitySet="category" />
       <End Role="subcategory" EntitySet="subcategory" />
     </AssociationSet>
-    <AssociationSet Name="FK__users__privilege__286302EC" Association="Self.FK__users__privilege__286302EC">
+    <AssociationSet Name="FK__users__privilege__29572725" Association="Self.FK__users__privilege__29572725">
       <End Role="privileges" EntitySet="privileges" />
       <End Role="users" EntitySet="users" />
     </AssociationSet>

@@ -2,7 +2,7 @@
     $.ajax({
         type: "GET",
         contentType: "application/json; charset=utf-8",
-        url: '../WebService.svc/returnProduct',
+        url: "../WebService.svc/returnProduct",
         data: "",
         processData: true,
         dataType: "json",
@@ -16,7 +16,7 @@
 });
 
 function createFeaturedItem(str) {
-    list = JSON.parse(str.d);
+    var list = JSON.parse(str.d);
     var teasers = '';
     for (var i = 0; i < list.length; i++) {
 

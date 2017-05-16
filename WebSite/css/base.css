@@ -1,0 +1,23 @@
+﻿body {
+    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
+.left {
+    float: left;
+} 
+
+.right {
+    float: right;
+} 
+
+.form-group {
+    padding-top: 20px;
+}
+
+#sectionTitle {
+    padding-bottom: 50px;
+}
+
+.dropdown-menu li:hover {
+    cursor: pointer;
+}

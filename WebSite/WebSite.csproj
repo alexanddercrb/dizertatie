@@ -20,6 +20,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -67,14 +68,24 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\base.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\shop-homepage.css" />
     <Content Include="html\base_template.html" />
+    <Content Include="html\common\footer.html" />
+    <Content Include="html\common\header.html" />
+    <Content Include="html\forms\addFilterValue.html" />
+    <Content Include="html\forms\addFilter.html" />
+    <Content Include="html\forms\addType.html" />
+    <Content Include="html\forms\addSubcategory.html" />
+    <Content Include="html\forms\addCategory.html" />
     <Content Include="html\index.html" />
+    <Content Include="html\Page_Base.html" />
     <Content Include="js\angular.js" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\pages\getForms.js" />
     <Content Include="js\pages\index.js" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />

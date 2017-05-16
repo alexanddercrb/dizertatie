@@ -43,6 +43,35 @@ namespace WebSite
             return convertToJson(test.getProduct());
         }
 
+        #region forms
+
+
+        [OperationContract]
+        [WebGet(ResponseFormat = WebMessageFormat.Json)] //remove for post
+        public string getCategories()
+        {
+            return convertToJson(get.getCategories());
+        }
+
+        [OperationContract]
+        public string getSubcategories(int id)
+        {
+            return convertToJson(get.getSubcategories(id));
+        }
+
+        [OperationContract]
+        public string getTypes(int id)
+        {
+            return convertToJson(get.getTypes(id));
+        }
+
+        [OperationContract]
+        public string getFilters(int id)
+        {
+            return convertToJson(get.getFilters(id));
+        }
+
+        #endregion
 
         private string convertToJson(object obj)
         {
@@ -51,5 +80,8 @@ namespace WebSite
             return json;
         }
         // Add more operations here and mark them with [OperationContract]
+
+
+
     }
 }

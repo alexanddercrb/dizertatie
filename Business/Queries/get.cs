@@ -8,7 +8,7 @@ using Logging;
 
 namespace Business.Queries
 {
-    public class get
+    public class Get
     {
         public static List<category> getCategories()
         {
@@ -32,7 +32,7 @@ namespace Business.Queries
             {
                 try
                 {
-                    var result = from e in db.subcategories where e.id == categoryId select e;
+                    var result = from e in db.subcategories where e.category_id == categoryId select e;
                     return result.ToList();
                 }
                 catch (Exception ex)
@@ -49,7 +49,7 @@ namespace Business.Queries
             {
                 try
                 {
-                    var result = from e in db.product_type where e.id == subcategoryId select e;
+                    var result = from e in db.product_type where e.subcategory_id == subcategoryId select e;
                     return result.ToList();
                 }
                 catch (Exception ex)
@@ -66,7 +66,7 @@ namespace Business.Queries
             {
                 try
                 {
-                    var result = from e in db.filters where e.id == typeId select e;
+                    var result = from e in db.filters where e.prodtype_id == typeId select e;
                     return result.ToList();
                 }
                 catch (Exception ex)

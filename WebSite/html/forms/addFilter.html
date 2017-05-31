@@ -31,6 +31,9 @@
         <h2 id="sectionTitle">Add new filter</h2>
         <form class="col-sm-5">
 
+            <div id="errorDisplay" class="form-group alert alert-warning hidden">
+            </div>
+
             <div class="form-group">
                 <label for="drpCategoryName">Category name:</label>
                 <div class="dropdown">
@@ -70,8 +73,8 @@
             </div>
 
             <div class="form-group right">
-                <button type="button" class="btn btn-danger" onclick="dosomething">Cancel</button>
-                <button type="button" class="btn btn-primary" onclick="dosomethingelse">Save</button>
+                <button type="button" class="btn btn-danger" onclick="goBack()">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="addFilters()">Save</button>
             </div>
 
         </form>

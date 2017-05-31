@@ -45,31 +45,68 @@ namespace WebSite
 
         #region forms
 
-
+        #region get
+        
         [OperationContract]
         [WebGet(ResponseFormat = WebMessageFormat.Json)] //remove for post
         public string getCategories()
         {
-            return convertToJson(get.getCategories());
+            return convertToJson(Get.getCategories());
         }
 
         [OperationContract]
         public string getSubcategories(int id)
         {
-            return convertToJson(get.getSubcategories(id));
+            return convertToJson(Get.getSubcategories(id));
         }
 
         [OperationContract]
         public string getTypes(int id)
         {
-            return convertToJson(get.getTypes(id));
+            return convertToJson(Get.getTypes(id));
         }
 
         [OperationContract]
         public string getFilters(int id)
         {
-            return convertToJson(get.getFilters(id));
+            return convertToJson(Get.getFilters(id));
         }
+
+        #endregion
+
+        #region insert
+
+        [OperationContract]
+        public void addCategories(String names)
+        {
+            Insert.addCategories(names);
+        }
+
+        [OperationContract]
+        public void addSubcategories(String id, String names)
+        {
+            Insert.addSubcategories(Convert.ToInt32(id), names);
+        }
+
+        [OperationContract]
+        public void addTypes(String id, String names)
+        {
+            Insert.addTypes(Convert.ToInt32(id), names);
+        }
+
+        [OperationContract]
+        public void addFilters(String id, String names)
+        {
+            Insert.addFilters(Convert.ToInt32(id), names);
+        }
+
+        [OperationContract]
+        public void addFilterValues(String id, String values)
+        {
+            Insert.addFilterValues(Convert.ToInt32(id), values);
+        }
+
+        #endregion
 
         #endregion
 

@@ -76,5 +76,23 @@ namespace Business.Queries
                 }
             }
         }
+        public static List<filter_values> getFilterValues(int filterId)
+        {
+            using (DB_entities db = new DB_entities())
+            {
+                try
+                {
+                    var result = from e in db.filter_values where e.filter_id == filterId select e;
+                    return result.ToList();
+                }
+                catch (Exception ex)
+                {
+                    Log.error("getFilterValues - get.cs", DateTime.Now, ex);
+                    return null;
+                }
+            }
+        }
+
+
     }
 }

@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.ServiceModel.Activation;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Web;
 using Business;
 using Database;
 using System.Web.Script.Serialization;
@@ -71,6 +72,12 @@ namespace WebSite
         {
             return convertToJson(Get.getFilters(id));
         }
+
+        [OperationContract]
+        public string getFilterValues(int id)
+        {
+            return convertToJson(Get.getFilterValues(id));
+        } 
 
         #endregion
 

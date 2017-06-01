@@ -5,11 +5,16 @@
                 resetSubcategory();
                 resetType();
                 resetFilter();
+                resetFilterValue();
             case 'subcategory':
                 resetType();
                 resetFilter();
+                resetFilterValue();
             case 'type':
                 resetFilter();
+                resetFilterValue();
+            case 'filter':
+                resetFilterValue();
 
         }
 
@@ -273,11 +278,38 @@
         }
 
         $('#filterSelection li option').on('click', function () {
+            resetFilters('filter');
             $('#displayFilterName').text(this.innerHTML);
             $('#displayFilterName').attr('value', this.value);
+            if ($('#drpFilterValue').length > 0) {
+                getFilterValue($('#displayFilterName').attr('value'));
+            }
         });
     }
-    
+
+    function resetFilter() {
+        $('#displayFilterName').text('Select filter');
+        $('#displayFilterName').attr('value', '');
+        $('#drpFilterName ul').html('');
+    }
+
+    function getFilterValue(id) {
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            url: "../../WebService.svc/getFilterValues",
+            data: JSON.stringify({ id: id }),
+            processData: true,
+            dataType: "json",
+            success: function (response) {
+                populateFilterValues(response);
+            },
+            error: function (errormsg) {
+                alert(errormsg.responseText);
+            }
+        });
+    }
+
     function addFilterValues() {
         if (validateDropDowns() == 1)
             return;
@@ -302,10 +334,22 @@
         });
     }
 
-    function resetFilter() {
-        $('#displayFilterName').text('Select filter');
-        $('#displayFilterName').attr('value', '');
-        $('#drpFilterName ul').html('');
+    function populateFilterValues(values) {
+        var list = JSON.parse(values.d);
+        for (var i = 0; i < list.length; i++) {
+            $('#drpFilterValue ul').append('<li><option value="' + list[i].id + '">' + list[i].value + '</option></li>');
+        }
+
+        $('#filterValueSelection li option').on('click', function () {
+            $('#displayFilterValue').text(this.innerHTML);
+            $('#displayFilterValue').attr('value', this.value);
+        });
+    }
+
+    function resetFilterValue() {
+        $('#displayFilterValue').text('Select value');
+        $('#displayFilterValue').attr('value', '');
+        $('#drpFilterValue ul').html('');
     }
 
 

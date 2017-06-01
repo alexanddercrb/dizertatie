@@ -95,6 +95,9 @@
     <Compile Include="product.cs">
       <DependentUpon>DB_diagram.tt</DependentUpon>
     </Compile>
+    <Compile Include="product_filters.cs">
+      <DependentUpon>DB_diagram.tt</DependentUpon>
+    </Compile>
     <Compile Include="product_list.cs">
       <DependentUpon>DB_diagram.tt</DependentUpon>
     </Compile>
@@ -110,6 +113,9 @@
       <DependentUpon>DB_diagram.tt</DependentUpon>
     </Compile>
     <Compile Include="subcategory.cs">
+      <DependentUpon>DB_diagram.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
       <DependentUpon>DB_diagram.tt</DependentUpon>
     </Compile>
     <Compile Include="user.cs">

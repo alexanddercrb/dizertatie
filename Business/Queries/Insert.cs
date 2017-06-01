@@ -205,7 +205,6 @@ namespace Business.Queries
                 prod.price = price;
                 prod.prodtype_id = typeId;
                 prod.items = items;
-                prod.filter_value = filterValueId;
                 if (offer.HasValue)
                     prod.offer = offer;
 

@@ -45,10 +45,17 @@ price float(10) not null,
 offer float(10),
 prodtype_id int  not null,
 items int  not null,
-filter_value int  not null,
 primary key (id),
 foreign key (prodtype_id) references product_type(id),
-foreign key (filter_value) references filter_values(id)
+)
+
+create table product_filters(
+id int NOT NULL IDENTITY (1,1),
+value_id int  not null,
+product_id int not null,
+primary key (id),
+foreign key (value_id) references filter_values(id),
+foreign key (product_id) references product(id)
 )
 
 CREATE INDEX idx_prodCode

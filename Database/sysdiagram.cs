@@ -12,18 +12,12 @@ namespace Database
     using System;
     using System.Collections.Generic;
     
-    public partial class filter_values
+    public partial class sysdiagram
     {
-        public filter_values()
-        {
-            this.product_filters = new HashSet<product_filters>();
-        }
-    
-        public int id { get; set; }
-        public int filter_id { get; set; }
-        public string value { get; set; }
-    
-        public virtual filter filter { get; set; }
-        public virtual ICollection<product_filters> product_filters { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

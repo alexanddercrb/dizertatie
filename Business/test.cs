@@ -44,7 +44,6 @@ namespace Business
                     prod.price = item.price;
                     prod.offer = item.offer;
                     prod.specs = item.specs;
-                    prod.product_type = item.product_type;
                     prod.items = item.items;
                     prod.pics = item.pics;
 

@@ -36,11 +36,13 @@ namespace Database
         public virtual DbSet<pic> pics { get; set; }
         public virtual DbSet<privilege> privileges { get; set; }
         public virtual DbSet<product> products { get; set; }
+        public virtual DbSet<product_filters> product_filters { get; set; }
         public virtual DbSet<product_list> product_list { get; set; }
         public virtual DbSet<product_type> product_type { get; set; }
         public virtual DbSet<review> reviews { get; set; }
         public virtual DbSet<shipping> shippings { get; set; }
         public virtual DbSet<subcategory> subcategories { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<user> users { get; set; }
     }
 }

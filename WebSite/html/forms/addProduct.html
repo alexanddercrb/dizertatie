@@ -31,63 +31,74 @@
         <div class="container">
             <h2 id="sectionTitle">Add new filter value</h2>
             <form class="col-sm-5">
+                <div class="form-group border-bottom">
+                    <div id="errorDisplay" class="form-group alert alert-warning hidden">
+                    </div>
 
-                <div id="errorDisplay" class="form-group alert alert-warning hidden">
-                </div>
+                    <div class="form-group">
+                        <label for="drpCategoryName">Category name:</label>
+                        <div class="dropdown">
+                            <div id="drpCategoryName" class="btn-group">
+                                <button id="displayCategoryName" value="0" class="btn btn-default status" data-toggle="dropdown">Select category</button>
+                                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span class="caret"></span></button>
+                                <ul id="categorySelection" class="dropdown-menu"></ul>
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="form-group">
-                    <label for="drpCategoryName">Category name:</label>
-                    <div class="dropdown">
-                        <div id="drpCategoryName" class="btn-group">
-                            <button id="displayCategoryName" value="0" class="btn btn-default status" data-toggle="dropdown">Select category</button>
-                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span class="caret"></span></button>
-                            <ul id="categorySelection" class="dropdown-menu"></ul>
+                    <div class="form-group">
+                        <label for="drpSubcategoryName">Subcategory name:</label>
+                        <div class="dropdown">
+                            <div id="drpSubcategoryName" class="btn-group">
+                                <button id="displaySubcategoryName" value="0" class="btn btn-default status" data-toggle="dropdown">Select subcategory</button>
+                                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span class="caret"></span></button>
+                                <ul id="subcategorySelection" class="dropdown-menu"></ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="drpTypeName">Type name:</label>
+                        <div class="dropdown">
+                            <div id="drpTypeName" class="btn-group">
+                                <button id="displayTypeName" value="0" class="btn btn-default status" data-toggle="dropdown">Select type</button>
+                                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span class="caret"></span></button>
+                                <ul id="typeSelection" class="dropdown-menu"></ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="form-group">
-                    <label for="drpSubcategoryName">Subcategory name:</label>
-                    <div class="dropdown">
-                        <div id="drpSubcategoryName" class="btn-group">
-                            <button id="displaySubcategoryName" value="0" class="btn btn-default status" data-toggle="dropdown">Select subcategory</button>
-                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span class="caret"></span></button>
-                            <ul id="subcategorySelection" class="dropdown-menu"></ul>
+                <div class="form-group border-bottom">
+                    <div class="form-group">
+                        <label for="drpFilterName">Filter name:</label>
+                        <div class="dropdown">
+                            <div id="drpFilterName" class="btn-group">
+                                <button id="displayFilterName" value="0" class="btn btn-default status" data-toggle="dropdown">Select filter</button>
+                                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span class="caret"></span></button>
+                                <ul id="filterSelection" class="dropdown-menu"></ul>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label for="drpTypeName">Type name:</label>
-                    <div class="dropdown">
-                        <div id="drpTypeName" class="btn-group">
-                            <button id="displayTypeName" value="0" class="btn btn-default status" data-toggle="dropdown">Select type</button>
-                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span class="caret"></span></button>
-                            <ul id="typeSelection" class="dropdown-menu"></ul>
+                    <div class="form-group">
+                        <label for="drpFilterValue">Filter value:</label>
+                        <div class="dropdown">
+                            <div id="drpFilterValue" class="btn-group">
+                                <button id="displayFilterValue" value="0" class="btn btn-default status" data-toggle="dropdown">Select value</button>
+                                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span class="caret"></span></button>
+                                <ul id="filterValueSelection" class="dropdown-menu"></ul>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label for="drpFilterName">Filter name:</label>
-                    <div class="dropdown">
-                        <div id="drpFilterName" class="btn-group">
-                            <button id="displayFilterName" value="0" class="btn btn-default status" data-toggle="dropdown">Select filter</button>
-                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span class="caret"></span></button>
-                            <ul id="filterSelection" class="dropdown-menu"></ul>
-                        </div>
+                    <div class="form-group right">
+                        <button type="button" class="btn btn-primary" onclick="addProductFilter()">Add Filter Value</button>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label for="drpFilterValue">Filter value:</label>
-                    <div class="dropdown">
-                        <div id="drpFilterValue" class="btn-group">
-                            <button id="displayFilterValue" value="0" class="btn btn-default status" data-toggle="dropdown">Select value</button>
-                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span class="caret"></span></button>
-                            <ul id="filterValueSelection" class="dropdown-menu"></ul>
-                        </div>
+                    <div id="selectedFilters" class="form-group">
                     </div>
+
+
                 </div>
 
                 <div class="form-group">

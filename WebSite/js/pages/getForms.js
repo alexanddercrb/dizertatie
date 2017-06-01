@@ -354,6 +354,16 @@
 
 
 
+    function addProductFilter() {
+        var filter = $('#displayFilterName').get(0).innerText;
+        var filterValue = $('#displayFilterName').get(0).value;
+        var value = $('#displayFilterValue').get(0).value;
+        var valueName = $('#displayFilterValue').get(0).innerText;
+        if ($('#selectedFilters').find("button[value='" + value + "']").length > 0)
+            return;
+        if (filterValue != "0" && value != "0")
+            $('#selectedFilters').append('<button type="button" class="btn btn-default btn-sm" onclick="$(this).remove()" value="' + value + '">' + filter + ': ' + valueName + ' <span class="glyphicon glyphicon-remove"></span></button>');
+    }
 
 
 

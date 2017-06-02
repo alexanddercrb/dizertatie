@@ -10,6 +10,10 @@
     text-align: right;
 } 
 
+.center {
+    text-align: center;
+} 
+
 .form-group {
     padding-top: 20px;
 }

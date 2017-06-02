@@ -29,16 +29,17 @@
 <div class="main-content">
     <div class="container">
         <h2 id="sectionTitle">Add new filter</h2>
-        <form class="col-sm-5">
 
-            <div id="errorDisplay" class="form-group alert alert-warning hidden">
-            </div>
+        <div id="errorDisplay" class="form-group alert alert-warning hidden">
+        </div>
+
+        <form class="col-sm-5">
 
             <div class="form-group">
                 <label for="drpCategoryName">Category name:</label>
                 <div class="dropdown">
                     <div id="drpCategoryName" class="btn-group">
-                        <button id="displayCategoryName" value="0" class="btn btn-default status" data-toggle="dropdown">Select category</button>
+                        <button id="displayCategoryName" value="0" class="btn btn-default required" data-toggle="dropdown">Select category</button>
                         <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span class="caret"></span></button>
                         <ul id="categorySelection" class="dropdown-menu"></ul>
                     </div>
@@ -49,7 +50,7 @@
                 <label for="drpSubcategoryName">Subcategory name:</label>
                 <div class="dropdown">
                     <div id="drpSubcategoryName" class="btn-group">
-                        <button id="displaySubcategoryName" value="0" class="btn btn-default status" data-toggle="dropdown">Select subcategory</button>
+                        <button id="displaySubcategoryName" value="0" class="btn btn-default required" data-toggle="dropdown">Select subcategory</button>
                         <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span class="caret"></span></button>
                         <ul id="subcategorySelection" class="dropdown-menu"></ul>
                     </div>
@@ -60,7 +61,7 @@
                 <label for="drpTypeName">Type name:</label>
                 <div class="dropdown">
                     <div id="drpTypeName" class="btn-group">
-                        <button id="displayTypeName" value="0" class="btn btn-default status" data-toggle="dropdown">Select type</button>
+                        <button id="displayTypeName" value="0" class="btn btn-default required" data-toggle="dropdown">Select type</button>
                         <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span class="caret"></span></button>
                         <ul id="typeSelection" class="dropdown-menu"></ul>
                     </div>
@@ -69,7 +70,7 @@
 
             <div class="form-group">
                 <label for="filterName">Filter name:</label>
-                <input type="text" class="form-control" id="filterName"/>
+                <input type="text" class="form-control required" id="filterName"/>
             </div>
 
             <div class="form-group right">

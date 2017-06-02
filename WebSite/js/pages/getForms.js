@@ -20,21 +20,16 @@
 
     }
 
-    function validateDropDowns() {
+    function validateRequired() {
         var status = 0;
-        $(".status").each(function () {
-            if (this.value == "0")
-                status = 1;
-        });
-        $("input").each(function () {
-            if (this.value == "")
+        $(".required").each(function () {
+            if (this.value == "0" || this.value == "")
                 status = 1;
         });
         if (status == 1)
-            $("#errorDisplay").html("Please fill all fields").removeClass("hidden");
+            $("#errorDisplay").html("Please fill all needed fields").removeClass("hidden");
 
         return status;
-
     }
 
     function goBack() {
@@ -60,7 +55,7 @@
     }
 
     function addCategories() {
-        if (validateDropDowns() == 1)
+        if (validateRequired() == 1)
             return;
 
         var names = $("#categoryName").get(0).value;
@@ -118,11 +113,11 @@
     }
 
     function addSubcategories() {
-        if (validateDropDowns() == 1)
+        if (validateRequired() == 1)
             return;
 
         var names = $("#subcategoryName").get(0).value;
-        var id = $("#drpCategoryName").find(".status").get(0).value;
+        var id = $("#drpCategoryName").find(".required").get(0).value;
 
         $.ajax({
             type: "POST",
@@ -183,11 +178,11 @@
     }
 
     function addTypes() {
-        if (validateDropDowns() == 1)
+        if (validateRequired() == 1)
             return;
 
         var names = $("#typeName").get(0).value;
-        var id = $("#drpSubcategoryName").find(".status").get(0).value;
+        var id = $("#drpSubcategoryName").find(".required").get(0).value;
 
         $.ajax({
             type: "POST",
@@ -248,11 +243,11 @@
     }
 
     function addFilters() {
-        if (validateDropDowns() == 1)
+        if (validateRequired() == 1)
             return;
 
         var names = $("#filterName").get(0).value;
-        var id = $("#drpTypeName").find(".status").get(0).value;
+        var id = $("#drpTypeName").find(".required").get(0).value;
 
         $.ajax({
             type: "POST",
@@ -311,11 +306,11 @@
     }
 
     function addFilterValues() {
-        if (validateDropDowns() == 1)
+        if (validateRequired() == 1)
             return;
 
         var values = $("#filterValue").get(0).value;
-        var id = $("#drpFilterName").find(".status").get(0).value;
+        var id = $("#drpFilterName").find(".required").get(0).value;
 
         $.ajax({
             type: "POST",

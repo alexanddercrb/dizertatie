@@ -19,6 +19,12 @@
 
     <script src="../../js/pages/getForms.js" type="text/javascript"></script>
     <script src="../../js/pages/UploadImage.js" type="text/javascript"></script>
+
+    <style>
+        .uplImg {
+            padding-bottom: 5px;
+        }
+    </style>
 </head>
 
 
@@ -130,8 +136,18 @@
 
                 <div class="form-group">
                     <label >Pictures:</label>
-                    <input type="file" class="upload" id="uplImage1"><br/>
-                    <img id="myUploadedImg" alt="Photo" style="width: 180px;"/>
+
+                    <input type="file" class="uplImg" id="uplImage1">
+                    <input type="file" class="uplImg" id="uplImage2">
+                    <input type="file" class="uplImg" id="uplImage3">
+                    <input type="file" class="uplImg" id="uplImage4">
+                    <input type="file" class="uplImg" id="uplImage5">
+
+                    <img id="myUploadedImg1" src="../../Media/Images/Default/defaultUpload.jpg" class="uplImage1 thumbnail inline" />
+                    <img id="myUploadedImg2" src="../../Media/Images/Default/defaultUpload.jpg" class="uplImage2 thumbnail inline" />
+                    <img id="myUploadedImg3" src="../../Media/Images/Default/defaultUpload.jpg" class="uplImage3 thumbnail inline" />
+                    <img id="myUploadedImg4" src="../../Media/Images/Default/defaultUpload.jpg" class="uplImage4 thumbnail inline" />
+                    <img id="myUploadedImg5" src="../../Media/Images/Default/defaultUpload.jpg" class="uplImage5 thumbnail inline" />
                 </div>
             </form>
 

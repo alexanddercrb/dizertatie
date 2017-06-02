@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -7,6 +8,7 @@ using System.ServiceModel.Activation;
 using System.ServiceModel.Web;
 using System.Text;
 using System.Web;
+using System.Web.Configuration;
 using Business;
 using Database;
 using System.Web.Script.Serialization;
@@ -24,10 +26,14 @@ namespace WebSite
         //     and include the following line in the operation body:
         //         WebOperationContext.Current.OutgoingResponse.ContentType = "text/xml";
         [OperationContract]
-        public string DoWork()
+        public void DeleteThumbnail(String oldImg)
         {
-            // Add your operation implementation here
-            return "working";
+            string dirFullPath = System.Web.Hosting.HostingEnvironment.MapPath(WebConfigurationManager.AppSettings["ProdImgPath"]);
+            string[] path = oldImg.Split('/');
+            if (File.Exists(dirFullPath + path[path.Length - 1]))
+            {
+                File.Delete(dirFullPath + path[path.Length - 1]);
+            }
         }
 
         [OperationContract]

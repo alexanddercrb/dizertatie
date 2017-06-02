@@ -86,9 +86,10 @@
     <Content Include="js\angular.js" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\pages\UploadImage.js" />
-    <Content Include="templates\bootstrap.min.js" />
+    <Content Include="js\bootstrap.min.js" />
     <Content Include="js\pages\getForms.js" />
     <Content Include="js\pages\index.js" />
+    <Content Include="Media\Images\Default\defaultUpload.jpg" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

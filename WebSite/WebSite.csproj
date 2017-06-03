@@ -72,6 +72,7 @@
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\shop-homepage.css" />
+    <Content Include="css\summernote.css" />
     <Content Include="html\base_template.html" />
     <Content Include="html\common\footer.html" />
     <Content Include="html\common\header.html" />
@@ -89,6 +90,7 @@
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\pages\getForms.js" />
     <Content Include="js\pages\index.js" />
+    <Content Include="js\summernote.js" />
     <Content Include="Media\Images\Default\defaultUpload.jpg" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
@@ -97,6 +99,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="UploadImage.ashx" />
+    <Content Include="fonts\summernote.eot" />
+    <Content Include="fonts\summernote.ttf" />
+    <Content Include="fonts\summernote.woff" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

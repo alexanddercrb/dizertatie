@@ -119,6 +119,13 @@ namespace WebSite
             Insert.addFilterValues(Convert.ToInt32(id), values);
         }
 
+        [OperationContract]
+        public void addProduct(int type, int[] filters, String name, String code, String specs,
+                                    int price, int offer, int items, String[] uploadedImages)
+        {
+            Insert.addProduct(type, filters, name, code, specs, price, offer, items, uploadedImages);
+        }
+
         #endregion
 
         #endregion

@@ -10,7 +10,7 @@
             createFeaturedItem(response);
         },
         error: function (errormsg) {
-            alert(errormsg.responseText);
+            console.log(errormsg.responseText); alert("Error!");
         }
     });
 });
@@ -24,10 +24,14 @@ function createFeaturedItem(str) {
         var item = $(template).clone();
 
         //edit template
-        $(item).find('#price').html(list[i].price + '$');
+        $(item).find('#price').html(list[i].price + ' Ron');
+        if (list[i].offer > 0) {
+            $(item).find('#price').addClass("hasOffer");
+            $(item).find('#offer').html(list[i].offer + ' Ron');
+            $(item).find('#offer').removeClass("hidden");
+        }
         $(item).find('#ProductTitle').html(list[i].name);
-        $(item).find('#description').html(list[i].specs);
-
+        $(item).find('#TeaserImage').attr("src", list[i].pics[0]);
         var j = 1;
         for (j = 1; j <= list.stars; j++) {
             $(item).find('#review'+j).addClass('glyphicon-star');

@@ -42,7 +42,6 @@ D:\Dizertatie_app\WebSite\bin\EntityFramework.SqlServer.xml
 D:\Dizertatie_app\WebSite\bin\Logging.pdb
 D:\Dizertatie_app\WebSite\obj\Debug\WebSite.dll
 D:\Dizertatie_app\WebSite\obj\Debug\WebSite.pdb
-D:\Disertatie\WebSite\obj\Debug\WebSite.csprojResolveAssemblyReference.cache
 D:\Disertatie\WebSite\bin\WebSite.dll.config
 D:\Disertatie\WebSite\bin\WebSite.dll
 D:\Disertatie\WebSite\bin\WebSite.pdb
@@ -56,5 +55,6 @@ D:\Disertatie\WebSite\bin\Database.pdb
 D:\Disertatie\WebSite\bin\EntityFramework.xml
 D:\Disertatie\WebSite\bin\EntityFramework.SqlServer.xml
 D:\Disertatie\WebSite\bin\Logging.pdb
+D:\Disertatie\WebSite\obj\Debug\WebSite.csprojResolveAssemblyReference.cache
 D:\Disertatie\WebSite\obj\Debug\WebSite.dll
 D:\Disertatie\WebSite\obj\Debug\WebSite.pdb

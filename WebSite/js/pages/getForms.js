@@ -49,7 +49,7 @@
                 populateCategories(response);
             },
             error: function (errormsg) {
-                alert(errormsg.responseText);
+                console.log(errormsg.responseText); alert("Error!");
             }
         });
     }
@@ -72,7 +72,7 @@
                 goBack();
             },
             error: function (errormsg) {
-                alert(errormsg.responseText);
+                console.log(errormsg.responseText); alert("Error!");
             }
         });
     }
@@ -107,7 +107,7 @@
                 populateSubcategories(response);
             },
             error: function (errormsg) {
-                alert(errormsg.responseText);
+                console.log(errormsg.responseText); alert("Error!");
             }
         });
     }
@@ -131,7 +131,7 @@
                 goBack();
             },
             error: function (errormsg) {
-                alert(errormsg.responseText);
+                console.log(errormsg.responseText); alert("Error!");
             }
         });
     }
@@ -172,7 +172,7 @@
                 populateTypes(response);
             },
             error: function (errormsg) {
-                alert(errormsg.responseText);
+                console.log(errormsg.responseText); alert("Error!");
             }
         });
     }
@@ -196,7 +196,7 @@
                 goBack();
             },
             error: function (errormsg) {
-                alert(errormsg.responseText);
+                console.log(errormsg.responseText); alert("Error!");
             }
         });
     }
@@ -237,7 +237,7 @@
                 populateFilter(response);
             },
             error: function (errormsg) {
-                alert(errormsg.responseText);
+                console.log(errormsg.responseText); alert("Error!");
             }
         });
     }
@@ -261,7 +261,7 @@
                 goBack();
             },
             error: function (errormsg) {
-                alert(errormsg.responseText);
+                console.log(errormsg.responseText); alert("Error!");
             }
         });
     }
@@ -300,7 +300,7 @@
                 populateFilterValues(response);
             },
             error: function (errormsg) {
-                alert(errormsg.responseText);
+                console.log(errormsg.responseText); alert("Error!");
             }
         });
     }
@@ -324,7 +324,7 @@
                 goBack();
             },
             error: function (errormsg) {
-                alert(errormsg.responseText);
+                console.log(errormsg.responseText); alert("Error!");
             }
         });
     }
@@ -361,4 +361,67 @@
     }
 
 
+    function addProduct() {
+        if (validateRequired() == 1)
+            return;
+
+        var category = $("#displayCategoryName").get(0).value;
+        var subcategory = $("#displaySubcategoryName").get(0).value;
+        var type = $("#displayTypeName").get(0).value;
+        var filters = [];
+        var selectedFilters = $("#selectedFilters").find('button');
+        selectedFilters.each(function() {
+            filters.push(this.value);
+        });
+        var name = $("#productName").get(0).value;
+        var code = $("#productCode").get(0).value;
+        var specs = $("#productSpecs").summernote('code')
+        var price = $("#productPrice").get(0).value;
+        var offer = $("#productOffer").get(0).value;
+        if (offer == "") {
+            offer = "0";
+        }
+        var items = $("#productItems").get(0).value;
+        if (items == "") {
+            items = "0";
+        }
+        var images = $(".productImages").find('img');
+        var uploadedImages = [];
+        images.each(function () {
+            if ($(this).attr("src").indexOf("defaultUpload.jpg") < 0) {
+                uploadedImages.push($(this).attr("src"));
+            }
+        });
+        if (filters.length == 0 || uploadedImages.length == 0) {
+            $("#errorDisplay").html("Please fill all needed fields").removeClass("hidden");
+            return;
+        }
+
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            url: "../../WebService.svc/addProduct",
+            data: JSON.stringify({
+                type: type,
+                filters: filters,
+                name: name,
+                code: code,
+                specs: specs,
+                price: price,
+                offer: offer,
+                items: items,
+                uploadedImages: uploadedImages
+            }),
+            processData: true,
+            dataType: "json",
+            success: function () {
+                alert("Success!");
+                goBack();
+            },
+            error: function (errormsg) {
+                console.log(errormsg.responseText); alert("Error!");
+            }
+        });
+        
+    }
 

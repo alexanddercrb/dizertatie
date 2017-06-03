@@ -209,14 +209,16 @@
 <script id="teaser-product" type="text/x-custom-template">
 
         <div class="col-sm-4 col-lg-4 col-md-4">
-            <div class="thumbnail">
-                <img src="http://placehold.it/320x150" alt="" id="TeaserImage">
+            <div class="product_promo">
+                <img src="../Media/Images/Default/defaultUpload.jpg" alt="" id="TeaserImage" style="width: 100%">
                 <div class="caption">
-                    <h4 id="price" class="pull-right"></h4>
+                    <div class="pull-right">
+                        <h4 id="price"></h4>
+                        <h3 id="offer" class="hidden" style="color: red;"></h3>
+                    </div>
                     <h4>
                         <a href="#" id="ProductTitle"></a>
                     </h4>
-                    <p id="description"></p>
                 </div>
                 <div class="ratings">
                     <p class="pull-right">reviews</p>

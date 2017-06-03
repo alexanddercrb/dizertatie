@@ -188,13 +188,13 @@ namespace Business.Queries
                 }
                 catch (Exception ex)
                 {
-                    Log.error("addPicture - Insert.cs", DateTime.Now, ex);
+                    Log.error("addPictures - Insert.cs", DateTime.Now, ex);
                     return 0;
                 }
             }
         }
 
-        public static int addProduct(String name, String code, String specs, float price, int typeId, int items, int filterValueId, float? offer)
+        public static int addProductData(String name, String code, String specs, float price, int typeId, int items, int filterValueId, float? offer)
         {
             using (DB_entities db = new DB_entities())
             {
@@ -216,8 +216,64 @@ namespace Business.Queries
                 }
                 catch (Exception ex)
                 {
-                    Log.error("addProduct - Insert.cs", DateTime.Now, ex);
+                    Log.error("addProductData - Insert.cs", DateTime.Now, ex);
                     return 0;
+                }
+            }
+        }
+
+        public static void addProduct(int type, int[] filters, String name,
+            String code, String specs, int price, int offer, int items, String[] uploadedImages)
+        {
+            using (DB_entities db = new DB_entities())
+            {
+                using (TransactionScope scope = new TransactionScope())
+                {
+
+
+
+                    product prod = new product();
+                    prod.name = name;
+                    prod.code = code;
+                    prod.specs = specs;
+                    prod.price = price;
+                    prod.offer = offer;
+                    prod.items = items;
+                    prod.prodtype_id = type;
+
+                    try
+                    {
+                        db.products.Add(prod);
+                        db.SaveChanges();
+
+                        int productId = prod.id;
+
+                        pic pics = new pic();
+                        for (int i = 0; i < uploadedImages.Length; i++)
+                        {
+                            pics.pic_path = uploadedImages[i];
+                            pics.product_id = productId;
+                            db.pics.Add(pics);
+                            db.SaveChanges();
+                        }
+
+                        product_filters filterList = new product_filters();
+                        for (int i = 0; i < filters.Length; i++)
+                        {
+                            filterList.value_id = filters[i];
+                            filterList.product_id = productId;
+                            db.product_filters.Add(filterList);
+                            db.SaveChanges();
+                        }
+
+                        db.SaveChanges();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.error("addProduct - Insert.cs", DateTime.Now, ex);
+                    }
+                    scope.Complete();
                 }
             }
         }

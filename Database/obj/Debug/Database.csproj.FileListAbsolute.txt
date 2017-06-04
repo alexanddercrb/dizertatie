@@ -32,5 +32,6 @@ D:\Disertatie\Database\bin\Debug\EntityFramework.dll
 D:\Disertatie\Database\bin\Debug\EntityFramework.SqlServer.dll
 D:\Disertatie\Database\bin\Debug\EntityFramework.xml
 D:\Disertatie\Database\bin\Debug\EntityFramework.SqlServer.xml
+D:\Disertatie\Database\obj\Debug\Database.csprojResolveAssemblyReference.cache
 D:\Disertatie\Database\obj\Debug\Database.exe
 D:\Disertatie\Database\obj\Debug\Database.pdb

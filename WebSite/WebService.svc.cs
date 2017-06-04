@@ -72,6 +72,14 @@ namespace WebSite
             return convertToJson(Get.getCategories());
         }
 
+
+        [OperationContract]
+        [WebGet(ResponseFormat = WebMessageFormat.Json)] //remove for post
+        public string getAllSubcategories()
+        {
+            return convertToJson(Get.getAllSubcategories());
+        }
+
         [OperationContract]
         public string getSubcategories(int id)
         {

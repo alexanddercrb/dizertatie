@@ -25,6 +25,22 @@ namespace Business.Queries
                 }
             }
         }
+        public static List<subcategory> getAllSubcategories()
+        {
+            using (DB_entities db = new DB_entities())
+            {
+                try
+                {
+                    var result = from e in db.subcategories orderby e.category_id ascending select e;
+                    return result.ToList();
+                }
+                catch (Exception ex)
+                {
+                    Log.error("getAllSubcategories - get.cs", DateTime.Now, ex);
+                    return null;
+                }
+            }
+        }
 
         public static List<subcategory> getSubcategories(int categoryId)
         {

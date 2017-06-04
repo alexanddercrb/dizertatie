@@ -52,3 +52,7 @@
 .hasOffer {
     text-decoration: line-through;
 }
+
+.collapse.in {
+    padding-left: 10px;
+}

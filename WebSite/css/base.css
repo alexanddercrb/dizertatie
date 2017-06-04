@@ -51,6 +51,12 @@
 
 .hasOffer {
     text-decoration: line-through;
+    font-size: 90%;
+    margin-bottom: 0;
+}
+
+#offer {
+    margin-top: 0;
 }
 
 .list-group.panel > .collapse >  .list-group-item {

@@ -53,6 +53,19 @@
     text-decoration: line-through;
 }
 
-.collapse.in {
-    padding-left: 10px;
+.list-group.panel > .collapse >  .list-group-item {
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    margin-left: 20px;
+}
+
+.list-group.panel > .list-group-item {
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.container {
+    margin-left: 50px;
+    margin-right: 50px;
+    width: auto;
 }

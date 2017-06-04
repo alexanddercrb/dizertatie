@@ -40,20 +40,31 @@ namespace WebSite
         [WebGet(ResponseFormat = WebMessageFormat.Json)] //remove for post
         public string ReturnFromDatabase()
         {
-            return test.getValue();
+            return Homepage.getValue();
+        }
+
+        #region HomePage
+
+        [OperationContract]
+        [WebGet(ResponseFormat = WebMessageFormat.Json)] //remove for post
+        public string returnProducts()
+        {
+            return convertToJson(Homepage.getProducts());
         }
 
         [OperationContract]
         [WebGet(ResponseFormat = WebMessageFormat.Json)] //remove for post
-        public string returnProduct()
+        public string returnProductOffers()
         {
-            return convertToJson(test.getProduct());
+            return convertToJson(Homepage.getProductOffers());
         }
+
+        #endregion
 
         #region forms
 
         #region get
-        
+
         [OperationContract]
         [WebGet(ResponseFormat = WebMessageFormat.Json)] //remove for post
         public string getCategories()

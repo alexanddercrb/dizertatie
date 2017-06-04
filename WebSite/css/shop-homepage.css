@@ -36,8 +36,13 @@
     color: #d17581;
 }
 
-.thumbnail {
+.thumbnailProduct {
     padding: 0;
+    display: block;
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    
 }
 
 .thumbnail .caption-full {
@@ -47,4 +52,9 @@
 
 footer {
     margin: 50px 0;
+}
+
+
+.sectionHome {
+    margin-bottom: 30px;
 }

@@ -1,24 +1,49 @@
 ﻿$(document).ready(function () {
+    var sectionProds = "newestProds";
+
     $.ajax({
         type: "GET",
         contentType: "application/json; charset=utf-8",
-        url: "../WebService.svc/returnProduct",
+        url: "../WebService.svc/returnProducts",
         data: "",
         processData: true,
         dataType: "json",
         success: function (response) {
-            createFeaturedItem(response);
+            createFeaturedItem(response, sectionProds);
         },
         error: function (errormsg) {
             console.log(errormsg.responseText); alert("Error!");
         }
     });
+
+    var sectionOffers = "newestOffers";
+
+    $.ajax({
+        type: "GET",
+        contentType: "application/json; charset=utf-8",
+        url: "../WebService.svc/returnProductOffers",
+        data: "",
+        processData: true,
+        dataType: "json",
+        success: function (response) {
+            createFeaturedItem(response, sectionOffers);
+        },
+        error: function (errormsg) {
+            console.log(errormsg.responseText); alert("Error!");
+        }
+    });
+
+
 });
 
-function createFeaturedItem(str) {
+function createFeaturedItem(str, section) {
     var list = JSON.parse(str.d);
     var teasers = '';
-    for (var i = 0; i < list.length; i++) {
+    var featured = 4;
+    if (list.length < 4) {
+        featured = list.length;
+    }
+    for (var i = 0; i < featured; i++) {
 
         var template = $('#teaser-product').html();
         var item = $(template).clone();
@@ -39,7 +64,7 @@ function createFeaturedItem(str) {
         if (j <= 5)
             for (k = j; k <= 5; k++)
                 $(item).find('#review' + k).addClass('glyphicon-star-empty');
-        $('#newestProds').append(item);
+        $('#' + section).append(item);
 
         /*
          var part1 =  '<div class="col-sm-4 col-lg-4 col-md-4">    <div class="thumbnail">     <img src="';

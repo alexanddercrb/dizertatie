@@ -71,6 +71,13 @@ namespace WebSite
             return convertToJson(Homepage.getProductOffersSub(subcategoryId));
         }
 
+        [OperationContract]
+        public string returnProductsByType(int id)
+        {
+            return convertToJson(Homepage.returnProductsByType(id));
+        }
+        
+
         #endregion
 
         #region forms
@@ -118,6 +125,12 @@ namespace WebSite
         }
 
         [OperationContract]
+        public string getTypeById(int id)
+        {
+            return convertToJson(Get.getTypeById(id));
+        }
+
+        [OperationContract]
         public string getFilters(int id)
         {
             return convertToJson(Get.getFilters(id));
@@ -127,8 +140,14 @@ namespace WebSite
         public string getFilterValues(int id)
         {
             return convertToJson(Get.getFilterValues(id));
-        } 
+        }
 
+        [OperationContract]
+        public string getFilterValuesByType(int id)
+        {
+            return convertToJson(Get.getFilterValuesByType(id));
+        }
+        
         #endregion
 
         #region insert

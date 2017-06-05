@@ -111,6 +111,23 @@ namespace Business.Queries
             }
         }
 
+        public static List<product_type> getTypeById(int id)
+        {
+            using (DB_entities db = new DB_entities())
+            {
+                try
+                {
+                    var result = from e in db.product_type where e.id == id select e;
+                    return result.ToList();
+                }
+                catch (Exception ex)
+                {
+                    Log.error("getTypeById - get.cs", DateTime.Now, ex);
+                    return null;
+                }
+            }
+        }
+
         public static List<filter> getFilters(int typeId)
         {
             using (DB_entities db = new DB_entities())
@@ -139,6 +156,27 @@ namespace Business.Queries
                 catch (Exception ex)
                 {
                     Log.error("getFilterValues - get.cs", DateTime.Now, ex);
+                    return null;
+                }
+            }
+        }
+
+        public static List<filter_values> getFilterValuesByType(int typeId)
+        {
+            using (DB_entities db = new DB_entities())
+            {
+                try
+                {
+                    var result = from e in db.filter_values
+                                 join f in db.filters on e.filter_id equals f.id
+                                 join g in db.product_type on f.prodtype_id equals g.id
+                                 where g.id == typeId
+                                 select e;
+                    return result.ToList();
+                }
+                catch (Exception ex)
+                {
+                    Log.error("getFilterValuesByType - get.cs", DateTime.Now, ex);
                     return null;
                 }
             }

@@ -119,6 +119,7 @@ namespace Business.Queries
             }
             return prods;
         }
+
         public static List<Product> getProductsSub(int subcategoryId) //with filters (for subcategory search)
         {
             List<Product> prods = new List<Product>();
@@ -213,6 +214,50 @@ namespace Business.Queries
             return prods;
         }
 
-        
+        public static List<Product> returnProductsByType(int typeId) //with filters (for subcategory search)
+        {
+            List<Product> prods = new List<Product>();
+            using (var db = new DB_entities())
+            {
+                try
+                {
+                    // Display all Blogs from the database 
+                    var query = from a in db.products
+                                where a.prodtype_id == typeId
+                                orderby a.id descending
+                                select a;
+
+                    foreach (var item in query)
+                    {
+                        Product prod = new Product();
+                        prod.id = item.id;
+                        prod.name = item.name;
+                        prod.code = item.code;
+                        prod.price = item.price;
+                        prod.offer = item.offer;
+                        prod.specs = item.specs;
+                        prod.items = item.items;
+
+                        List<pic> pictures = db.pics.Where(x => x.product_id == prod.id).ToList();
+                        int i = 0;
+                        prod.pics = new string[15];
+                        foreach (var picture in pictures)
+                        {
+                            prod.pics[i] = picture.pic_path;
+                            i++;
+                        }
+
+                        prods.Add(prod);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Log.error("returnProductsByType - Homepage.cs", DateTime.Now, ex);
+                    return null;
+                }
+            }
+            return prods;
+        }
+
     }
 }

@@ -77,7 +77,7 @@
     <Content Include="html\base_template.html" />
     <Content Include="html\common\footer.html" />
     <Content Include="html\common\header.html" />
-    <Content Include="html\common\subSearchSidebar - Copy.html" />
+    <Content Include="html\common\subSearchSidebar.html" />
     <Content Include="html\common\ListByTypeSidebar.html" />
     <Content Include="html\common\HomepageSidebar.html" />
     <Content Include="html\forms\addFilterValue.html" />

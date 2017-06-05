@@ -1,5 +1,7 @@
 ﻿$(document).ready(function () {
 
+    var productList;
+
     var param = window.location.toString();
     var id = param.substring(param.indexOf("=") + 1);
     if (id == param) {
@@ -11,7 +13,7 @@
     $.ajax({
         type: "POST",
         contentType: "application/json; charset=utf-8",
-        url: "../../WebService.svc/getSubcategoryByID",
+        url: "../../WebService.svc/getTypeByID",
         data: JSON.stringify({ id: id }),
         processData: true,
         dataType: "json",
@@ -24,52 +26,57 @@
     });
 
 
-    var sectionProds = "newestProds";
+    var sectionProds = "prods";
 
     $.ajax({
         type: "POST",
         contentType: "application/json; charset=utf-8",
-        url: "../../WebService.svc/returnProductsSub",
-        data: JSON.stringify({ subcategoryId: id }),
+        url: "../../WebService.svc/returnProductsByType",
+        data: JSON.stringify({ id: id }),
         processData: true,
         dataType: "json",
         success: function (response) {
-            createFeaturedItem(response, sectionProds);
+            productList = JSON.parse(response.d);
+            createItem(productList, sectionProds, 0);
         },
         error: function (errormsg) {
             console.log(errormsg.responseText); alert("Error!");
         }
     });
 
-    var sectionOffers = "newestOffers";
-
-    $.ajax({
-        type: "POST",
-        contentType: "application/json; charset=utf-8",
-        url: "../../WebService.svc/returnProductOffersSub",
-        data: JSON.stringify({ subcategoryId: id }),
-        processData: true,
-        dataType: "json",
-        success: function (response) {
-            createFeaturedItem(response, sectionOffers);
-        },
-        error: function (errormsg) {
-            console.log(errormsg.responseText); alert("Error!");
-        }
-    });
-
+    //daca productList e mai mare decat 20, afiseaza butonul next page/prev page
 
 });
 
 function createNavigPath(str) {
     var list = JSON.parse(str.d);
-    var categId = list[0].category_id;
-    $("#subcategoryMenuName").html(list[0].name);
+    var subcategId = list[0].subcategory_id;
+    $("#typeMenuName").html(list[0].name);
 
     $.ajax({
         type: "POST",
         contentType: "application/json; charset=utf-8",
-        url: "../../WebService.svc/getCategoryByID",
+        url: "../../WebService.svc/getSubCategoryByID",
+        data: JSON.stringify({ id: subcategId }),
+        processData: true,
+        dataType: "json",
+        success: function (response) {
+            var list1 = JSON.parse(response.d);
+            $("#subcategoryMenuName").html(list1[0].name);
+            setCategoryInMenu(list1[0].id);
+        },
+        error: function (errormsg) {
+            console.log(errormsg.responseText); alert("Error!");
+        }
+    });
+}
+
+function setCategoryInMenu(categId)
+{
+    $.ajax({
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        url: "../../WebService.svc/getCategoryById",
         data: JSON.stringify({ id: categId }),
         processData: true,
         dataType: "json",
@@ -83,14 +90,15 @@ function createNavigPath(str) {
     });
 }
 
-function createFeaturedItem(str, section) {
-    var list = JSON.parse(str.d);
+
+function createItem(productList, section, startingItem) {
+    var list = productList;
     var teasers = '';
-    var featured = 4;
-    if (list.length < 4) {
+    var featured = 20;
+    if (list.length < 20) {
         featured = list.length;
     }
-    for (var i = 0; i < featured; i++) {
+    for (var i = startingItem; i < startingItem + featured; i++) {
 
         var template = $('#teaser-product').html();
         var item = $(template).clone();

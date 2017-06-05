@@ -1,11 +1,36 @@
 ﻿$(document).ready(function () {
+
+    var param = window.location.toString();
+    var id = param.substring(param.indexOf("=") + 1);
+    if (id == param) {
+        window.location.replace("../index.html");
+        return;
+    }
+
+
+    $.ajax({
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        url: "../../WebService.svc/getSubcategoryByID",
+        data: JSON.stringify({ id: id }),
+        processData: true,
+        dataType: "json",
+        success: function (response) {
+            createNavigPath(response);
+        },
+        error: function (errormsg) {
+            console.log(errormsg.responseText); alert("Error!");
+        }
+    });
+
+
     var sectionProds = "newestProds";
 
     $.ajax({
-        type: "GET",
+        type: "POST",
         contentType: "application/json; charset=utf-8",
-        url: "../WebService.svc/returnProducts",
-        data: "",
+        url: "../../WebService.svc/returnProductsSub",
+        data: JSON.stringify({ subcategoryId: id }),
         processData: true,
         dataType: "json",
         success: function (response) {
@@ -19,10 +44,10 @@
     var sectionOffers = "newestOffers";
 
     $.ajax({
-        type: "GET",
+        type: "POST",
         contentType: "application/json; charset=utf-8",
-        url: "../WebService.svc/returnProductOffers",
-        data: "",
+        url: "../../WebService.svc/returnProductOffersSub",
+        data: JSON.stringify({ subcategoryId: id }),
         processData: true,
         dataType: "json",
         success: function (response) {
@@ -35,6 +60,28 @@
 
 
 });
+
+function createNavigPath(str) {
+    var list = JSON.parse(str.d);
+    var categId = list[0].category_id;
+    $("#subcategoryMenuName").html(list[0].name);
+
+    $.ajax({
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        url: "../../WebService.svc/getCategoryByID",
+        data: JSON.stringify({ id: categId }),
+        processData: true,
+        dataType: "json",
+        success: function (response) {
+            var list1 = JSON.parse(response.d);
+            $("#categoryMenuName").html(list1[0].name);
+        },
+        error: function (errormsg) {
+            console.log(errormsg.responseText); alert("Error!");
+        }
+    });
+}
 
 function createFeaturedItem(str, section) {
     var list = JSON.parse(str.d);
@@ -59,7 +106,7 @@ function createFeaturedItem(str, section) {
         $(item).find('#TeaserImage').attr("src", list[i].pics[0]);
         var j = 1;
         for (j = 1; j <= list.stars; j++) {
-            $(item).find('#review'+j).addClass('glyphicon-star');
+            $(item).find('#review' + j).addClass('glyphicon-star');
         }
         if (j <= 5)
             for (k = j; k <= 5; k++)

@@ -1,8 +1,6 @@
 ﻿$(document).ready(function () {
 
     initSidebar();
-        
-
 
 });
 
@@ -51,6 +49,6 @@ function populateSubcategories(subcategories) {
     var list = JSON.parse(subcategories.d);
     var menuPanel = $("#HomeSidebar").find(".panel");
     for (var i = 0; i < list.length; i++) {
-        $(menuPanel).find('#' + list[i].category_id).append('<a href="' + list[i].id + '" class="list-group-item">' + list[i].name + '</a>');
+        $(menuPanel).find('#' + list[i].category_id).append('<a href="products/subsearch.html?id=' + list[i].id + '" class="list-group-item">' + list[i].name + '</a>');
     }
 }

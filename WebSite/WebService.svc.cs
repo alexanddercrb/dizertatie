@@ -59,6 +59,18 @@ namespace WebSite
             return convertToJson(Homepage.getProductOffers());
         }
 
+        [OperationContract]
+        public string returnProductsSub(int subcategoryId)
+        {
+            return convertToJson(Homepage.getProductsSub(subcategoryId));
+        }
+
+        [OperationContract]
+        public string returnProductOffersSub(int subcategoryId)
+        {
+            return convertToJson(Homepage.getProductOffersSub(subcategoryId));
+        }
+
         #endregion
 
         #region forms
@@ -70,6 +82,12 @@ namespace WebSite
         public string getCategories()
         {
             return convertToJson(Get.getCategories());
+        }
+
+        [OperationContract]
+        public string getCategoryByID(int id)
+        {
+            return convertToJson(Get.getCategoryByID(id));
         }
 
 
@@ -85,6 +103,13 @@ namespace WebSite
         {
             return convertToJson(Get.getSubcategories(id));
         }
+
+        [OperationContract]
+        public string getSubcategoryByID(int id)
+        {
+            return convertToJson(Get.getSubcategoryByID(id));
+        }
+        
 
         [OperationContract]
         public string getTypes(int id)

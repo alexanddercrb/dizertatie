@@ -25,6 +25,24 @@ namespace Business.Queries
                 }
             }
         }
+
+        public static List<category> getCategoryByID(int id)
+        {
+            using (DB_entities db = new DB_entities())
+            {
+                try
+                {
+                    var result = from e in db.categories where e.id == id orderby e.id ascending select e;
+                    return result.ToList();
+                }
+                catch (Exception ex)
+                {
+                    Log.error("getCategoryByID - get.cs", DateTime.Now, ex);
+                    return null;
+                }
+            }
+        }
+
         public static List<subcategory> getAllSubcategories()
         {
             using (DB_entities db = new DB_entities())
@@ -54,6 +72,23 @@ namespace Business.Queries
                 catch (Exception ex)
                 {
                     Log.error("getSubcategories - get.cs", DateTime.Now, ex);
+                    return null;
+                }
+            }
+        }
+
+        public static List<subcategory> getSubcategoryByID(int id)
+        {
+            using (DB_entities db = new DB_entities())
+            {
+                try
+                {
+                    var result = from e in db.subcategories where e.id == id select e;
+                    return result.ToList();
+                }
+                catch (Exception ex)
+                {
+                    Log.error("getSubcategoryByID - get.cs", DateTime.Now, ex);
                     return null;
                 }
             }

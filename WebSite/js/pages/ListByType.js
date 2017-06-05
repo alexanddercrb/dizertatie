@@ -1,6 +1,8 @@
 ﻿$(document).ready(function () {
 
     var productList;
+    var itemsOnPage = 20;
+    var startingProdIndex = 0;
 
     var param = window.location.toString();
     var id = param.substring(param.indexOf("=") + 1);
@@ -37,15 +39,52 @@
         dataType: "json",
         success: function (response) {
             productList = JSON.parse(response.d);
-            createItem(productList, sectionProds, 0);
+            createItem(productList, sectionProds, 0, itemsOnPage);
+            if (productList.length > itemsOnPage)
+                $("#btnNext").removeClass("hidden");
         },
         error: function (errormsg) {
             console.log(errormsg.responseText); alert("Error!");
         }
     });
 
-    //daca productList e mai mare decat 20, afiseaza butonul next page/prev page
 
+
+    $("#btnNext")
+        .on("click",
+            function() {
+                startingProdIndex += itemsOnPage;
+                $("#"+sectionProds).empty();
+                createItem(productList, sectionProds, startingProdIndex, itemsOnPage);
+                if (startingProdIndex + itemsOnPage > productList.length) {
+                    $("#btnNext").addClass("hidden");
+                } else {
+                    $("#btnNext").removeClass("hidden");
+                }
+                if (startingProdIndex > 0) {
+                    $("#btnPrev").removeClass("hidden");
+                } else {
+                    $("#btnPrev").addClass("hidden");
+                }
+            });
+
+    $("#btnPrev")
+    .on("click",
+        function () {
+            startingProdIndex -= itemsOnPage;
+            $("#" + sectionProds).empty();
+            createItem(productList, sectionProds, startingProdIndex, itemsOnPage);
+            if (startingProdIndex + itemsOnPage > productList.length) {
+                $("#btnNext").addClass("hidden");
+            } else {
+                $("#btnNext").removeClass("hidden");
+            }
+            if (startingProdIndex > 0) {
+                $("#btnPrev").removeClass("hidden");
+            } else {
+                $("#btnPrev").addClass("hidden");
+            }
+        });
 });
 
 function createNavigPath(str) {
@@ -91,12 +130,11 @@ function setCategoryInMenu(categId)
 }
 
 
-function createItem(productList, section, startingItem) {
+function createItem(productList, section, startingItem, itemsOnPage) {
     var list = productList;
-    var teasers = '';
-    var featured = 20;
-    if (list.length < 20) {
-        featured = list.length;
+    var featured = itemsOnPage;
+    if (list.length < itemsOnPage || list.length - startingItem < itemsOnPage) {
+        featured = list.length - startingItem;
     }
     for (var i = startingItem; i < startingItem + featured; i++) {
 

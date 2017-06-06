@@ -214,18 +214,26 @@ namespace Business.Queries
             return prods;
         }
 
-        public static List<Product> returnProductsByType(int typeId) //with filters (for subcategory search)
+        public static List<Product> returnProductsByType(int typeId, String startingPrice, String endingPrice, String sortBy, List<int> filtersSelected) //with filters (for subcategory search)
         {
             List<Product> prods = new List<Product>();
             using (var db = new DB_entities())
             {
                 try
                 {
-                    // Display all Blogs from the database 
+                    Double startPrice = Double.Parse(startingPrice);
+                    Double endPrice = Double.Parse(endingPrice);
+
                     var query = from a in db.products
-                                where a.prodtype_id == typeId
+                                join b in db.product_filters on a.id equals b.product_id
+                                where a.prodtype_id == typeId &&
+                                    ((a.price >= startPrice || (a.offer >= startPrice && a.offer != 0 )) && (a.price <= endPrice || (a.offer <= endPrice && a.offer != 0)))
+                                    && (filtersSelected.Count == 0 || filtersSelected.Contains(b.value_id))
+
                                 orderby a.id descending
                                 select a;
+
+    
 
                     foreach (var item in query)
                     {

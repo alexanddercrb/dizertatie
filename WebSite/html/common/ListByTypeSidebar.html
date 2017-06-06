@@ -8,10 +8,38 @@
     <meta charset="utf-8"/>
 </head>
 <body>
-                <div id="HomeSidebar">
-                    <div class="list-group panel">
+<div id="HomeSidebar">
 
-                    </div>
-                </div>
+    <H4>Sort by:</H4>
+    <div class="form-group">
+        <div class="dropdown">
+            <div id="drpSort" class="btn-group">
+                <button id="displaySortOption" value="priceAsc" class="btn btn-default" data-toggle="dropdown">Price ASC</button>
+                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span class="caret"></span></button>
+                <ul id="filterValueSelection" class="dropdown-menu">
+                    <li><option value="priceAsc">Price ASC</option></li>
+                    <li><option value="priceDesc">Price DESC</option></li>
+                    <li><option value="dateAsc">Date ASC</option></li>
+                    <li><option value="dateDesc">Date DESC</option></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <h4>Price:</h4>
+    <div class="list-group panel center">
+        <div class="form-group">
+            <input type="number" class="form-control priceFilter" id="startingPrice" value="0"/>
+            &nbsp; - &nbsp;
+            <input type="number" class="form-control priceFilter" id="endingPrice" value="9999"/>
+        </div>
+    </div>
+
+    <div class="list-group panel center mainFilter">
+        <div class="form-group">
+        </div>
+    </div>
+    
+</div>
 </body>
 </html>

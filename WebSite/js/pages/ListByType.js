@@ -1,22 +1,29 @@
-﻿$(document).ready(function () {
+﻿var productList;
+var itemsOnPage = 5;
+var startingProdIndex = 0;
+var typeId;
 
-    var productList;
-    var itemsOnPage = 20;
-    var startingProdIndex = 0;
+var startingPrice = 0;
+var endingPrice = 9999;
+
+var sortBy = "priceAsc";
+
+var filtersSelected = [];
+
+$(document).ready(function () {
 
     var param = window.location.toString();
-    var id = param.substring(param.indexOf("=") + 1);
-    if (id == param) {
+    typeId = param.substring(param.indexOf("=") + 1);
+    if (typeId == param) {
         window.location.replace("../index.html");
         return;
     }
-
 
     $.ajax({
         type: "POST",
         contentType: "application/json; charset=utf-8",
         url: "../../WebService.svc/getTypeByID",
-        data: JSON.stringify({ id: id }),
+        data: JSON.stringify({ id: typeId }),
         processData: true,
         dataType: "json",
         success: function (response) {
@@ -34,11 +41,20 @@
         type: "POST",
         contentType: "application/json; charset=utf-8",
         url: "../../WebService.svc/returnProductsByType",
-        data: JSON.stringify({ id: id }),
+        data: JSON.stringify({
+            id: typeId,
+            startingPrice: startingPrice,
+            endingPrice: endingPrice,
+            sortBy: sortBy,
+            filtersSelected: filtersSelected
+        }),
         processData: true,
         dataType: "json",
         success: function (response) {
             productList = JSON.parse(response.d);
+            if (productList.length == 0) {
+                return;
+            }
             createItem(productList, sectionProds, 0, itemsOnPage);
             if (productList.length > itemsOnPage)
                 $("#btnNext").removeClass("hidden");
@@ -85,6 +101,8 @@
                 $("#btnPrev").addClass("hidden");
             }
         });
+
+
 });
 
 function createNavigPath(str) {
@@ -159,4 +177,63 @@ function createItem(productList, section, startingItem, itemsOnPage) {
                 $(item).find('#review' + k).addClass('glyphicon-star-empty');
         $('#' + section).append(item);
     }
+}
+
+function selectedFilter(item) {
+    if ($(item).hasClass("active")) {
+        $(item).removeClass("active");
+    } else {
+        $(item).addClass("active");
+    }
+
+    refreshProducts();
+}
+
+function refreshProducts() {
+
+    startingProdIndex = 0;
+
+    startingPrice = $("#startingPrice").val();
+    endingPrice = $("#endingPrice").val();
+    sortBy = $("#displaySortOption").get(0).value;
+
+    filtersSelected = [];
+    $("a.active")
+        .each(function(index) {
+            filtersSelected.push($(this).data('value'));
+        });
+
+    $("#btnPrev").addClass("hidden");
+    $("#btnNext").addClass("hidden");
+
+    var sectionProds = "prods";
+    $("#" + sectionProds).empty();
+
+    $.ajax({
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        url: "../../WebService.svc/returnProductsByType",
+        data: JSON.stringify({
+            id: typeId,
+            startingPrice: startingPrice,
+            endingPrice: endingPrice,
+            sortBy: sortBy,
+            filtersSelected: filtersSelected
+        }),
+        processData: true,
+        dataType: "json",
+        success: function (response) {
+            productList = JSON.parse(response.d);
+            if (productList.length == 0) {
+                return;
+            }
+            createItem(productList, sectionProds, 0, itemsOnPage);
+            if (productList.length > itemsOnPage) {
+                $("#btnNext").removeClass("hidden");
+            }
+        },
+        error: function (errormsg) {
+            console.log(errormsg.responseText); alert("Error!");
+        }
+    });
 }

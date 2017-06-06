@@ -72,9 +72,9 @@ namespace WebSite
         }
 
         [OperationContract]
-        public string returnProductsByType(int id)
+        public string returnProductsByType(int id, String startingPrice, String endingPrice, String sortBy, List<int> filtersSelected)
         {
-            return convertToJson(Homepage.returnProductsByType(id));
+            return convertToJson(Homepage.returnProductsByType(id, startingPrice, endingPrice, sortBy, filtersSelected));
         }
         
 

@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    padding-top: 150px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
 
 .left {
@@ -78,4 +78,32 @@
 
 #productPath {
     margin-bottom: 30px;
+}
+
+.search {
+    float: none;
+    margin-bottom: 5px;
+    height: 90%;
+}
+
+.searchDiv {
+    float: none;
+    margin-bottom: 5px;
+    margin-top: 15px;
+    height: 50px;
+}
+
+#bs-example-navbar-collapse-1 {
+    font-size: 20px;
+}
+
+#bs-example-navbar-collapse-1 > .nav.navbar-nav{
+    font-size: 15px;
+    float: right;
+}
+
+.navbar-brand {
+    margin-top: 10px;
+    font-size: 60px;
+    text-shadow: 2px 2px turquoise;
 }

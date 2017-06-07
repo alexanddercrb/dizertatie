@@ -13,6 +13,8 @@ namespace Business.Entities
         public string code { get; set; }
         public string specs { get; set; }
         public float price { get; set; }
+        
+        public float filteredPrice { get; set; }
         public Nullable<float> offer { get; set; }
         public int prodtype_id { get; set; }
         public int items { get; set; }

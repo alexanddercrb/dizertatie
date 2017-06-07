@@ -151,7 +151,7 @@ function setCategoryInMenu(categId)
 function createItem(productList, section, startingItem, itemsOnPage) {
     var list = productList;
     var featured = itemsOnPage;
-    if (list.length < itemsOnPage || list.length - startingItem < itemsOnPage) {
+    if (list.length < itemsOnPage || list.length - 1 - startingItem < itemsOnPage) {
         featured = list.length - startingItem;
     }
     for (var i = startingItem; i < startingItem + featured; i++) {

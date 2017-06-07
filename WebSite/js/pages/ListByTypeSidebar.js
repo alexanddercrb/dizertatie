@@ -21,7 +21,7 @@ function initSidebar() {
         $('#displaySortOption').text(this.innerHTML);
         $('#displaySortOption').attr('value', this.value);
 
-        //refresh all
+        refreshProducts();
     });
 
     var param = window.location.toString();

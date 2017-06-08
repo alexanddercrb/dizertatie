@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <script src="../../js/pages/searchResultsSidebar.js" type="text/javascript"></script>
+
+    <title>eStore - Online Shop</title>
+    <meta charset="utf-8"/>
+</head>
+<body>
+<div id="HomeSidebar">
+
+    <H4>Order by by:</H4>
+    <div class="form-group">
+        <div class="dropdown">
+            <div id="drpSort" class="btn-group">
+                <button id="displaySortOption" value="priceAsc" class="btn btn-default" data-toggle="dropdown">Price ASC</button>
+                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span class="caret"></span></button>
+                <ul id="filterValueSelection" class="dropdown-menu">
+                    <li><option value="priceAsc">Price ASC</option></li>
+                    <li><option value="priceDesc">Price DESC</option></li>
+                    <li><option value="dateAsc">Date newest</option></li>
+                    <li><option value="dateDesc">Date oldest</option></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <h4>Price:</h4>
+    <div class="list-group panel center">
+        <div class="form-group">
+            <input type="number" class="form-control priceFilter" id="startingPrice" value="0"/>
+            &nbsp; - &nbsp;
+            <input type="number" class="form-control priceFilter" id="endingPrice" value="9999"/>
+        </div>
+    </div>
+
+    <div class="list-group panel center mainFilter">
+        <div class="form-group">
+        </div>
+    </div>
+    
+</div>
+</body>
+</html>

@@ -287,5 +287,82 @@ namespace Business.Queries
             return prods;
         }
 
+
+
+        public static List<Product> returnSearchResults(String searchString, String startingPrice, String endingPrice, String sortBy)
+        {
+            List<Product> prods = new List<Product>();
+            using (var db = new DB_entities())
+            {
+                try
+                {
+                    IQueryable<product> query;
+                    Double startPrice = Double.Parse(startingPrice);
+                    Double endPrice = Double.Parse(endingPrice);
+                    searchString = searchString.Replace("%20", " ");
+                    if (sortBy == "priceAsc" || sortBy == "priceDesc")
+                    {
+                        query = from a in db.products
+                                join b in db.product_type on a.prodtype_id equals b.id
+                                where
+                                     (a.name.Contains(searchString) || a.specs.Contains(searchString) || b.name.Contains(searchString)) &&
+                                      ((a.price >= startPrice || (a.offer >= startPrice && a.offer != 0)) &&
+                                       (a.price <= endPrice || (a.offer <= endPrice && a.offer != 0)))
+                                orderby a.price, a.offer descending
+                                select a;
+                    }
+                    else
+                    {
+                        query = from a in db.products
+                                join b in db.product_type on a.prodtype_id equals b.id
+                                where
+                                        (a.name.Contains(searchString) || a.specs.Contains(searchString) || b.name.Contains(searchString)) &&
+                                      ((a.price >= startPrice || (a.offer >= startPrice && a.offer != 0)) &&
+                                       (a.price <= endPrice || (a.offer <= endPrice && a.offer != 0)))
+                                orderby a.id descending
+                                select a;
+                    }
+
+
+                    foreach (var item in query)
+                    {
+                        Product prod = new Product();
+                        prod.id = item.id;
+                        prod.name = item.name;
+                        prod.code = item.code;
+                        prod.price = item.price;
+                        prod.offer = item.offer;
+                        prod.specs = item.specs;
+                        prod.items = item.items;
+                        prod.filteredPrice = item.offer.HasValue && item.price > item.offer && item.offer.Value > 0 ? item.offer.Value : item.price;
+
+                        List<pic> pictures = db.pics.Where(x => x.product_id == prod.id).ToList();
+                        int i = 0;
+                        prod.pics = new string[15];
+                        foreach (var picture in pictures)
+                        {
+                            prod.pics[i] = picture.pic_path;
+                            i++;
+                        }
+
+                        prods.Add(prod);
+                    }
+
+                    if (sortBy == "priceAsc" || sortBy == "priceDesc")
+                        prods = prods.OrderBy(o => o.filteredPrice).ToList();
+
+                    if (sortBy == "dateDesc" || sortBy == "priceDesc")
+                        prods.Reverse();
+
+                }
+                catch (Exception ex)
+                {
+                    Log.error("returnSearchResults - Homepage.cs", DateTime.Now, ex);
+                    return null;
+                }
+            }
+            return prods;
+        }
+        
     }
 }

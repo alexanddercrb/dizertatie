@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="../../js/jquery.js" type="text/javascript"></script>
+    <script src="../../js/bootstrap.js" type="text/javascript"></script>
+    <script src="../../js/angular.js" type="text/javascript"></script>
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link href="../../css/ProductList.css" rel="stylesheet" />
+
+    <meta charset="utf-8" />
+    <script>
+        $(document)
+            .ready(function() {
+                $("#header").load("../common/header.html");
+                $("#footer").load("../common/footer.html");
+                $("#sidebar").load("../common/searchResultsSidebar.html");
+            });
+    </script>
+
+    <script src="../../js/pages/searchResults.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+    <!-- header -->
+    <div id="header"></div>
+
+    <!-- Page Content -->
+    <div class="main-content">
+        <div class="container">
+
+            <div class="row">
+                <div id="productPath" class="col-md-12">
+                    <h2> <label id="Search Results"></label></h2>
+                </div>
+                <div id="sidebar" class="col-md-2">
+                    <div class="list-group">
+                    </div>
+                </div>
+
+                <div class="col-md-10">
+                    <div id="prods" class="row sectionHome">
+                        <h4>Search results</h4>
+                    </div>
+                </div>
+                <div class="col-md-12 center">
+                    <button id="btnPrev" class="btn btn-danger hidden">PREVIOUS</button>
+                    <button id="btnNext" class="btn btn-danger hidden">NEXT</button>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+    </div>
+
+    <!-- footer -->
+    <div id="footer"></div>
+
+    <!-- templates -->
+    <script id="teaser-product" type="text/x-custom-template">
+
+        <div class="col-sm-3 col-lg-2 col-md-3 productDisplay">
+            <div class="product_promo">
+                <img src="../../Media/Images/Default/defaultUpload.jpg" alt="" id="TeaserImage" class="thumbnailProduct">
+                <div class="caption">
+                    <h4>
+                        <a href="#" id="ProductTitle"></a>
+                    </h4>
+                    <div class="right">
+                        <h3 id="price"></h3>
+                        <h3 id="offer" class="hidden" style="color: red;"></h3>
+                    </div>
+                </div>
+                <div class="ratings">
+                    <p class="pull-right">reviews</p>
+                    <p>
+                        <span id="review1" class="glyphicon "></span>
+                        <span id="review2" class="glyphicon "></span>
+                        <span id="review3" class="glyphicon "></span>
+                        <span id="review4" class="glyphicon "></span>
+                        <span id="review5" class="glyphicon "></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </script>
+    <!-- End of Templates-->
+</body>
+
+</html>

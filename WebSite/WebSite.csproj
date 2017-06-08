@@ -77,6 +77,7 @@
     <Content Include="html\base_template.html" />
     <Content Include="html\common\footer.html" />
     <Content Include="html\common\header.html" />
+    <Content Include="html\common\searchResultsSidebar.html" />
     <Content Include="html\common\subSearchSidebar.html" />
     <Content Include="html\common\ListByTypeSidebar.html" />
     <Content Include="html\common\HomepageSidebar.html" />
@@ -88,10 +89,13 @@
     <Content Include="html\forms\addCategory.html" />
     <Content Include="html\index.html" />
     <Content Include="html\Page_Base.html" />
+    <Content Include="html\products\searchResults.html" />
     <Content Include="html\products\ListByType.html" />
     <Content Include="html\products\subSearch.html" />
     <Content Include="js\angular.js" />
     <Content Include="js\bootstrap.js" />
+    <Content Include="js\pages\searchResultsSidebar.js" />
+    <Content Include="js\pages\searchResults.js" />
     <Content Include="js\pages\ListByType.js" />
     <Content Include="js\pages\subSearch.js" />
     <Content Include="js\pages\ListByTypeSidebar.js" />

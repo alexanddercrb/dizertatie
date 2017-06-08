@@ -76,7 +76,13 @@ namespace WebSite
         {
             return convertToJson(Homepage.returnProductsByType(id, startingPrice, endingPrice, sortBy, filtersSelected));
         }
-        
+
+        [OperationContract]
+        public string returnSearchResults(String searchString, String startingPrice, String endingPrice, String sortBy)
+        {
+            return convertToJson(Homepage.returnSearchResults(searchString, startingPrice, endingPrice, sortBy));
+        }
+
 
         #endregion
 

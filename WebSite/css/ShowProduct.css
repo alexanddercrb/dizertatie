@@ -13,6 +13,11 @@ li.active{
     border-top:1px solid silver;
 }
 
+#descriptionArea {
+    width:100%;
+    padding: 10px 10px 10px 40px;
+}
+
 .item-photo{
     display:flex;
     justify-content:center;
@@ -123,6 +128,13 @@ div.section > #noOfItems > input {
     object-fit: contain;
 }
 
+.hasOffer {
+    text-decoration: line-through;
+    font-size: 20px;
+    margin-bottom: 0;
+}
+
+
 @media (max-width: 426px) {
     .container {margin-top:0px !important;}
     .container > .row{padding:0 !important;}
@@ -217,3 +229,4 @@ div.section > #noOfItems > input {
         float:none;
     }
 }
+

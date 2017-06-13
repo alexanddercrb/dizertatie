@@ -14,7 +14,7 @@ $(document).ready(function () {
 
     var param = window.location.toString();
     typeId = param.substring(param.indexOf("=") + 1);
-    if (typeId == param) {
+    if (typeId == param || typeId == "") {
         window.location.replace("../index.html");
         return;
     }
@@ -27,6 +27,11 @@ $(document).ready(function () {
         processData: true,
         dataType: "json",
         success: function (response) {
+            var list = JSON.parse(response.d);
+            if (list.length == 0) {
+                window.location.replace("../404_page.html");
+                return;
+            }
             createNavigPath(response);
         },
         error: function (errormsg) {

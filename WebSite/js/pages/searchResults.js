@@ -104,7 +104,7 @@ function createItem(productList, section, startingItem, itemsOnPage) {
             $(item).find('#offer').html(list[i].offer + ' Ron');
             $(item).find('#offer').removeClass("hidden");
         }
-        $(item).find('#ProductTitle').html(list[i].name);
+        $(item).find('#ProductTitle').html(list[i].name).attr('href', '/website/html/products/ShowProduct.html?id=' + list[i].id);
         $(item).find('#TeaserImage').attr("src", list[i].pics[0]);
         var j = 1;
         for (j = 1; j <= list.stars; j++) {

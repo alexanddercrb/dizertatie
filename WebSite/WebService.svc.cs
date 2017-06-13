@@ -78,6 +78,12 @@ namespace WebSite
         }
 
         [OperationContract]
+        public string returnProductById(int id)
+        {
+            return convertToJson(Homepage.returnProductById(id));
+        }
+
+        [OperationContract]
         public string returnSearchResults(String searchString, String startingPrice, String endingPrice, String sortBy)
         {
             return convertToJson(Homepage.returnSearchResults(searchString, startingPrice, endingPrice, sortBy));

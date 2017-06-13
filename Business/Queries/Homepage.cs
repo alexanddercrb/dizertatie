@@ -363,6 +363,49 @@ namespace Business.Queries
             }
             return prods;
         }
-        
+
+        public static Product returnProductById(int id)
+        {
+            Product prod = new Product();
+            using (var db = new DB_entities())
+            {
+                try
+                {
+                    IQueryable<product> query;
+
+                        query = from a in db.products
+                                where a.id == id
+                                select a;
+                    product item = query.FirstOrDefault();
+
+                        prod.id = item.id;
+                        prod.name = item.name;
+                        prod.code = item.code;
+                        prod.price = item.price;
+                        prod.offer = item.offer;
+                        prod.specs = item.specs;
+                        prod.items = item.items;
+                        prod.prodtype_id = item.prodtype_id;
+                        prod.filteredPrice = item.offer.HasValue && item.price > item.offer && item.offer.Value > 0 ? item.offer.Value : item.price;
+
+                        List<pic> pictures = db.pics.Where(x => x.product_id == prod.id).ToList();
+                        int i = 0;
+                        prod.pics = new string[15];
+                        foreach (var picture in pictures)
+                        {
+                            prod.pics[i] = picture.pic_path;
+                            i++;
+                        }
+
+                }
+                catch (Exception ex)
+                {
+                    Log.error("returnProductById - Homepage.cs", DateTime.Now, ex);
+                    return null;
+                }
+            }
+            return prod;
+        }
+
     }
 }

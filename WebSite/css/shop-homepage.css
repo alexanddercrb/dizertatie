@@ -1,8 +1,4 @@
-/*!
- * Start Bootstrap - Shop Homepage (http://startbootstrap.com/)
- * Copyright 2013-2016 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
- */
+
 
 .slide-image {
     width: 100%;
@@ -22,9 +18,6 @@
     overflow: hidden;
 }
 
-.caption h4 {
-    white-space: nowrap;
-}
 
 .thumbnail img {
     width: 100%;

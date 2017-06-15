@@ -129,14 +129,110 @@ function renderDescription() {
 
 function renderReviews() {
     $("#descriptionArea").html("");
-    //add form (colapsable)
-    //go to database, get and render them
-    $("#descriptionArea").html("not implemented yet")
+
+    $.ajax({
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        url: "../../WebService.svc/getReviews",
+        data: JSON.stringify({
+            productId: productId,
+        }),
+        processData: true,
+        dataType: "json",
+        async: false,
+        success: function (response) {
+            var reviews = JSON.parse(response.d);
+            if (reviews.length != 0) {
+                $("#descriptionArea").append("<div class='reviewsArea'></div>");
+                for (var i = 0; i < reviews.length; i++) {
+                    var reviewToRender = "<div class='reviewArea'><div class='reviewName'>" + reviews[i].name + "</div>";
+                    reviewToRender += "<div class='ratings'><p>";
+                    for (j = 0; j < reviews[i].stars; j++) {
+                        reviewToRender += '<span id="review" class="glyphicon glyphicon-star"></span>';
+                    }
+                    for (; j < 5; j++) {
+                        reviewToRender += '<span id="review" class="glyphicon glyphicon-star-empty"></span>';
+                    }
+                    reviewToRender += "</p></div>";
+                    reviewToRender += "<div class='reviewDescription'>" + reviews[i].comment + "</div></div>";
+                    $(".reviewsArea").append(reviewToRender);
+
+                }
+            }
+        },
+        error: function (errormsg) {
+            console.log(errormsg.responseText); alert("Error!");
+        }
+    });
+
+    var formReview = '<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#addReview">Add review</button> \
+          <div id="addReview" class="collapse"> \
+            <div class="form-group"> \
+                <label for="reviewName" class="requiredLabel">Name:</label></br> \
+                <input type="text" id="reviewName" /> </br> </br> \
+                <label for="review" class="requiredLabel">Review:</label> </br> \
+                <textarea id="review"></textarea> </br> </br> \
+                <label for="stars" class="requiredLabel">Stars:</label> </br> \
+                <div class="dropdown"> \
+                    <div id="drpStars" class="btn-group"> \
+                        <button id="displayStars" value="5" class="btn btn-default required" data-toggle="dropdown">5</button> \
+                        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span class="caret"></span></button> \
+                        <ul id="starsSelection" class="dropdown-menu"> \
+                            <li> <option value="1">1</option></li> \
+                            <li> <option value="2">2</option></li> \
+                            <li> <option value="3">3</option></li> \
+                            <li> <option value="4">4</option></li> \
+                            <li> <option value="5">5</option></li> \
+                        </ul> \
+                    </div> \
+                </div> </br> </br> \
+                <button type="button" class="btn btn-success" onclick="saveReview()">Save</button>\
+            </div> \
+          </div>'
+    $("#descriptionArea").append(formReview);
+
+    $('#starsSelection li option').on('click', function () {
+        $('#displayStars').text(this.innerHTML);
+        $('#displayStars').attr('value', this.value);
+    });
 }
+
+function saveReview() {
+    if (($("#addReview").find("input").val() == null || $("#addReview").find("input").val() == "")
+            || ($("#addReview").find("textarea").val() == null || $("#addReview").find("textarea").val() == "")) {
+        alert("Please fill all fields");
+        return;
+    }
+
+    var name = $("#addReview").find("input").val();
+    var review = $("#addReview").find("textarea").val();
+    var stars = $("#addReview").find("#displayStars").val();
+
+    $.ajax({
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        url: "../../WebService.svc/insertReview",
+        data: JSON.stringify({
+            productId: productId,
+            name: name,
+            review: review,
+            stars: stars
+        }),
+        processData: true,
+        dataType: "json",
+        success: function (response) {
+            $("#descriptionArea").html("Your review was sent!");
+        },
+        error: function (errormsg) {
+            console.log(errormsg.responseText); alert("Error!");
+        }
+    });
+}
+
 
 function addToFavorite() {
     //to be implemented
-    alert("add to favorite")
+    alert("not implemented yet")
 
     //check if logged in
     //write to a new table

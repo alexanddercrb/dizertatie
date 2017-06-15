@@ -182,6 +182,26 @@ namespace Business.Queries
             }
         }
 
+        public static List<review> getReviews(int productId)
+        {
+            using (DB_entities db = new DB_entities())
+            {
+                try
+                {
+                    var result = from e in db.reviews
+                                 where e.product_id == productId
+                                 orderby e.id descending
+                                 select e;
+                    return result.ToList();
+                }
+                catch (Exception ex)
+                {
+                    Log.error("getReviews - get.cs", DateTime.Now, ex);
+                    return null;
+                }
+            }
+        }
+
 
     }
 }

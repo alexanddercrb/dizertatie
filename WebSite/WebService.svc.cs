@@ -159,7 +159,14 @@ namespace WebSite
         {
             return convertToJson(Get.getFilterValuesByType(id));
         }
-        
+
+        [OperationContract]
+        public string getReviews(int productId)
+        {
+            return convertToJson(Get.getReviews(productId));
+        }
+
+
         #endregion
 
         #region insert
@@ -199,6 +206,12 @@ namespace WebSite
                                     int price, int offer, int items, String[] uploadedImages)
         {
             Insert.addProduct(type, filters, name, code, specs, price, offer, items, uploadedImages);
+        }
+
+        [OperationContract]
+        public void insertReview(int productId, String name, String review, int stars)
+        {
+            Insert.insertReview(productId, name, review, stars);
         }
 
         #endregion

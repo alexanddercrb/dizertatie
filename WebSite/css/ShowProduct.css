@@ -134,6 +134,24 @@ div.section > #noOfItems > input {
     margin-bottom: 0;
 }
 
+#addReview input{
+    width: 30%;
+    min-width:125px;
+}
+
+#addReview textarea {
+    width: 50%;
+    min-width: 125px;
+    min-height: 125px;
+}
+
+.reviewArea{
+    padding: 10px;
+}
+
+.reviewsArea{
+    margin-bottom: 50px;
+}
 
 @media (max-width: 426px) {
     .container {margin-top:0px !important;}

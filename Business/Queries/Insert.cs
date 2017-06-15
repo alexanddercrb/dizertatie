@@ -278,25 +278,35 @@ namespace Business.Queries
             }
         }
 
-        /*
-        public static void test()
+        public static void insertReview(int productId, String name, String review, int stars)
         {
-            try
+            using (DB_entities db = new DB_entities())
             {
-                int cat = addCategory("Electronice");
-                int subcateg = addSubcategory("Audio", cat);
-                int tp = addType("Playere Audio", subcateg);
-                int filter = addFilter("iPod", tp);
-                int filt_val = addFilterValue("64gb", filter);
-                int prod = addProduct("iPod Nano", "iNano64", "iPod produs de Apple, etc.", 250, tp, 50, filt_val, null);
-                int rev = addReview("Alex", "un produs excelent", prod, 5);
-                int pic = addPicture("testPath", prod);
-            }
-            catch (Exception ex)
-            {
-                Log.error("test - Insert.cs", DateTime.Now, ex);
+                using (TransactionScope scope = new TransactionScope())
+                {
+
+
+
+                    review rev = new review();
+                    rev.name = name;
+                    rev.product_id = productId;
+                    rev.stars = stars;
+                    rev.comment = review;
+
+                    try
+                    {
+                        db.reviews.Add(rev);
+                        db.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.error("insertReview - Insert.cs", DateTime.Now, ex);
+                    }
+                    scope.Complete();
+                }
             }
         }
-        */
+
+
     }
 }

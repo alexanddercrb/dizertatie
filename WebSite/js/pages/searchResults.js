@@ -106,6 +106,7 @@ function createItem(productList, section, startingItem, itemsOnPage) {
         }
         $(item).find('#ProductTitle').html(list[i].name).attr('href', '/website/html/products/ShowProduct.html?id=' + list[i].id);
         $(item).find('#TeaserImage').attr("src", list[i].pics[0]);
+        $(item).find('#imageLink').attr("href", '/website/html/products/ShowProduct.html?id=' + list[i].id);
         var j = 1;
         for (j = 1; j <= list.stars; j++) {
             $(item).find('#review' + j).addClass('glyphicon-star');

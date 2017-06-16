@@ -12,6 +12,7 @@ function initSidebar() {
         data: "",
         processData: true,
         dataType: "json",
+        asyic: false,
         success: function (response) {
             populateCategories(response);
         },

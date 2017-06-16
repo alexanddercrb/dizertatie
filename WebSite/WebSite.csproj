@@ -72,6 +72,7 @@
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\ProductList.css" />
+    <Content Include="css\Register.css" />
     <Content Include="css\shop-homepage.css" />
     <Content Include="css\ShowProduct.css" />
     <Content Include="css\summernote.css" />
@@ -88,6 +89,8 @@
     <Content Include="html\forms\addType.html" />
     <Content Include="html\forms\addSubcategory.html" />
     <Content Include="html\forms\addCategory.html" />
+    <Content Include="html\forms\LogIn.html" />
+    <Content Include="html\forms\Register.html" />
     <Content Include="html\index.html" />
     <Content Include="html\Page_Base.html" />
     <Content Include="html\products\searchResults.html" />
@@ -95,6 +98,8 @@
     <Content Include="html\products\subSearch.html" />
     <Content Include="js\angular.js" />
     <Content Include="js\bootstrap.js" />
+    <Content Include="js\cookies.js" />
+    <Content Include="js\pages\Register.js" />
     <Content Include="js\pages\searchResultsSidebar.js" />
     <Content Include="js\pages\searchResults.js" />
     <Content Include="js\pages\ListByType.js" />

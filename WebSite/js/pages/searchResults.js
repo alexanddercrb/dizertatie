@@ -82,8 +82,6 @@ $(document).ready(function () {
                 $("#btnPrev").addClass("hidden");
             }
         });
-
-
 });
 
 

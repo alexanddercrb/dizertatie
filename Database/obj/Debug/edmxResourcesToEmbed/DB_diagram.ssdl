@@ -161,6 +161,7 @@
     <Property Name="location" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="phone" Type="varchar" MaxLength="12" Nullable="false" />
     <Property Name="email" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="50" />
   </EntityType>
   <Association Name="FK__customer___custo__398D8EEE">
     <End Role="users" Type="Self.users" Multiplicity="0..1" />

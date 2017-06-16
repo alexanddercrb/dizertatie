@@ -202,6 +202,51 @@ namespace Business.Queries
             }
         }
 
+        public static int checkEmail(String email)
+        {
+            using (DB_entities db = new DB_entities())
+            {
+                try
+                {
+                    var result = from e in db.users
+                                 where e.email == email
+                                 orderby e.id descending
+                                 select e;
+                    bool exists = result.Count() > 0;
+                    if (exists)
+                        return 1;
+                    else
+                        return 0;
+                }
+                catch (Exception ex)
+                {
+                    Log.error("getReviews - get.cs", DateTime.Now, ex);
+
+                    return -1;
+                }
+            }
+        }
+
+        public static int login(String email, String password)
+        {
+            using (DB_entities db = new DB_entities())
+            {
+                try
+                {
+                    var result = from e in db.users
+                                 where e.email == email && e.password == password
+                                 orderby e.id descending
+                                 select e;
+                    return result.FirstOrDefault().id;
+                }
+                catch (Exception ex)
+                {
+                    Log.error("login - get.cs", DateTime.Now, ex);
+                    return -1;
+                }
+            }
+        }
+
 
     }
 }

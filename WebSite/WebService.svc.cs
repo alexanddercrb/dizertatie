@@ -166,6 +166,17 @@ namespace WebSite
             return convertToJson(Get.getReviews(productId));
         }
 
+        [OperationContract]
+        public int checkEmail(String email)
+        {
+            return Get.checkEmail(email);
+        }
+
+        [OperationContract]
+        public int login(String email, String password)
+        {
+            return Get.login(email, password);
+        }
 
         #endregion
 
@@ -212,6 +223,12 @@ namespace WebSite
         public void insertReview(int productId, String name, String review, int stars)
         {
             Insert.insertReview(productId, name, review, stars);
+        }
+
+        [OperationContract]
+        public void addUser(String first_name, String last_name, String email, String password)
+        {
+            Insert.addUser(first_name, last_name, email, password);
         }
 
         #endregion

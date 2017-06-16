@@ -1,0 +1,19 @@
+﻿USE [disertatie]
+GO
+
+INSERT INTO [dbo].[privileges]
+           ([name])
+     VALUES
+           ('admin')
+GO
+
+
+INSERT INTO [dbo].[privileges]
+           ([name])
+     VALUES
+           ('customer')
+
+GO
+
+alter table [dbo].[users]
+add password varchar(50);

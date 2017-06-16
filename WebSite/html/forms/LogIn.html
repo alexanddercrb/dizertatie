@@ -1,0 +1,27 @@
+﻿<html>
+<head>
+        <script src="../../js/jquery.js" type="text/javascript"></script>
+        <script src="../../js/bootstrap.js" type="text/javascript"></script>
+        <script src="../../js/angular.js" type="text/javascript"></script>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/Register.css" rel="stylesheet">
+        <script src="../../js/pages/Register.js" type="text/javascript"></script>
+        <script src="../../js/cookies.js" type="text/javascript"></script>
+        <meta charset="utf-8" />
+</head>
+<body>
+    <div class="container">
+        <div class="main">
+            <form class="form" method="post" action="#">
+                <h2>Log in</h2>
+                <label>Email :</label>
+                <input type="text" name="demail" id="email">
+                <label>Password :</label>
+                <input type="password" name="password" id="password">
+                <input type="button" name="register" id="register" value="Login" onclick="validateAndLogin()">
+                <input type="button" name="cancel" id="cancel" value="Cancel" onclick="javascript: window.history.back();">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

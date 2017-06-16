@@ -26,6 +26,7 @@ namespace Database
         public string location { get; set; }
         public string phone { get; set; }
         public string email { get; set; }
+        public string password { get; set; }
     
         public virtual ICollection<customer_orders> customer_orders { get; set; }
         public virtual privilege privilege { get; set; }

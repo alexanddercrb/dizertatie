@@ -171,6 +171,7 @@
     <EntitySetMapping Name="users">
       <EntityTypeMapping TypeName="disertatieModel.user">
         <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="password" ColumnName="password" />
           <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="phone" ColumnName="phone" />
           <ScalarProperty Name="location" ColumnName="location" />

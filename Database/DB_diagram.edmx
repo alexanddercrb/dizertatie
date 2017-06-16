@@ -166,6 +166,7 @@
           <Property Name="location" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="phone" Type="varchar" MaxLength="12" Nullable="false" />
           <Property Name="email" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK__customer___custo__398D8EEE">
           <End Role="users" Type="Self.users" Multiplicity="0..1" />
@@ -746,6 +747,7 @@
           <Property Name="email" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="customer_orders" Relationship="disertatieModel.FK__customer___custo__398D8EEE" FromRole="user" ToRole="customer_orders" />
           <NavigationProperty Name="privilege" Relationship="disertatieModel.FK__users__privilege__2C3393D0" FromRole="user" ToRole="privilege" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK__subcatego__categ__1273C1CD">
           <End Type="disertatieModel.category" Role="category" Multiplicity="0..1" />
@@ -1127,6 +1129,7 @@
           <EntitySetMapping Name="users">
             <EntityTypeMapping TypeName="disertatieModel.user">
               <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="phone" ColumnName="phone" />
                 <ScalarProperty Name="location" ColumnName="location" />

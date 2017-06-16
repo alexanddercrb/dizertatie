@@ -32,9 +32,9 @@
             console.log(errormsg.responseText); alert("Error!");
         }
     });
-
-
 });
+
+
 
 function createFeaturedItem(str, section) {
     var list = JSON.parse(str.d);

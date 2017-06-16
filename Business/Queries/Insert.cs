@@ -307,6 +307,35 @@ namespace Business.Queries
             }
         }
 
+        public static void addUser(String first_name, String last_name, String email, String password)
+        {
+            using (DB_entities db = new DB_entities())
+            {
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    user usr = new user();
+                    usr.first_name = first_name;
+                    usr.last_name = last_name;
+                    usr.password = password;
+                    usr.email = email;
+                    usr.privileges = 2;
+                    usr.location = "";
+                    usr.phone = "";
+
+                    try
+                    {
+                        db.users.Add(usr);
+                        db.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.error("addUser - Insert.cs", DateTime.Now, ex);
+                    }
+                    scope.Complete();
+                }
+            }
+        }
+
 
     }
 }

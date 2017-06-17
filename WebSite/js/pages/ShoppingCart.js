@@ -36,8 +36,14 @@ $(document).ready(function () {
         dataType: "json",
         success: function (response) {
             createFeaturedItem(response);
-            $('.quantity .btn-group').on('click', function () {
-                alert("ai apasat dropdown-ul cu id-ul " + $(this).parent().parent().parent().parent().data("prodId"));
+
+            $('li option').on('click', function () {
+                $(this).parent().parent().parent().find('#displayQuantity').text(this.innerHTML);
+                $(this).parent().parent().parent().find('#displayQuantity').attr('value', this.value).trigger('change');
+            });
+
+            $('.quantity .btn-default').on('change', function () {
+                alert("ai apasat dropdown-ul cu id-ul " + $(this).parent().parent().parent().parent().parent().data("prodId"));
             })
         },
         error: function (errormsg) {

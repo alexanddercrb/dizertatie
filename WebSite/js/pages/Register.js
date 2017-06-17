@@ -89,6 +89,11 @@ function validateAndLogin() {
         processData: true,
         dataType: "json",
         success: function (result) {
+            if (result.d <= 0)
+            {
+                alert('Invalid credentials!');
+                return;
+            }
             writeCookie("customerId", result.d, 24);
             window.history.back();
         },
@@ -109,3 +114,11 @@ function ValidateEmail(email) {
         return true;
     }
 }
+
+$(document).ready(function () {
+    $(".form input").keyup(function (event) {
+        if (event.keyCode == 13) {
+            $("#register").click();
+        }
+    });
+})

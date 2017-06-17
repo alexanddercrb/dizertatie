@@ -7,15 +7,28 @@
     <script>
         $(document).ready(function () {
             if (readCookie('customerId') != "")
-                ;
+            {
+                $('#menuRegister').addClass('hidden');
+                $('#menuLogin').addClass('hidden');
+                $('#menuAccount').removeClass('hidden');
+                $('#menuLogout').removeClass('hidden');
+            }
                 //render header as expected
         });
+
         $("input.search").keyup(function (event) {
             if (event.keyCode == 13) {
                 $("button.search").click();
             }
         });
 
+        function logOut() {
+            writeCookie('customerId', '', 0)
+            $('#menuRegister').removeClass('hidden');
+            $('#menuLogin').removeClass('hidden');
+            $('#menuAccount').addClass('hidden');
+            $('#menuLogout').addClass('hidden');
+        }
     </script>
 </head>
 <body>
@@ -42,6 +55,22 @@
                     </li>
                     <li>
                         <a href="#">Contact</a>
+                    </li>
+                    <li id="menuCart">
+                        <a href="#">Shopping Cart</a>
+                    </li>
+                    <li id="menuRegister">
+                        <a href="/WebSite/html/forms/Register.html">Register</a>
+                    </li>
+                    <li id="menuLogin">
+                        <a href="/WebSite/html/forms/LogIn.html">Log In</a>
+                    </li>
+                    <li id="menuAccount" class="hidden">
+                        <a href="#">My Account</a>
+                    </li>
+
+                    <li id="menuLogout" class="hidden">
+                        <a href="javascript:logOut();">Log Out</a>
                     </li>
                 </ul>
             </div>

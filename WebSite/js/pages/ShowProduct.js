@@ -61,7 +61,11 @@ $(document).ready(function () {
 
     // Click on buy
     $("#buyNow").on("click", function () {
-        alert("to be implemented");
+        //addToCookie;
+        writeProductCookie('cartProducts', productId, $("#noOfItems").val());
+        var items = readCookie('cartProducts').split(',');
+        $("#cartItems").html(items.length - 1);
+        alert("Item added!");
     })
 
 })

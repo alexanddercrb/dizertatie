@@ -13,7 +13,16 @@
                 $('#menuAccount').removeClass('hidden');
                 $('#menuLogout').removeClass('hidden');
             }
-                //render header as expected
+
+            if (readCookie('cartProducts') != "") {
+                var items = readCookie('cartProducts').split(',');
+
+                $("#cartItems").html(items.length - 1);
+            }
+            else {
+                $("#cartItems").html("0");
+            }
+            //render header as expected
         });
 
         $("input.search").keyup(function (event) {
@@ -21,6 +30,8 @@
                 $("button.search").click();
             }
         });
+
+
 
         function logOut() {
             writeCookie('customerId', '', 0)
@@ -57,7 +68,11 @@
                         <a href="#">Contact</a>
                     </li>
                     <li id="menuCart">
-                        <a href="#">Shopping Cart</a>
+                        <a href="#">
+                            Shopping Cart (
+                            <div id="cartItems" class="inline">0</div>
+                            )
+                        </a>
                     </li>
                     <li id="menuRegister">
                         <a href="/WebSite/html/forms/Register.html">Register</a>

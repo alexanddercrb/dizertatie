@@ -94,7 +94,7 @@ function validateAndLogin() {
                 alert('Invalid credentials!');
                 return;
             }
-            writeCookie("customerId", result.d, 24);
+            writeCookie("customerId", result.d);
             window.history.back();
         },
         error: function (errormsg) {

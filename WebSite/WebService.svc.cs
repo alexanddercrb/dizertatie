@@ -184,6 +184,13 @@ namespace WebSite
             return Get.checkFavorite(productId, userId);
         }
 
+        [OperationContract]
+        public string returnCart(String[][] productList)
+        {
+            return convertToJson(Get.returnCart(productList));
+        }
+        
+
         #endregion
 
         #region insert

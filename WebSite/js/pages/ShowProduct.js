@@ -61,8 +61,7 @@ $(document).ready(function () {
 
     // Click on buy
     $("#buyNow").on("click", function () {
-        //addToCookie;
-        writeProductCookie('cartProducts', productId, $("#noOfItems").val());
+        writeProductCookie('cartProducts', productId, $(".noOfItems").val());
         var items = readCookie('cartProducts').split(',');
         $("#cartItems").html(items.length - 1);
         alert("Item added!");
@@ -80,6 +79,11 @@ function initPage(product) {
         $("#productOffer").html("US $" + product.offer);
         $("#offer").removeClass("hidden");
         $("#productPrice").addClass("hasOffer");
+    }
+
+    if (product.items == '0')
+    {
+        $('#buyNow').attr('disabled', true).html('Out of stock').removeClass('btn-success').addClass('btn-warning');
     }
 
     if ($('.menu-items .active').html() == "Description")

@@ -4,7 +4,15 @@
 
 .left {
     text-align: left;
-} 
+}
+ 
+.floatLeft{
+    float:left;
+}
+
+.floatRight{
+    float:right;
+}
 
 .right {
     text-align: right;

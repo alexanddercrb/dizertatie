@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Database;
 using Logging;
+using Business.Entities;
 
 namespace Business.Queries
 {
@@ -270,6 +271,55 @@ namespace Business.Queries
                     return -1;
                 }
             }
+        }
+
+        public static List<Product> returnCart(String[][] productList)
+        {
+            List<Product> prods = new List<Product>();
+            using (var db = new DB_entities())
+            {
+                int[] prodIds = new int[productList.Length];
+                for (int i = 0; i < productList.Length; i++)
+                    prodIds[i] = Convert.ToInt32(productList[i][0]);
+
+
+                try
+                {
+                    var query = from a in db.products
+                                where prodIds.Contains(a.id)
+                                orderby a.id descending
+                                select a;
+
+                    foreach (var item in query)
+                    {
+                        Product prod = new Product();
+                        prod.id = item.id;
+                        prod.name = item.name;
+                        prod.code = item.code;
+                        prod.price = item.price;
+                        prod.offer = item.offer;
+                        prod.specs = item.specs;
+                        prod.items = Convert.ToInt32(productList[Array.IndexOf(prodIds,prod.id)][1]);
+
+                        List<pic> pictures = db.pics.Where(x => x.product_id == prod.id).ToList();
+                        int i = 0;
+                        prod.pics = new string[15];
+                        foreach (var picture in pictures)
+                        {
+                            prod.pics[i] = picture.pic_path;
+                            i++;
+                        }
+
+                        prods.Add(prod);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Log.error("returnCart - Homepage.cs", DateTime.Now, ex);
+                    return null;
+                }
+            }
+            return prods;
         }
 
     }

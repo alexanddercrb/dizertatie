@@ -18,7 +18,6 @@ namespace Business.Queries
         {
             using (var db = new DB_entities())
             {
-                            // Display all Blogs from the database 
                 var query = from b in db.categories
                         select b;
 
@@ -38,7 +37,6 @@ namespace Business.Queries
             {
                 try
                 {
-                    // Display all Blogs from the database 
                     var query = from a in db.products
                                 orderby a.id descending
                                 select a;
@@ -82,7 +80,6 @@ namespace Business.Queries
             {
                 try
                 {
-                    // Display all Blogs from the database 
                     var query = from a in db.products
                                 where a.offer > 0
                                 orderby a.id descending
@@ -120,14 +117,13 @@ namespace Business.Queries
             return prods;
         }
 
-        public static List<Product> getProductsSub(int subcategoryId) //with filters (for subcategory search)
+        public static List<Product> getProductsSub(int subcategoryId)
         {
             List<Product> prods = new List<Product>();
             using (var db = new DB_entities())
             {
                 try
                 {
-                    // Display all Blogs from the database 
                     var query = from a in db.products
                                 join b in db.product_type on a.prodtype_id equals b.id
                                 join c in db.subcategories on b.subcategory_id equals c.id
@@ -167,14 +163,13 @@ namespace Business.Queries
             return prods;
         }
 
-        public static List<Product> getProductOffersSub(int subcategoryId) //with filters (for subcategory search)
+        public static List<Product> getProductOffersSub(int subcategoryId) 
         {
             List<Product> prods = new List<Product>();
             using (var db = new DB_entities())
             {
                 try
                 {
-                    // Display all Blogs from the database 
                     var query = from a in db.products
                                 join b in db.product_type on a.prodtype_id equals b.id
                                 join c in db.subcategories on b.subcategory_id equals c.id
@@ -214,7 +209,7 @@ namespace Business.Queries
             return prods;
         }
 
-        public static List<Product> returnProductsByType(int typeId, String startingPrice, String endingPrice, String sortBy, List<int> filtersSelected) //with filters (for subcategory search)
+        public static List<Product> returnProductsByType(int typeId, String startingPrice, String endingPrice, String sortBy, List<int> filtersSelected)
         {
             List<Product> prods = new List<Product>();
             using (var db = new DB_entities())

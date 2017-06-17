@@ -44,5 +44,6 @@ namespace Database
         public virtual DbSet<subcategory> subcategories { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<user> users { get; set; }
+        public virtual DbSet<userFavorite> userFavorites { get; set; }
     }
 }

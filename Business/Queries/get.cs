@@ -220,7 +220,7 @@ namespace Business.Queries
                 }
                 catch (Exception ex)
                 {
-                    Log.error("getReviews - get.cs", DateTime.Now, ex);
+                    Log.error("checkEmail - get.cs", DateTime.Now, ex);
 
                     return -1;
                 }
@@ -247,6 +247,30 @@ namespace Business.Queries
             }
         }
 
+        public static int checkFavorite(int productId, int userId)
+        {
+            using (DB_entities db = new DB_entities())
+            {
+                try
+                {
+                    var result = from e in db.userFavorites
+                                 where e.user_id == userId && e.product_id == productId
+                                 orderby e.id descending
+                                 select e;
+                    bool exists = result.Count() > 0;
+                    if (exists)
+                        return 1;
+                    else
+                        return 0;
+                }
+                catch (Exception ex)
+                {
+                    Log.error("checkFavorite - get.cs", DateTime.Now, ex);
+
+                    return -1;
+                }
+            }
+        }
 
     }
 }

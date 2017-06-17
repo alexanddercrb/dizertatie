@@ -20,6 +20,7 @@ namespace Database
             this.product_filters = new HashSet<product_filters>();
             this.product_list = new HashSet<product_list>();
             this.reviews = new HashSet<review>();
+            this.userFavorites = new HashSet<userFavorite>();
         }
     
         public int id { get; set; }
@@ -36,5 +37,6 @@ namespace Database
         public virtual ICollection<product_filters> product_filters { get; set; }
         public virtual ICollection<product_list> product_list { get; set; }
         public virtual ICollection<review> reviews { get; set; }
+        public virtual ICollection<userFavorite> userFavorites { get; set; }
     }
 }

@@ -337,5 +337,30 @@ namespace Business.Queries
         }
 
 
+        public static void addToFavorite(int productId, int userId)
+        {
+            using (DB_entities db = new DB_entities())
+            {
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    userFavorite fav = new userFavorite();
+                    fav.user_id = userId;
+                    fav.product_id = productId;
+
+                    try
+                    {
+                        db.userFavorites.Add(fav);
+                        db.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.error("addToFavorite - Insert.cs", DateTime.Now, ex);
+                    }
+                    scope.Complete();
+                }
+            }
+        }
+
+
     }
 }

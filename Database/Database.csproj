@@ -121,6 +121,9 @@
     <Compile Include="user.cs">
       <DependentUpon>DB_diagram.tt</DependentUpon>
     </Compile>
+    <Compile Include="userFavorite.cs">
+      <DependentUpon>DB_diagram.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -147,7 +150,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="scripts\01 - alter user, add roles.txt" />
+    <Content Include="scripts\03 - add userFavorites table.txt" />
+    <Content Include="scripts\02 - alter user, add roles.txt" />
     <Content Include="scripts\01 - tables creation.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

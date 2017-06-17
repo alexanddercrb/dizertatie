@@ -17,6 +17,7 @@ namespace Database
         public user()
         {
             this.customer_orders = new HashSet<customer_orders>();
+            this.userFavorites = new HashSet<userFavorite>();
         }
     
         public int id { get; set; }
@@ -30,5 +31,6 @@ namespace Database
     
         public virtual ICollection<customer_orders> customer_orders { get; set; }
         public virtual privilege privilege { get; set; }
+        public virtual ICollection<userFavorite> userFavorites { get; set; }
     }
 }

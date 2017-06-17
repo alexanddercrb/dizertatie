@@ -155,6 +155,14 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="userFavorites">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="users">
           <Key>
             <PropertyRef Name="id" />
@@ -360,6 +368,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__userFavor__produ__5DCAEF64">
+          <End Role="product" Type="Self.product" Multiplicity="1" />
+          <End Role="userFavorites" Type="Self.userFavorites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="userFavorites">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__userFavor__user___5CD6CB2B">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="userFavorites" Type="Self.userFavorites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="userFavorites">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__users__privilege__2C3393D0">
           <End Role="privileges" Type="Self.privileges" Multiplicity="1" />
           <End Role="users" Type="Self.users" Multiplicity="*" />
@@ -390,6 +422,7 @@
           <EntitySet Name="shipping" EntityType="Self.shipping" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="subcategory" EntityType="Self.subcategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userFavorites" EntityType="Self.userFavorites" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__customer___custo__398D8EEE" Association="Self.FK__customer___custo__398D8EEE">
             <End Role="users" EntitySet="users" />
@@ -454,6 +487,14 @@
           <AssociationSet Name="FK__subcatego__categ__1273C1CD" Association="Self.FK__subcatego__categ__1273C1CD">
             <End Role="category" EntitySet="category" />
             <End Role="subcategory" EntitySet="subcategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__userFavor__produ__5DCAEF64" Association="Self.FK__userFavor__produ__5DCAEF64">
+            <End Role="product" EntitySet="product" />
+            <End Role="userFavorites" EntitySet="userFavorites" />
+          </AssociationSet>
+          <AssociationSet Name="FK__userFavor__user___5CD6CB2B" Association="Self.FK__userFavor__user___5CD6CB2B">
+            <End Role="users" EntitySet="users" />
+            <End Role="userFavorites" EntitySet="userFavorites" />
           </AssociationSet>
           <AssociationSet Name="FK__users__privilege__2C3393D0" Association="Self.FK__users__privilege__2C3393D0">
             <End Role="privileges" EntitySet="privileges" />
@@ -550,6 +591,15 @@
           <AssociationSet Name="FK__product_t__subca__15502E78" Association="disertatieModel.FK__product_t__subca__15502E78">
             <End Role="subcategory" EntitySet="subcategories" />
             <End Role="product_type" EntitySet="product_type" />
+          </AssociationSet>
+          <EntitySet Name="userFavorites" EntityType="disertatieModel.userFavorite" />
+          <AssociationSet Name="FK__userFavor__produ__5DCAEF64" Association="disertatieModel.FK__userFavor__produ__5DCAEF64">
+            <End Role="product" EntitySet="products" />
+            <End Role="userFavorite" EntitySet="userFavorites" />
+          </AssociationSet>
+          <AssociationSet Name="FK__userFavor__user___5CD6CB2B" Association="disertatieModel.FK__userFavor__user___5CD6CB2B">
+            <End Role="user" EntitySet="users" />
+            <End Role="userFavorite" EntitySet="userFavorites" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="category">
@@ -661,6 +711,7 @@
           <NavigationProperty Name="product_filters" Relationship="disertatieModel.FK__product_f__produ__21B6055D" FromRole="product" ToRole="product_filters" />
           <NavigationProperty Name="product_list" Relationship="disertatieModel.FK__product_l__produ__3E52440B" FromRole="product" ToRole="product_list" />
           <NavigationProperty Name="reviews" Relationship="disertatieModel.FK__review__product___24927208" FromRole="product" ToRole="review" />
+          <NavigationProperty Name="userFavorites" Relationship="disertatieModel.FK__userFavor__produ__5DCAEF64" FromRole="product" ToRole="userFavorite" />
         </EntityType>
         <EntityType Name="product_filters">
           <Key>
@@ -748,6 +799,7 @@
           <NavigationProperty Name="customer_orders" Relationship="disertatieModel.FK__customer___custo__398D8EEE" FromRole="user" ToRole="customer_orders" />
           <NavigationProperty Name="privilege" Relationship="disertatieModel.FK__users__privilege__2C3393D0" FromRole="user" ToRole="privilege" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="userFavorites" Relationship="disertatieModel.FK__userFavor__user___5CD6CB2B" FromRole="user" ToRole="userFavorite" />
         </EntityType>
         <Association Name="FK__subcatego__categ__1273C1CD">
           <End Type="disertatieModel.category" Role="category" Multiplicity="0..1" />
@@ -953,6 +1005,40 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="userFavorite">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="product" Relationship="disertatieModel.FK__userFavor__produ__5DCAEF64" FromRole="userFavorite" ToRole="product" />
+          <NavigationProperty Name="user" Relationship="disertatieModel.FK__userFavor__user___5CD6CB2B" FromRole="userFavorite" ToRole="user" />
+        </EntityType>
+        <Association Name="FK__userFavor__produ__5DCAEF64">
+          <End Type="disertatieModel.product" Role="product" Multiplicity="1" />
+          <End Type="disertatieModel.userFavorite" Role="userFavorite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="userFavorite">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__userFavor__user___5CD6CB2B">
+          <End Type="disertatieModel.user" Role="user" Multiplicity="1" />
+          <End Type="disertatieModel.userFavorite" Role="userFavorite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="userFavorite">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1136,6 +1222,15 @@
                 <ScalarProperty Name="privileges" ColumnName="privileges" />
                 <ScalarProperty Name="last_name" ColumnName="last_name" />
                 <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userFavorites">
+            <EntityTypeMapping TypeName="disertatieModel.userFavorite">
+              <MappingFragment StoreEntitySet="userFavorites">
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

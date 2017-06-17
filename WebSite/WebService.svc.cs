@@ -178,6 +178,12 @@ namespace WebSite
             return Get.login(email, password);
         }
 
+        [OperationContract]
+        public int checkFavorite(int productId, int userId)
+        {
+            return Get.checkFavorite(productId, userId);
+        }
+
         #endregion
 
         #region insert
@@ -229,6 +235,12 @@ namespace WebSite
         public void addUser(String first_name, String last_name, String email, String password)
         {
             Insert.addUser(first_name, last_name, email, password);
+        }
+
+        [OperationContract]
+        public void addToFavorite(int productId, int userId)
+        {
+            Insert.addToFavorite(productId, userId);
         }
 
         #endregion

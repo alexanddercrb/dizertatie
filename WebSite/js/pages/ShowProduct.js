@@ -231,10 +231,61 @@ function saveReview() {
 
 
 function addToFavorite() {
-    //to be implemented
-    alert("not implemented yet")
+    if (readCookie('customerId') != "") {
 
-    //check if logged in
-    //write to a new table
-    //show confirmation message
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            url: "../../WebService.svc/checkFavorite",
+            data: JSON.stringify({
+                productId: productId,
+                userId: readCookie('customerId')
+            }),
+            processData: true,
+            dataType: "json",
+            success: function (response) {
+                if (response.d == 1) {
+                    alert("The item is already in your list!");
+                    return;
+                }
+                if (response.d == 0) {
+                    insertFavorite(productId, readCookie('customerId'));
+                }
+                if (response.d == -1) {
+                    alert("Error while checking the favorite list. Contact our administrators.");
+                    return;
+                }
+            },
+            error: function (errormsg) {
+                console.log(errormsg.responseText); alert("Error!");
+            }
+        });
+
+    }
+    else {
+        alert("You must be logged in!")
+    }
+}
+
+
+function insertFavorite(productId, userId) {
+
+    $.ajax({
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        url: "../../WebService.svc/addToFavorite",
+        data: JSON.stringify({
+            productId: productId,
+            userId: userId
+            }),
+        processData: true,
+        dataType: "json",
+        success: function () {
+            alert("Item added to your favorite list!")
+        },
+        error: function (errormsg) {
+            console.log(errormsg.responseText); alert("Error!");
+        }
+    });
+
 }

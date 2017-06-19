@@ -5,17 +5,17 @@
     var password = $("#password").val();
     var cpassword = $("#cpassword").val();
     if (first_name == '' || last_name == '' || email == '' || password == '' || cpassword == '') {
-        alert("Please fill all fields!");
+        bootbox.alert("Please fill all fields!");
         return;
     }
     else if (!ValidateEmail(email)) {
-        alert("Please insert a valid email adress!");
+        bootbox.alert("Please insert a valid email adress!");
         return;
     } else if ((password.length) < 8) {
-        alert("Password should atleast 8 character in length!");
+        bootbox.alert("Password should atleast 8 character in length!");
         return;
     } else if (!(password).match(cpassword)) {
-        alert("Your passwords don't match. Try again?");
+        bootbox.alert("Your passwords don't match. Try again?");
         return;
     }
     checkEmailRegistered(first_name, last_name, email, password);
@@ -32,7 +32,7 @@ function checkEmailRegistered(first_name, last_name, email, password) {
         dataType: "json",
         success: function (result) {
             if (result.d == 1) {
-                alert("The email address is already used");
+                bootbox.alert("The email address is already used");
                 return;
             }
             if (result.d == 0)
@@ -41,12 +41,12 @@ function checkEmailRegistered(first_name, last_name, email, password) {
             }
             if (result.d == -1)
             {
-                alert("Error while checking the email address. Contact our administrators.");
+                bootbox.alert("Error while checking the email address. Contact our administrators.");
                 return;
             }
         },
         error: function (errormsg) {
-            console.log(errormsg.responseText); alert("Error!");
+            console.log(errormsg.responseText); bootbox.alert("Error!");
         }
     });
 }
@@ -60,11 +60,11 @@ function insertUser(first_name, last_name, email, password) {
         processData: true,
         dataType: "json",
         success: function () {
-            alert("Registration complete!");
+            bootbox.alert("Registration complete!");
             window.location.replace("../../html/forms/LogIn.html");
         },
         error: function (errormsg) {
-            console.log(errormsg.responseText); alert("Error!");
+            console.log(errormsg.responseText); bootbox.alert("Error!");
         }
     });
 }
@@ -73,11 +73,11 @@ function validateAndLogin() {
     var email = $("#email").val();
     var password = $("#password").val();
     if (email == '' || password == '') {
-        alert("Please fill all fields!");
+        bootbox.alert("Please fill all fields!");
         return;
     }
     else if (!ValidateEmail(email)) {
-        alert("Please insert a valid email adress!");
+        bootbox.alert("Please insert a valid email adress!");
         return;
     }
 
@@ -91,14 +91,14 @@ function validateAndLogin() {
         success: function (result) {
             if (result.d <= 0)
             {
-                alert('Invalid credentials!');
+                bootbox.alert('Invalid credentials!');
                 return;
             }
             writeCookie("customerId", result.d);
             window.history.back();
         },
         error: function (errormsg) {
-            console.log(errormsg.responseText); alert("Error!");
+            console.log(errormsg.responseText); bootbox.alert("Error!");
         }
     });
 }

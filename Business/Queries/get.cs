@@ -299,7 +299,7 @@ namespace Business.Queries
                         prod.price = item.price;
                         prod.offer = item.offer;
                         prod.specs = item.specs;
-                        prod.items = Convert.ToInt32(productList[Array.IndexOf(prodIds,prod.id)][1]);
+                        prod.items = item.items;
 
                         List<pic> pictures = db.pics.Where(x => x.product_id == prod.id).ToList();
                         int i = 0;

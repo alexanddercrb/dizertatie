@@ -42,7 +42,7 @@ function initSidebar() {
             populateTypes(response);
         },
         error: function (errormsg) {
-            console.log(errormsg.responseText); alert("Error!");
+            console.log(errormsg.responseText); bootbox.alert("Error!");
         }
     });
 
@@ -57,7 +57,7 @@ function initSidebar() {
             populatesubValues(response);
         },
         error: function (errormsg) {
-            console.log(errormsg.responseText); alert("Error!");
+            console.log(errormsg.responseText); bootbox.alert("Error!");
         }
     });
 

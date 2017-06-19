@@ -35,7 +35,7 @@ $(document).ready(function () {
             createNavigPath(response);
         },
         error: function (errormsg) {
-            console.log(errormsg.responseText); alert("Error!");
+            console.log(errormsg.responseText); bootbox.alert("Error!");
         }
     });
 
@@ -65,7 +65,7 @@ $(document).ready(function () {
                 $("#btnNext").removeClass("hidden");
         },
         error: function (errormsg) {
-            console.log(errormsg.responseText); alert("Error!");
+            console.log(errormsg.responseText); bootbox.alert("Error!");
         }
     });
 
@@ -128,7 +128,7 @@ function createNavigPath(str) {
             setCategoryInMenu(list1[0].id);
         },
         error: function (errormsg) {
-            console.log(errormsg.responseText); alert("Error!");
+            console.log(errormsg.responseText); bootbox.alert("Error!");
         }
     });
 }
@@ -147,7 +147,7 @@ function setCategoryInMenu(categId)
             $("#categoryMenuName").html(list1[0].name);
         },
         error: function (errormsg) {
-            console.log(errormsg.responseText); alert("Error!");
+            console.log(errormsg.responseText); bootbox.alert("Error!");
         }
     });
 }
@@ -239,7 +239,7 @@ function refreshProducts() {
             }
         },
         error: function (errormsg) {
-            console.log(errormsg.responseText); alert("Error!");
+            console.log(errormsg.responseText); bootbox.alert("Error!");
         }
     });
 }

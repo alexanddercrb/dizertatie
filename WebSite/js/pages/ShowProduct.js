@@ -24,7 +24,7 @@ $(document).ready(function () {
             initPage(product)
         },
         error: function (errormsg) {
-            console.log(errormsg.responseText); alert("Error!");
+            console.log(errormsg.responseText); bootbox.alert("Error!");
         }
     });
 
@@ -64,7 +64,7 @@ $(document).ready(function () {
         writeProductCookie('cartProducts', productId, $(".noOfItems").val());
         var items = readCookie('cartProducts').split(',');
         $("#cartItems").html(items.length - 1);
-        alert("Item added!");
+        bootbox.alert("Item added!");
     })
 
 })
@@ -122,7 +122,7 @@ function initPage(product) {
 
         },
         error: function (errormsg) {
-            console.log(errormsg.responseText); alert("Error!");
+            console.log(errormsg.responseText); bootbox.alert("Error!");
         }
     });
 }
@@ -169,7 +169,7 @@ function renderReviews() {
             }
         },
         error: function (errormsg) {
-            console.log(errormsg.responseText); alert("Error!");
+            console.log(errormsg.responseText); bootbox.alert("Error!");
         }
     });
 
@@ -208,7 +208,7 @@ function renderReviews() {
 function saveReview() {
     if (($("#addReview").find("input").val() == null || $("#addReview").find("input").val() == "")
             || ($("#addReview").find("textarea").val() == null || $("#addReview").find("textarea").val() == "")) {
-        alert("Please fill all fields");
+        bootbox.alert("Please fill all fields");
         return;
     }
 
@@ -232,7 +232,7 @@ function saveReview() {
             $("#descriptionArea").html("Your review was sent!");
         },
         error: function (errormsg) {
-            console.log(errormsg.responseText); alert("Error!");
+            console.log(errormsg.responseText); bootbox.alert("Error!");
         }
     });
 }
@@ -253,25 +253,25 @@ function addToFavorite() {
             dataType: "json",
             success: function (response) {
                 if (response.d == 1) {
-                    alert("The item is already in your list!");
+                    bootbox.alert("The item is already in your list!");
                     return;
                 }
                 if (response.d == 0) {
                     insertFavorite(productId, readCookie('customerId'));
                 }
                 if (response.d == -1) {
-                    alert("Error while checking the favorite list. Contact our administrators.");
+                    bootbox.alert("Error while checking the favorite list. Contact our administrators.");
                     return;
                 }
             },
             error: function (errormsg) {
-                console.log(errormsg.responseText); alert("Error!");
+                console.log(errormsg.responseText); bootbox.alert("Error!");
             }
         });
 
     }
     else {
-        alert("You must be logged in!")
+        bootbox.alert("You must be logged in!")
     }
 }
 
@@ -289,10 +289,10 @@ function insertFavorite(productId, userId) {
         processData: true,
         dataType: "json",
         success: function () {
-            alert("Item added to your favorite list!")
+            bootbox.alert("Item added to your favorite list!")
         },
         error: function (errormsg) {
-            console.log(errormsg.responseText); alert("Error!");
+            console.log(errormsg.responseText); bootbox.alert("Error!");
         }
     });
 

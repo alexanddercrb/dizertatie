@@ -17,7 +17,7 @@ function initSidebar() {
             populateCategories(response);
         },
         error: function (errormsg) {
-            console.log(errormsg.responseText); alert("Error!");
+            console.log(errormsg.responseText); bootbox.alert("Error!");
         }
     });
 
@@ -32,7 +32,7 @@ function initSidebar() {
             populateSubcategories(response);
         },
         error: function (errormsg) {
-            console.log(errormsg.responseText); alert("Error!");
+            console.log(errormsg.responseText); bootbox.alert("Error!");
         }
     });
 }

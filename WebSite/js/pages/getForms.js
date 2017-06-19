@@ -49,7 +49,7 @@
                 populateCategories(response);
             },
             error: function (errormsg) {
-                console.log(errormsg.responseText); alert("Error!");
+                console.log(errormsg.responseText); bootbox.alert("Error!");
             }
         });
     }
@@ -68,11 +68,11 @@
             processData: true,
             dataType: "json",
             success: function () {
-                alert("Success!");
+                bootbox.alert("Success!");
                 goBack();
             },
             error: function (errormsg) {
-                console.log(errormsg.responseText); alert("Error!");
+                console.log(errormsg.responseText); bootbox.alert("Error!");
             }
         });
     }
@@ -107,7 +107,7 @@
                 populateSubcategories(response);
             },
             error: function (errormsg) {
-                console.log(errormsg.responseText); alert("Error!");
+                console.log(errormsg.responseText); bootbox.alert("Error!");
             }
         });
     }
@@ -127,11 +127,11 @@
             processData: true,
             dataType: "json",
             success: function () {
-                alert("Success!");
+                bootbox.alert("Success!");
                 goBack();
             },
             error: function (errormsg) {
-                console.log(errormsg.responseText); alert("Error!");
+                console.log(errormsg.responseText); bootbox.alert("Error!");
             }
         });
     }
@@ -172,7 +172,7 @@
                 populateTypes(response);
             },
             error: function (errormsg) {
-                console.log(errormsg.responseText); alert("Error!");
+                console.log(errormsg.responseText); bootbox.alert("Error!");
             }
         });
     }
@@ -192,11 +192,11 @@
             processData: true,
             dataType: "json",
             success: function () {
-                alert("Success!");
+                bootbox.alert("Success!");
                 goBack();
             },
             error: function (errormsg) {
-                console.log(errormsg.responseText); alert("Error!");
+                console.log(errormsg.responseText); bootbox.alert("Error!");
             }
         });
     }
@@ -237,7 +237,7 @@
                 populateFilter(response);
             },
             error: function (errormsg) {
-                console.log(errormsg.responseText); alert("Error!");
+                console.log(errormsg.responseText); bootbox.alert("Error!");
             }
         });
     }
@@ -257,11 +257,11 @@
             processData: true,
             dataType: "json",
             success: function () {
-                alert("Success!");
+                bootbox.alert("Success!");
                 goBack();
             },
             error: function (errormsg) {
-                console.log(errormsg.responseText); alert("Error!");
+                console.log(errormsg.responseText); bootbox.alert("Error!");
             }
         });
     }
@@ -300,7 +300,7 @@
                 populateFilterValues(response);
             },
             error: function (errormsg) {
-                console.log(errormsg.responseText); alert("Error!");
+                console.log(errormsg.responseText); bootbox.alert("Error!");
             }
         });
     }
@@ -320,11 +320,11 @@
             processData: true,
             dataType: "json",
             success: function () {
-                alert("Success!");
+                bootbox.alert("Success!");
                 goBack();
             },
             error: function (errormsg) {
-                console.log(errormsg.responseText); alert("Error!");
+                console.log(errormsg.responseText); bootbox.alert("Error!");
             }
         });
     }
@@ -415,11 +415,11 @@
             processData: true,
             dataType: "json",
             success: function () {
-                alert("Success!");
+                bootbox.alert("Success!");
                 goBack();
             },
             error: function (errormsg) {
-                console.log(errormsg.responseText); alert("Error!");
+                console.log(errormsg.responseText); bootbox.alert("Error!");
             }
         });
         

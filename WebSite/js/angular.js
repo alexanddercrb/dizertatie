@@ -14557,7 +14557,7 @@ var objectValueOf = {}.constructor.prototype.valueOf;
 //
 // As an example, consider the following Angular expression:
 //
-//   {}.toString.constructor('alert("evil JS code")')
+//   {}.toString.constructor('bootbox.alert("evil JS code")')
 //
 // It is important to realize that if you create an expression from a string that contains user provided
 // content then it is possible that your application contains a security vulnerability to an XSS style attack.
@@ -16518,9 +16518,9 @@ function $ParseProvider() {
  *
  *   var promise = asyncGreet('Robin Hood');
  *   promise.then(function(greeting) {
- *     alert('Success: ' + greeting);
+ *     bootbox.alert('Success: ' + greeting);
  *   }, function(reason) {
- *     alert('Failed: ' + reason);
+ *     bootbox.alert('Failed: ' + reason);
  *   });
  * ```
  *
@@ -16559,11 +16559,11 @@ function $ParseProvider() {
  *
  *   var promise = asyncGreet('Robin Hood');
  *   promise.then(function(greeting) {
- *     alert('Success: ' + greeting);
+ *     bootbox.alert('Success: ' + greeting);
  *   }, function(reason) {
- *     alert('Failed: ' + reason);
+ *     bootbox.alert('Failed: ' + reason);
  *   }, function(update) {
- *     alert('Got notification: ' + update);
+ *     bootbox.alert('Got notification: ' + update);
  *   });
  * ```
  *
@@ -20341,7 +20341,7 @@ function urlIsSameOrigin(requestUrl) {
            .controller('ExampleController', ['$scope', '$window', function($scope, $window) {
              $scope.greeting = 'Hello, World!';
              $scope.doGreeting = function(greeting) {
-               $window.alert(greeting);
+               $window.bootbox.alert(greeting);
              };
            }]);
        </script>
@@ -26579,7 +26579,7 @@ var ngCloakDirective = ngDirective({
  *    }
  *
  *    SettingsController1.prototype.greet = function() {
- *      alert(this.name);
+ *      bootbox.alert(this.name);
  *    };
  *
  *    SettingsController1.prototype.addContact = function() {
@@ -26662,7 +26662,7 @@ var ngCloakDirective = ngDirective({
  *     ];
  *
  *     $scope.greet = function() {
- *       alert($scope.name);
+ *       bootbox.alert($scope.name);
  *     };
  *
  *     $scope.addContact = function() {

@@ -5,9 +5,11 @@
     <script src="../../js/bootstrap.js" type="text/javascript"></script>
     <script src="../../js/angular.js" type="text/javascript"></script>
     <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <script src="../../js/bootbox.min.js" type="text/javascript"></script>
     <link href="../../css/base.css" rel="stylesheet">
     <link href="../../css/ShoppingCart.css" rel="stylesheet">
     <script src="/WebSite/js/cookies.js" type="text/javascript"></script>
+    <script src="../../js/bootbox.min.js" type="text/javascript"></script>
 
     <script src="../../js/pages/ShoppingCart.js" type="text/javascript"></script>
 
@@ -68,12 +70,12 @@
                     </div>
                 </div>
                 <div class="quantity inline floatRight">
-                    Quantity
                     <div class="form-group">
                         <div class="dropdown">
+                            <label for="drpQuantity">Quantity</label>
                             <div id="drpQuantity" class="btn-group">
-                                <button id="displayQuantity" value="0" class="btn btn-default" data-toggle="dropdown">0</button>
-                                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span class="caret"></span></button>
+                                <button id="displayQuantity" value="0" class="btn btn-default floatLeft" data-toggle="dropdown">0</button>
+                                <button class="btn btn-default dropdown-toggle floatRight" type="button" data-toggle="dropdown"><span class="caret"></span></button>
                                 <ul id="listQuantitySelection" class="dropdown-menu">
                                     <li><option value="1">1</option></li>
                                     <li><option value="2">2</option></li>
@@ -97,6 +99,9 @@
                                     <li><option value="20">20</option></li>
 
                                 </ul>
+                            </div>
+                            <div class="inline floatRight">
+                                <button class="btn btn-danger glyphicon glyphicon-trash"> Remove</button>
                             </div>
                         </div>
                     </div>

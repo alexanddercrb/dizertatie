@@ -14,10 +14,10 @@
                 dataType: "json",
                 success: function (response) {
 
-                    alert(response.d);
+                    bootbox.alert(response.d);
                 },
                 error: function (errormsg) {
-                    console.log(errormsg.responseText); alert("Error!");
+                    console.log(errormsg.responseText); bootbox.alert("Error!");
                 }
             });
         });

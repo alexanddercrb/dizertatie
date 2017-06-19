@@ -14,7 +14,7 @@
         processData: false,
         contentType: false,
         error: function () {
-            alert("Upload error!");
+            bootbox.alert("Upload error!");
         }
     });
 }
@@ -48,7 +48,7 @@ $(document).ready(function() {
                 sendFile(file, obj);
             };
             img.onerror = function () {
-                alert("Not a valid file:" + file.type);
+                bootbox.alert("Not a valid file:" + file.type);
             };
             img.src = _URL.createObjectURL(file);
         }

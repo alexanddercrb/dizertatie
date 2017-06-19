@@ -55,8 +55,7 @@ function initPage()
 
                 $('.glyphicon-trash').on('click', function () {
                     var id = $(this).parent().parent().parent().parent().parent().data("prodId");
-                    var items = $(this).parent().parent().find('#displayQuantity').val();
-                    removeProductFromCookie('cartProducts', id, items);
+                    removeProductFromCookie('cartProducts', id);
                     var items = readCookie('cartProducts').split(',');
                     $("#cartItems").html(items.length - 1);
                     initPage();

@@ -189,8 +189,14 @@ namespace WebSite
         {
             return convertToJson(Get.returnCart(productList));
         }
-        
 
+        
+        [OperationContract]
+        [WebGet(ResponseFormat = WebMessageFormat.Json)] //remove for post
+        public string getShippings()
+        {
+            return convertToJson(Get.getShippings());
+        }
         #endregion
 
         #region insert

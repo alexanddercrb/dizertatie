@@ -322,5 +322,23 @@ namespace Business.Queries
             return prods;
         }
 
+
+        public static List<shipping> getShippings()
+        {
+            using (DB_entities db = new DB_entities())
+            {
+                try
+                {
+                    var result = from e in db.shippings orderby e.id ascending select e;
+                    return result.ToList();
+                }
+                catch (Exception ex)
+                {
+                    Log.error("getShippings - get.cs", DateTime.Now, ex);
+                    return null;
+                }
+            }
+        }
+
     }
 }

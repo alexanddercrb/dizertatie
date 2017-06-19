@@ -42,10 +42,10 @@ function writeProductCookie(name, product, items) {
         expires = "";
     }
     value = "";
-    if (readCookie(name) != "");
+    value = readCookie(name);
+    if (value != "");
     {
         var searchString = "productId:" + product;
-        value = readCookie(name);
         var prods = value.split(',');
         for (var i=0; i < prods.length; i++)
         {
@@ -59,7 +59,7 @@ function writeProductCookie(name, product, items) {
     document.cookie = name + "=" + value + expires + "; path=/";
 }
 
-function removeProductFromCookie(name, product, items) {
+function removeProductFromCookie(name, product) {
     var time = 12; //12h
     var date, expires;
     if (time) {
@@ -70,12 +70,18 @@ function removeProductFromCookie(name, product, items) {
     else {
         expires = "";
     }
+
     initialValue = "";
-    if (readCookie(name) != "");
+    value = readCookie(name);
+    if (value != "");
     {
-        initialValue = readCookie(name);
-        var value = "productId:" + product + "_" + "noOfItems:" + items + ",";
-        initialValue = initialValue.replace(value, "");
+        var searchString = "productId:" + product;
+        var prods = value.split(',');
+        for (var i = 0; i < prods.length; i++) {
+            if (prods[i].indexOf(searchString) >= 0) {
+                value = value.replace(prods[i] + ",", "");
+            }
+        }
 
     }
     

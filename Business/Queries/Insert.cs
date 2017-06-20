@@ -223,7 +223,7 @@ namespace Business.Queries
         }
 
         public static void addProduct(int type, int[] filters, String name,
-            String code, String specs, int price, int offer, int items, String[] uploadedImages)
+            String code, String specs, float price, float offer, int items, String[] uploadedImages)
         {
             using (DB_entities db = new DB_entities())
             {
@@ -360,6 +360,169 @@ namespace Business.Queries
                 }
             }
         }
+
+        public static void placeOrder(int[] productList, int[] noOfItems, String userId, int total, String first_name, String last_name, String address, String phone, String email, int shipping)
+        {
+            using (DB_entities db = new DB_entities())
+            {
+                if (String.IsNullOrEmpty(userId))
+                {
+                    using (TransactionScope scope = new TransactionScope())
+                    {
+                        //add order to DB
+                        order ord = new order();
+                        ord.first_name = first_name;
+                        ord.last_name = last_name;
+                        ord.location = address;
+                        ord.phone = phone;
+                        ord.email = email;
+                        ord.total = total;
+                        ord.status_id = 1; //order received
+                        ord.dt = DateTime.UtcNow;
+                        ord.shipping_id = shipping;
+
+
+
+                        try
+                        {
+                            db.orders.Add(ord);
+                            db.SaveChanges();
+
+                            int orderId = ord.id;
+
+                            //add to product_list
+                            try
+                            {
+                                for (int i = 0; i < productList.Length; i++)
+                                {
+                                    product_list prdList = new product_list();
+                                    prdList.order_id = orderId;
+                                    prdList.product_id = productList[i];
+                                    prdList.no_items = noOfItems[i];
+                                    int thisProdId = productList[i];
+
+                                    var theProd = (from e in db.products where e.id == thisProdId orderby e.id ascending select e).FirstOrDefault();
+
+                                    theProd.items = theProd.items - noOfItems[i]; //update the stock
+
+                                    if (theProd.offer > 0)
+                                    {
+                                        prdList.price = noOfItems[i] * theProd.offer;
+                                    }
+                                    else
+                                    {
+                                        prdList.price = noOfItems[i] * theProd.price;
+                                    }
+
+
+                                    db.product_list.Add(prdList);
+                                    db.SaveChanges();
+
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                Log.error("placeOrder (insert product_list - no user) - Insert.cs", DateTime.Now, ex);
+                            }
+
+                        }
+                        catch (Exception ex)
+                        {
+                            Log.error("placeOrder (insert order) - no user - Insert.cs", DateTime.Now, ex);
+                        }
+                        scope.Complete();
+
+                    }
+                }
+                else
+                {
+                    //convert user id to int;
+                    //insert in orders
+                    //decrease stocks
+                    //return order id
+                    //insert products into prod_list (get product price for sum)
+                    //insert into customer_orders
+                    int user = Convert.ToInt32(userId);
+
+                    using (TransactionScope scope = new TransactionScope())
+                    {
+                        //add order to DB
+                        order ord = new order();
+                        ord.first_name = first_name;
+                        ord.last_name = last_name;
+                        ord.location = address;
+                        ord.phone = phone;
+                        ord.email = email;
+                        ord.total = total;
+                        ord.status_id = 1; //order received
+                        ord.dt = DateTime.UtcNow;
+                        ord.shipping_id = shipping;
+                        
+                        try
+                        {
+                            db.orders.Add(ord);
+                            db.SaveChanges();
+
+                            int orderId = ord.id;
+
+                            //add to product_list
+                            try
+                            {
+                                for (int i = 0; i < productList.Length; i++)
+                                {
+                                    product_list prdList = new product_list();
+                                    prdList.order_id = orderId;
+                                    prdList.product_id = productList[i];
+                                    prdList.no_items = noOfItems[i];
+                                    int thisProdId = productList[i];
+
+                                    var theProd = (from e in db.products where e.id == thisProdId orderby e.id ascending select e).FirstOrDefault();
+
+                                    theProd.items = theProd.items - noOfItems[i]; //update the stock
+
+                                    if (theProd.offer > 0)
+                                    {
+                                        prdList.price = noOfItems[i] * theProd.offer;
+                                    }
+                                    else
+                                    {
+                                        prdList.price = noOfItems[i] * theProd.price;
+                                    }
+
+
+
+                                    db.product_list.Add(prdList);
+                                    db.SaveChanges();
+
+                                }
+
+                                //add to customer orders
+                                customer_orders custOrd = new customer_orders();
+                                custOrd.customer_id = user;
+                                custOrd.order_id = orderId;
+
+                                db.customer_orders.Add(custOrd);
+                                db.SaveChanges();
+
+                            }
+                            catch (Exception ex)
+                            {
+                                Log.error("placeOrder (insert product_list) - Insert.cs", DateTime.Now, ex);
+                            }
+
+                        }
+                        catch (Exception ex)
+                        {
+                            Log.error("placeOrder (insert order) - Insert.cs", DateTime.Now, ex);
+                        }
+                        scope.Complete();
+
+                    }
+                }
+
+            }
+        }
+
 
 
     }

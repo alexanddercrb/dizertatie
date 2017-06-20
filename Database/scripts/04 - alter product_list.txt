@@ -1,0 +1,2 @@
+﻿alter table [disertatie].[dbo].[product_list]
+add price real;

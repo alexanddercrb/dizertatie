@@ -153,6 +153,8 @@
     <Content Include="scripts\03 - add userFavorites table.txt" />
     <Content Include="scripts\02 - alter user, add roles.txt" />
     <Content Include="scripts\01 - tables creation.txt" />
+    <Content Include="scripts\04 - alter product_list.txt" />
+    <Content Include="scripts\05 - populate order_status.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

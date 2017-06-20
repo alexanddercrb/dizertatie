@@ -228,6 +228,7 @@
     <Property Name="no_items" Type="Int32" Nullable="false" />
     <NavigationProperty Name="order" Relationship="disertatieModel.FK__product_l__order__3D5E1FD2" FromRole="product_list" ToRole="order" />
     <NavigationProperty Name="product" Relationship="disertatieModel.FK__product_l__produ__3E52440B" FromRole="product_list" ToRole="product" />
+    <Property Name="price" Type="Single" />
   </EntityType>
   <EntityType Name="product_type">
     <Key>

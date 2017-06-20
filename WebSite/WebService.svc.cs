@@ -167,6 +167,12 @@ namespace WebSite
         }
 
         [OperationContract]
+        public string getCustomer(int id)
+        {
+            return convertToJson(Get.getCustomer(id));
+        }
+
+        [OperationContract]
         public int checkEmail(String email)
         {
             return Get.checkEmail(email);
@@ -233,7 +239,7 @@ namespace WebSite
 
         [OperationContract]
         public void addProduct(int type, int[] filters, String name, String code, String specs,
-                                    int price, int offer, int items, String[] uploadedImages)
+                                    float price, float offer, int items, String[] uploadedImages)
         {
             Insert.addProduct(type, filters, name, code, specs, price, offer, items, uploadedImages);
         }
@@ -256,11 +262,17 @@ namespace WebSite
             Insert.addToFavorite(productId, userId);
         }
 
-        #endregion
+        [OperationContract]
+        public void placeOrder(int[] productList, int[] noOfItems, String userId, int total, String first_name, String last_name, String address, String phone, String email, int shipping)
+        {
+            Insert.placeOrder(productList, noOfItems, userId, total, first_name, last_name, address, phone, email, shipping);
+        }
 
-        #endregion
+    #endregion
 
-        private string convertToJson(object obj)
+    #endregion
+
+    private string convertToJson(object obj)
         {
             JavaScriptSerializer js = new JavaScriptSerializer();
             string json = js.Serialize(obj);

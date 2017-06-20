@@ -18,6 +18,7 @@ namespace Database
         public Nullable<int> order_id { get; set; }
         public Nullable<int> product_id { get; set; }
         public int no_items { get; set; }
+        public Nullable<float> price { get; set; }
     
         public virtual order order { get; set; }
         public virtual product product { get; set; }

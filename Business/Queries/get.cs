@@ -340,5 +340,22 @@ namespace Business.Queries
             }
         }
 
+        public static user getCustomer(int id)
+        {
+            using (DB_entities db = new DB_entities())
+            {
+                try
+                {
+                    var result = from e in db.users orderby e.id ascending select e;
+                    return result.FirstOrDefault();
+                }
+                catch (Exception ex)
+                {
+                    Log.error("getCustomer - get.cs", DateTime.Now, ex);
+                    return null;
+                }
+            }
+        }
+
     }
 }

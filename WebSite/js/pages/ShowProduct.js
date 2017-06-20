@@ -73,10 +73,10 @@ $(document).ready(function () {
 
 function initPage(product) {
     $("#productName").html(product.name);
-    $("#productPrice").html("US $" + product.price)
+    $("#productPrice").html(product.price + " Ron")
     if (product.offer > 0)
     {
-        $("#productOffer").html("US $" + product.offer);
+        $("#productOffer").html(product.offer + " Ron");
         $("#offer").removeClass("hidden");
         $("#productPrice").addClass("hasOffer");
     }

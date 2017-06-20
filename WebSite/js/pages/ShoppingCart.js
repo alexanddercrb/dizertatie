@@ -1,5 +1,5 @@
 ﻿var productList;
-
+var list;
 
 $(document).ready(function () {
 
@@ -71,7 +71,7 @@ function initPage()
 
 
 function createFeaturedItem(str, section) {
-    var list = JSON.parse(str.d);
+    list = JSON.parse(str.d);
 
     for (var i = 0; i < list.length; i++) {
 
@@ -105,7 +105,6 @@ function createFeaturedItem(str, section) {
 
 function createTotal(response)
 {
-    var list = JSON.parse(response.d);
     var sum = 0;
 
     for (var i = 0; i < list.length; i++) {
@@ -123,4 +122,20 @@ function createTotal(response)
 
     var total = "<div class='totalArea col-md-12 right'> <h3><b>TOTAL: </b>" + sum + "Ron</h3></div>";
     $('#cartProducts').append(total);
+}
+
+
+function nextStep() { //update cookie for available stock
+
+    writeCookie('cartProducts','');
+    for (var i = 0; i < list.length; i++)
+    {
+        if (parseInt(productList[i][1]) <= list[i].items)
+            writeProductCookie('cartProducts', list[i].id, parseInt(productList[i][1]));
+        else {
+            writeProductCookie('cartProducts', list[i].id, list[i].items);
+        }
+    }
+
+    window.location.replace('PlaceOrder.html');
 }

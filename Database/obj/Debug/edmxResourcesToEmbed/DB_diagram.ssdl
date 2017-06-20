@@ -105,6 +105,7 @@
     <Property Name="order_id" Type="int" />
     <Property Name="product_id" Type="int" />
     <Property Name="no_items" Type="int" Nullable="false" />
+    <Property Name="price" Type="real" />
   </EntityType>
   <EntityType Name="product_type">
     <Key>

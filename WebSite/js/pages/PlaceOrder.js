@@ -1,5 +1,6 @@
 ﻿var productList;
 var sum = 0;
+var list;
 
 $(document).ready(function () {
 
@@ -31,6 +32,25 @@ function initPage()
             productList[prodIndex][1] = prodAttr[1].substring(prodAttr[1].indexOf(":") + 1);
             prodIndex++;
         }
+
+        if (readCookie('customerId') != '') {
+            $.ajax({
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                url: "../../WebService.svc/getCustomer",
+                data: JSON.stringify({ id: readCookie('customerId') }),
+                processData: true,
+                dataType: "json",
+                success: function (response) {
+                    if (response.d != null)
+                        initAccountDetails(response);
+                },
+                error: function (errormsg) {
+                    console.log(errormsg.responseText); bootbox.alert("Error!");
+                }
+            });
+        }
+        
 
         $.ajax({
             type: "POST",
@@ -68,7 +88,7 @@ function initPage()
 
 function createTotal(response)
 {
-    var list = JSON.parse(response.d);
+    list = JSON.parse(response.d);
     sum = 0;
 
     for (var i = 0; i < list.length; i++) {
@@ -114,11 +134,87 @@ function displayTotal(shipping) {
     $('#orderDetails').append(total);
 }
 
+function initAccountDetails(response) {
+    var user = JSON.parse(response.d);
+    $('#firstName').val(user.first_name);
+    $('#lastName').val(user.last_name);
+    $('#address').val(user.location);
+    $('#phone').val(user.phone);
+    $('#email').val(user.email);
+}
 
 function placeOrder() {
-    //check fields
+    if (validateRequired() == 1)
+        return;
+
     //check stocks
-    //write to database
-    //show confirmation message
-    alert("to be implemented");
+    for (var i = 0; i < list.length; i++) {
+        if (parseInt(productList[i][1]) > list[i].items) //not enough stock
+        {
+            bootbox.alert('Our stocks changed, please review your cart!');
+            window.location.replace('ShoppingCart.html');
+            return;
+        }
+    }
+
+
+    var prods = new Array(list.length);
+    var noOfItems = new Array(list.length);
+
+    for (var i = 0; i < list.length; i++) {
+        prods[i] = productList[i][0];
+        noOfItems[i] = productList[i][1];
+    }
+
+
+
+    $.ajax({
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        url: "../../WebService.svc/placeOrder",
+        data: JSON.stringify({
+            productList: prods,
+            noOfItems : noOfItems,
+            userId: readCookie('customerId'),
+            total: parseInt($('input[type=radio]:checked').val()) + sum,
+            first_name: $('#firstName').val(),
+            last_name: $('#lastName').val(),
+            address: $('#address').val(),
+            phone: $('#phone').val(),
+            email: $('#email').val(),
+            shipping: parseInt($('input[type=radio]:checked').attr('id'))
+        }),
+        processData: true,
+        dataType: "json",
+        success: function (response) {
+            writeCookie('cartProducts', ''); //reset cart
+            bootbox.alert("Your order was received");
+            window.location.replace('../index.html');
+        },
+        error: function (errormsg) {
+            console.log(errormsg.responseText); bootbox.alert("Error!");
+        }
+    });
+
+    
+}
+
+function writeToDb() {
+
+}
+
+function validateRequired() {
+    var status = 0;
+    $(".required").each(function () {
+        if (this.value == "")
+            status = 1;
+    });
+
+    if ($('input[type=radio]:checked').length == 0)
+        status = 1;
+
+    if (status == 1)
+        bootbox.alert('Please fill all fields!')
+
+    return status;
 }

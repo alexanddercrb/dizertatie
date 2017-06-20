@@ -110,6 +110,7 @@
           <Property Name="order_id" Type="int" />
           <Property Name="product_id" Type="int" />
           <Property Name="no_items" Type="int" Nullable="false" />
+          <Property Name="price" Type="real" />
         </EntityType>
         <EntityType Name="product_type">
           <Key>
@@ -733,6 +734,7 @@
           <Property Name="no_items" Type="Int32" Nullable="false" />
           <NavigationProperty Name="order" Relationship="disertatieModel.FK__product_l__order__3D5E1FD2" FromRole="product_list" ToRole="order" />
           <NavigationProperty Name="product" Relationship="disertatieModel.FK__product_l__produ__3E52440B" FromRole="product_list" ToRole="product" />
+          <Property Name="price" Type="Single" />
         </EntityType>
         <EntityType Name="product_type">
           <Key>
@@ -1156,6 +1158,7 @@
           <EntitySetMapping Name="product_list">
             <EntityTypeMapping TypeName="disertatieModel.product_list">
               <MappingFragment StoreEntitySet="product_list">
+                <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="no_items" ColumnName="no_items" />
                 <ScalarProperty Name="product_id" ColumnName="product_id" />
                 <ScalarProperty Name="order_id" ColumnName="order_id" />

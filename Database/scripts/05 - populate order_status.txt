@@ -1,0 +1,19 @@
+﻿USE [disertatie]
+GO
+
+INSERT INTO [dbo].[order_status]
+           ([name])
+     VALUES
+           ('Received')
+GO
+
+INSERT INTO [dbo].[order_status]
+           ([name])
+     VALUES
+           ('Confirmed')
+GO
+
+INSERT INTO [dbo].[order_status]
+           ([name])
+     VALUES
+           ('Sent')

@@ -112,6 +112,7 @@
     <EntitySetMapping Name="product_list">
       <EntityTypeMapping TypeName="disertatieModel.product_list">
         <MappingFragment StoreEntitySet="product_list">
+          <ScalarProperty Name="price" ColumnName="price" />
           <ScalarProperty Name="no_items" ColumnName="no_items" />
           <ScalarProperty Name="product_id" ColumnName="product_id" />
           <ScalarProperty Name="order_id" ColumnName="order_id" />

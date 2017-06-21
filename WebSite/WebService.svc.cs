@@ -268,11 +268,22 @@ namespace WebSite
             Insert.placeOrder(productList, noOfItems, userId, total, first_name, last_name, address, phone, email, shipping);
         }
 
-    #endregion
+        #endregion
 
-    #endregion
+        #endregion
 
-    private string convertToJson(object obj)
+        #region Update
+
+        [OperationContract]
+        public void updateUser(int id, String first_name, String last_name, String address, String phone, String email)
+        {
+            Update.updateUser(id, first_name, last_name, address, phone, email);
+        }
+
+        #endregion
+
+
+        private string convertToJson(object obj)
         {
             JavaScriptSerializer js = new JavaScriptSerializer();
             string json = js.Serialize(obj);

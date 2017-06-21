@@ -4,9 +4,6 @@ var list;
 
 $(document).ready(function () {
 
-    //check if is logged in
-    //if is, autocomplete fields
-
     initPage();
 
 });

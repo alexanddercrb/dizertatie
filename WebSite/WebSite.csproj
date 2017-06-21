@@ -77,7 +77,7 @@
     <Content Include="css\shop-homepage.css" />
     <Content Include="css\ShowProduct.css" />
     <Content Include="css\summernote.css" />
-    <Content Include="html\admin\profile.html" />
+    <Content Include="html\admin\userProfile.html" />
     <Content Include="html\base_template.html" />
     <Content Include="html\common\footer.html" />
     <Content Include="html\common\header.html" />
@@ -121,6 +121,7 @@
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\pages\getForms.js" />
     <Content Include="js\pages\index.js" />
+    <Content Include="js\pages\userProfile.js" />
     <Content Include="js\pages\userSidebar.js" />
     <Content Include="js\summernote.js" />
     <Content Include="Media\Images\Default\defaultUpload.jpg" />

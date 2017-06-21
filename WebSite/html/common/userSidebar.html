@@ -1,0 +1,35 @@
+﻿<header>
+    <script src="/WebSite/js/pages/userSidebar.js" type="text/javascript"></script>
+</header>
+
+<div class="sidebar-offcanvas" id="sidebar" role="navigation">
+    <ul class="nav">
+        <!-- customer related -->
+        <li><a href="/WebSite/html/admin/profile.html" class="userProfile">Profile</a></li>
+        <li><a href="#">Favorites</a></li>
+        <li><a href="#">Purchase history</a></li>
+
+        <!-- admin related -->
+        <li><a href="#">All orders</a></li>
+        <li><a href="#">Pending orders</a></li>
+        <li data-toggle="collapse" data-target="#insertMenu"><a href="#">Insert</a></li>
+        <ul id="insertMenu" class="collapse nav">
+            <li><a href="#">Categories</a></li>
+            <li><a href="#">Subcategories</a></li>
+            <li><a href="#" >Types</a></li>
+            <li><a href="#">Filters</a></li>
+            <li><a href="#">Filter Values</a></li>
+            <li><a href="#">Product</a></li>
+        </ul>
+
+        <li data-toggle="collapse" data-target="#editMenu"><a href="#">Edit / Delete</a></li>
+        <ul id="editMenu" class="collapse nav">
+            <li><a href="#">Category</a></li>
+            <li><a href="#">Subcategory</a></li>
+            <li><a href="#">Type</a></li>
+            <li><a href="#">Filter</a></li>
+            <li><a href="#">Filter Value</a></li>
+            <li><a href="#">Product</a></li>
+        </ul>
+    </ul>
+</div>

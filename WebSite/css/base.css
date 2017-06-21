@@ -119,3 +119,12 @@
     font-size: 60px;
     text-shadow: 2px 2px turquoise;
 }
+
+.sidebar-offcanvas .selectedMenu{
+    background-color:antiquewhite;
+}
+
+.sidebar-offcanvas .collapse.nav{
+    width:90%; 
+    margin-left:10%;
+}

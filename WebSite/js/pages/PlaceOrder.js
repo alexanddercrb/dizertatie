@@ -111,13 +111,12 @@ function createShipping(response) {
     if (list.lengt == 0)
         return;
 
-    var html = "<form>";
+    var html = "";
 
     for (var i = 0; i < list.length; i++) {
         html += "<label class='radio'><input type='radio' id='" + list[i].id + "' name='radio' value='" + list[i].cost + "'>" + list[i].name + " ( " + list[i].cost + "Ron)</label>"
     }
 
-    html += "</form>";
     $('#shipping').append(html);
 
     $('input[type=radio]').on('change', function () {

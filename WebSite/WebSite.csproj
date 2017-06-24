@@ -86,9 +86,14 @@
     <Content Include="html\common\ListByTypeSidebar.html" />
     <Content Include="html\common\HomepageSidebar.html" />
     <Content Include="html\common\userSidebar.html" />
+    <Content Include="html\forms\editFilterValue.html" />
+    <Content Include="html\forms\editFilter.html" />
+    <Content Include="html\forms\editType.html" />
     <Content Include="html\forms\addFilterValue.html" />
     <Content Include="html\forms\addFilter.html" />
     <Content Include="html\forms\addProduct.html" />
+    <Content Include="html\forms\editSubcategory.html" />
+    <Content Include="html\forms\editCategory.html" />
     <Content Include="html\forms\addType.html" />
     <Content Include="html\forms\addSubcategory.html" />
     <Content Include="html\forms\addCategory.html" />
@@ -105,6 +110,7 @@
     <Content Include="js\bootstrap.js" />
     <Content Include="js\cookies.js" />
     <Content Include="js\bootbox.min.js" />
+    <Content Include="js\pages\editForms.js" />
     <Content Include="js\pages\Register.js" />
     <Content Include="js\pages\searchResultsSidebar.js" />
     <Content Include="js\pages\searchResults.js" />

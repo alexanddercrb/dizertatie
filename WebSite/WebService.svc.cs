@@ -280,6 +280,36 @@ namespace WebSite
             Update.updateUser(id, first_name, last_name, address, phone, email);
         }
 
+        [OperationContract]
+        public void updateCategory(int id, String name)
+        {
+            Update.updateCategory(id, name);
+        }
+
+        [OperationContract]
+        public void updateSubcategory(int id, String name)
+        {
+            Update.updateSubcategory(id, name);
+        }
+
+        [OperationContract]
+        public void updateType(int id, String name)
+        {
+            Update.updateType(id, name);
+        }
+
+        [OperationContract]
+        public void updateFilter(int id, String name)
+        {
+            Update.updateFilter(id, name);
+        }
+
+        [OperationContract]
+        public void updateFilterValue(int id, String value)
+        {
+            Update.updateFilterValue(id, value);
+        }
+
         #endregion
 
 

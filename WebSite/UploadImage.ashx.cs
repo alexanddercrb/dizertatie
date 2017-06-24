@@ -20,10 +20,7 @@ namespace WebSite
             {
                 string dirFullPath = System.Web.Hosting.HostingEnvironment.MapPath(WebConfigurationManager.AppSettings["ProdImgPath"]);
                 string[] files;
-                int numFiles;
                 files = System.IO.Directory.GetFiles(dirFullPath);
-                numFiles = files.Length;
-                numFiles = numFiles + 1;
                 string str_image = "";
 
                 foreach (string s in context.Request.Files)
@@ -35,7 +32,7 @@ namespace WebSite
                     if (!string.IsNullOrEmpty(fileName))
                     {
                         fileExtension = Path.GetExtension(fileName);
-                        str_image = "product_" + numFiles.ToString() + fileExtension;
+                        str_image = "product_" + DateTime.Now.Millisecond.ToString() + DateTime.Now.Second.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Day.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString() + fileExtension;
                         string pathToSave_100 = dirFullPath + str_image;
                         file.SaveAs(pathToSave_100);
                     }

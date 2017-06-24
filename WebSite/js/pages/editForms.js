@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    if (readCookie('userType') == "2") {
+    if (readCookie('userType') != "1" || readCookie('userType') == "") {
         window.location.replace("../index.html");
         return;
     }

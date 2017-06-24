@@ -179,9 +179,9 @@ namespace WebSite
         }
 
         [OperationContract]
-        public int login(String email, String password)
+        public string login(String email, String password)
         {
-            return Get.login(email, password);
+            return convertToJson(Get.login(email, password));
         }
 
         [OperationContract]

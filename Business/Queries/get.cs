@@ -228,7 +228,7 @@ namespace Business.Queries
             }
         }
 
-        public static int login(String email, String password)
+        public static user login(String email, String password)
         {
             using (DB_entities db = new DB_entities())
             {
@@ -238,12 +238,12 @@ namespace Business.Queries
                                  where e.email == email && e.password == password
                                  orderby e.id descending
                                  select e;
-                    return result.FirstOrDefault().id;
+                    return result.FirstOrDefault();
                 }
                 catch (Exception ex)
                 {
                     Log.error("login - get.cs", DateTime.Now, ex);
-                    return -1;
+                    return null;
                 }
             }
         }

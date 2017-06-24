@@ -89,12 +89,14 @@ function validateAndLogin() {
         processData: true,
         dataType: "json",
         success: function (result) {
-            if (result.d <= 0)
+            if (result.d == null)
             {
                 bootbox.alert('Invalid credentials!');
                 return;
             }
-            writeCookie("customerId", result.d);
+            var user = JSON.parse(result.d);
+            writeCookie('customerId', user.id);
+            writeCookie("userType", user.privileges);
             window.history.back();
         },
         error: function (errormsg) {

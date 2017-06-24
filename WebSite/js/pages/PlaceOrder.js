@@ -195,10 +195,6 @@ function placeOrder() {
     
 }
 
-function writeToDb() {
-
-}
-
 function validateRequired() {
     var status = 0;
     $(".required").each(function () {

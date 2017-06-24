@@ -34,6 +34,7 @@ $(document).ready(function () {
         success: function (response) {
             productList = JSON.parse(response.d);
             if (productList.length == 0) {
+                $('#prods').html('<h4>Search results</h4> No products found');
                 return;
             }
             createItem(productList, sectionProds, 0, itemsOnPage);

@@ -78,7 +78,6 @@ function createFeaturedItem(str, section) {
         var template = $('#teaser-product').html();
         var item = $(template).clone();
 
-        console.log(item);
         //edit template
         $(item).find('#price').html(list[i].price + ' Ron');
         if (list[i].offer > 0) {

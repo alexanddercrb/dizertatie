@@ -25,9 +25,9 @@
             //render header as expected
         });
 
-        $("input.search").keyup(function (event) {
+        $(".searchDiv input.search").keyup(function (event) {
             if (event.keyCode == 13) {
-                $("button.search").click();
+                $(".searchDiv button.search").click();
             }
         });
 
@@ -85,7 +85,7 @@
             <!-- /.navbar-collapse -->
         </div>
 
-        <div class="row center searchDiv">
+        <div id="headerSearch" class="row center searchDiv">
                 <input class="col-xs-8 search" placeholder="Search for Products, Brands and more" name="">
                 <button class="col-xs-1 search" onclick="window.location.replace('/WebSite/Html/products/searchResults.html?search=' + $('input.search').val());">
                     <svg width="15px" height="15px">

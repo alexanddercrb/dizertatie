@@ -389,7 +389,7 @@
     }
 
 
-    function addProduct() {
+    function updateProduct() {
         if (validateRequired() == 1)
             return;
 
@@ -428,7 +428,7 @@
         $.ajax({
             type: "POST",
             contentType: "application/json; charset=utf-8",
-            url: "../../WebService.svc/addProduct",
+            url: "../../WebService.svc/updateProduct",
             data: JSON.stringify({
                 type: type,
                 filters: filters,
@@ -453,3 +453,58 @@
         
     }
 
+
+    function searchProd() {
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            url: "../../WebService.svc/returnSearchResults",
+            data: JSON.stringify({
+                searchString: $('#searchString').val(),
+                startingPrice: 0,
+                endingPrice: 999999,
+                sortBy: ""
+            }),
+            processData: true,
+            dataType: "json",
+            success: function (response) {
+                var productList = JSON.parse(response.d);
+                if (productList.length == 0) {
+                    $('#productDetails').html('No products found');
+                    return;
+                }
+                $('#productDetails').html('');
+                renderProdList(productList);
+            },
+            error: function (errormsg) {
+                console.log(errormsg.responseText); bootbox.alert("Error!");
+            }
+        });
+    }
+
+    function renderProdList(productList){
+        for (var i = 0; i < productList.length; i++) {
+
+            var template = $('#itemList').html();
+            var item = $(template).clone();
+
+            //edit template
+            $(item).find('#price').html(productList[i].price + ' Ron');
+            if (productList[i].offer > 0) {
+                $(item).find('#price').addClass("hasOffer");
+                $(item).find('#offer').html(productList[i].offer + ' Ron');
+                $(item).find('#offer').removeClass("hidden");
+            }
+            $(item).find('#ProdDisplay').data("prodId", productList[i].id); //sets the product id.
+            $(item).find('#ProductTitle').html(productList[i].name).attr('href', '/website/html/products/ShowProduct.html?id=' + productList[i].id);
+            $(item).find('#TeaserImage').attr("src", productList[i].pics[0]);
+            $(item).find('#imageLink').attr("href", '/website/html/products/ShowProduct.html?id=' + productList[i].id);
+            $(item).find('button').attr("onClick", 'editProduct("' + productList[i].id + '")');
+            $('#productDetails').append(item);
+        }
+    }
+
+    function editProduct(id)
+    {
+        alert(id);
+    }

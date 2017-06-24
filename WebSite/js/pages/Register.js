@@ -90,7 +90,7 @@ function validateAndLogin() {
         processData: true,
         dataType: "json",
         success: function (result) {
-            if (result.d == null)
+            if (result.d == null || result.d == "null")
             {
                 bootbox.alert('Invalid credentials!');
                 return;

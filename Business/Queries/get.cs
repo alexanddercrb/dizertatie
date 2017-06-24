@@ -357,5 +357,58 @@ namespace Business.Queries
             }
         }
 
+
+        public static object getProductDetailsByType(int id)
+        {
+            using (DB_entities db = new DB_entities())
+            {
+                try
+                {
+                    var result = (from t in db.product_type
+                                  join s in db.subcategories on t.subcategory_id equals s.id
+                                  join c in db.categories on s.category_id equals c.id
+                                 where t.id == id
+                                 select new {
+                                     CategoryName = c.name,
+                                     CategoryId = c.id,
+                                     SubcategoryName = s.name,
+                                     SubcategoryId = s.id,
+                                     TypeName = t.name,
+                                     TypeId = t.id
+                                 } ).FirstOrDefault();
+                    return result;
+                }
+                catch (Exception ex)
+                {
+                    Log.error("getProductDetailsByType - get.cs", DateTime.Now, ex);
+                    return null;
+                }
+            }
+        }
+
+
+        public static List<object> getFilterValuesByProduct(int id)
+        {
+            using (DB_entities db = new DB_entities())
+            {
+                try
+                {
+                    var result = from v in db.filter_values
+                                 join p in db.product_filters on v.id equals p.value_id
+                                 join f in db.filters on v.filter_id equals f.id
+                                 where p.product_id == id
+                                 select new { name = v.value, value = v.id, filterName = f.name };
+                    return result.ToList<object>();
+                }
+                catch (Exception ex)
+                {
+                    Log.error("getProductDetailsByType - get.cs", DateTime.Now, ex);
+                    return null;
+                }
+            }
+        }
+
+        
+
     }
 }

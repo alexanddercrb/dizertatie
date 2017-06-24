@@ -388,6 +388,13 @@
             $('#selectedFilters').append('<button type="button" class="btn btn-default btn-sm" onclick="$(this).remove()" value="' + value + '">' + filter + ': ' + valueName + ' <span class="glyphicon glyphicon-remove"></span></button>');
     }
 
+    function addProductFilter(name, value, filterName) {
+        if ($('#selectedFilters').find("button[value='" + value + "']").length > 0)
+            return;
+        if (value != "0")
+            $('#selectedFilters').append('<button type="button" class="btn btn-default btn-sm" onclick="$(this).remove()" value="' + value + '">' + filterName + ': ' + name + ' <span class="glyphicon glyphicon-remove"></span></button>');
+    }
+
 
     function updateProduct() {
         if (validateRequired() == 1)
@@ -504,7 +511,149 @@
         }
     }
 
-    function editProduct(id)
+
+    function editProduct(id) {
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            url: "../../WebService.svc/returnProductById",
+            data: JSON.stringify({ id: id }),
+            processData: true,
+            dataType: "json",
+            success: function (response) {
+                product = JSON.parse(response.d);
+                renderProdDetails(product)
+            },
+            error: function (errormsg) {
+                console.log(errormsg.responseText); bootbox.alert("Error!");
+            }
+        });
+    }
+
+    function renderProdDetails(product)
     {
-        alert(id);
+        $('#productDetails').html("");
+        var template = $('#prodTemplate').html();
+        var item = $(template).clone();
+
+
+
+        //render name, code, etc.
+        $(item).find('#productName').val(product.name);
+        $(item).find('#productCode').val(product.code);
+        $(item).find('#productItems').val(product.items);
+        $(item).find('#productPrice').val(product.price);
+        $(item).find('#productOffer').val(product.offer);
+        $(item).find('#productSpecs').val(product.specs).summernote()
+
+
+        $('#productDetails').append(item);
+
+
+
+        var id = product.prodtype_id;
+
+        //fill category, subcategory and type
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            url: "../../WebService.svc/getProductDetailsByType",
+            data: JSON.stringify({ id: id }),
+            processData: true,
+            dataType: "json",
+            success: function (result) {
+                var type = JSON.parse(result.d);
+                selectCategory(type.CategoryId, type.SubcategoryId, type.TypeId);
+            },
+            error: function (errormsg) {
+                console.log(errormsg.responseText); bootbox.alert("Error!");
+            }
+        });
+        
+        //get list of filter values
+        //render filter values
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            url: "../../WebService.svc/getFilterValuesByProduct",
+            data: JSON.stringify({ id: product.id }),
+            processData: true,
+            dataType: "json",
+            success: function (result) {
+                var items = JSON.parse(result.d);
+                for (var i = 0; i<items.length; i++)
+                {
+                    addProductFilter(items[i].name, items[i].value, items[i].filterName);
+                }
+                //selectCategory(type.CategoryId, type.SubcategoryId, type.TypeId);
+            },
+            error: function (errormsg) {
+                console.log(errormsg.responseText); bootbox.alert("Error!");
+            }
+        });
+        
+
+        //get pictures
+        //render pictures
+
+        
+    }
+
+    function selectCategory(category_id, subcategory_id, type_id) {
+        $.ajax({
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            url: "../../WebService.svc/getCategories",
+            data: "",
+            processData: true,
+            dataType: "json",
+            success: function (response) {
+                populateCategories(response);
+                $('#drpCategoryName option[value="' + category_id + '"]').trigger('click');
+                selectSubcategory(category_id, subcategory_id, type_id);
+            },
+            error: function (errormsg) {
+                console.log(errormsg.responseText); bootbox.alert("Error!");
+            }
+        });
+    }
+
+    function selectSubcategory(category_id, subcategory_id, type_id) {
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            url: "../../WebService.svc/getSubcategories",
+            data: JSON.stringify({ id: category_id }),
+            processData: true,
+            dataType: "json",
+            success: function (response) {
+                resetFilters('subcategory');
+                populateSubcategories(response);
+                $('#drpSubcategoryName option[value="' + subcategory_id + '"]').trigger('click');
+                
+                selectType(subcategory_id, type_id);
+            },
+            error: function (errormsg) {
+                console.log(errormsg.responseText); bootbox.alert("Error!");
+            }
+        });
+    }
+
+    function selectType(subcategory_id, type_id) {
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            url: "../../WebService.svc/getTypes",
+            data: JSON.stringify({ id: subcategory_id }),
+            processData: true,
+            dataType: "json",
+            success: function (response) {
+                resetFilters('type');
+                populateTypes(response);
+                $('#drpTypeName option[value="' + type_id + '"]').trigger('click');
+            },
+            error: function (errormsg) {
+                console.log(errormsg.responseText); bootbox.alert("Error!");
+            }
+        });
     }

@@ -203,6 +203,21 @@ namespace WebSite
         {
             return convertToJson(Get.getShippings());
         }
+
+        [OperationContract]
+        public string getProductDetailsByType(int id)
+        {
+            return convertToJson(Get.getProductDetailsByType(id));
+        }
+
+        [OperationContract]
+        public string getFilterValuesByProduct(int id)
+        {
+            return convertToJson(Get.getFilterValuesByProduct(id));
+        }
+
+        
+
         #endregion
 
         #region insert

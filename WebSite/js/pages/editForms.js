@@ -595,7 +595,14 @@
 
         //get pictures
         //render pictures
+        var i = 0;
+        while (product.pics[i] != null) {
+            $('#myUploadedImg' + (i+1)).attr('src', product.pics[i]).addClass('hasImage');
+            i++;
+        }
 
+        imageOnChange();
+        imageOnClick();
         
     }
 

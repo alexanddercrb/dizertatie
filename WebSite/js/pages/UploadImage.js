@@ -34,6 +34,39 @@ function deleteOld(oldImg) {
     });
 }
 
+function imageOnChange() {
+    var _URL = window.URL || window.webkitURL;
+    $(".uplImg").on('change', function () {
+
+        var file, img;
+        var obj = this;
+        var oldImg = $(obj).parent().find("." + obj.id).attr("src");
+        deleteOld(oldImg);
+        if ((file = this.files[0])) {
+            img = new Image();
+            img.onload = function () {
+                sendFile(file, obj);
+            };
+            img.onerror = function () {
+                bootbox.alert("Not a valid file:" + file.type);
+            };
+            img.src = _URL.createObjectURL(file);
+        }
+    });
+}
+
+function imageOnClick() {
+    var _URL = window.URL || window.webkitURL;
+    $("img.thumbnail").on('click', function () {
+
+        var file, img;
+        var obj = this;
+        var oldImg = $(obj).attr("src");
+        deleteOld(oldImg);
+        $(this).attr("src", "../../Media/Images/Default/defaultUpload.jpg");
+    });
+}
+
 $(document).ready(function() {
     var _URL = window.URL || window.webkitURL;
     $(".uplImg").on('change', function () {
@@ -53,4 +86,14 @@ $(document).ready(function() {
             img.src = _URL.createObjectURL(file);
         }
     });
+
+    $("img.thumbnail").on('click', function () {
+
+        var file, img;
+        var obj = this;
+        var oldImg = $(obj).attr("src");
+        deleteOld(oldImg);
+        $(this).attr("src", "../../Media/Images/Default/defaultUpload.jpg");
+    });
 })
+

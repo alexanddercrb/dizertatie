@@ -1,4 +1,11 @@
-﻿    function resetFilters(startingFilter) {
+﻿$(document).ready(function () {
+    if (readCookie('userType') == "2") {
+        window.location.replace("../index.html");
+        return;
+    }
+});
+
+    function resetFilters(startingFilter) {
 
         switch (startingFilter) {
             case 'category':

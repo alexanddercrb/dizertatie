@@ -346,7 +346,7 @@ namespace Business.Queries
             {
                 try
                 {
-                    var result = from e in db.users orderby e.id ascending select e;
+                    var result = from e in db.users where e.id == id orderby e.id ascending select e;
                     return result.FirstOrDefault();
                 }
                 catch (Exception ex)

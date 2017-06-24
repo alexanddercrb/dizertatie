@@ -69,6 +69,7 @@ function insertUser(first_name, last_name, email, password) {
     });
 }
 
+
 function validateAndLogin() {
     var email = $("#email").val();
     var password = $("#password").val();

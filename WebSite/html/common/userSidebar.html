@@ -10,19 +10,19 @@
         <li><a href="#">Purchase history</a></li>
 
         <!-- admin related -->
-        <li><a href="#">All orders</a></li>
-        <li><a href="#">Pending orders</a></li>
-        <li data-toggle="collapse" data-target="#insertMenu"><a href="#">Insert</a></li>
+        <li  class="allOrders"><a href="#">All orders</a></li>
+        <li class="pendingOrders"><a href="#">Pending orders</a></li>
+        <li data-toggle="collapse" data-target="#insertMenu" class="sidebarInsert"><a href="#">Insert</a></li>
         <ul id="insertMenu" class="collapse nav">
-            <li><a href="#">Categories</a></li>
-            <li><a href="#">Subcategories</a></li>
-            <li><a href="#" >Types</a></li>
-            <li><a href="#">Filters</a></li>
-            <li><a href="#">Filter Values</a></li>
-            <li><a href="#">Product</a></li>
+            <li><a href="/WebSite/html/forms/addCategory.html" class="addCategory">Categories</a></li>
+            <li><a href="/WebSite/html/forms/addSubcategory.html" class="addSubcategory">Subcategories</a></li>
+            <li><a href="/WebSite/html/forms/addType.html" class="addType" >Types</a></li>
+            <li><a href="/WebSite/html/forms/addFilter.html" class="addFilter">Filters</a></li>
+            <li><a href="/WebSite/html/forms/addFilterValue.html" class="addFilterValue">Filter Values</a></li>
+            <li><a href="/WebSite/html/forms/addProduct.html" class="addProduct">Product</a></li>
         </ul>
 
-        <li data-toggle="collapse" data-target="#editMenu"><a href="#">Edit / Delete</a></li>
+        <li data-toggle="collapse" data-target="#editMenu" class="sidebarEdit"><a href="#">Edit / Delete</a></li>
         <ul id="editMenu" class="collapse nav">
             <li><a href="#">Category</a></li>
             <li><a href="#">Subcategory</a></li>

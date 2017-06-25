@@ -185,7 +185,7 @@ function placeOrder() {
         success: function (response) {
             writeCookie('cartProducts', ''); //reset cart
             bootbox.alert("Your order was received");
-            window.location.replace('../index.html');
+            window.location.replace('/WebSite/html/forms/ShoppingCart.html');
         },
         error: function (errormsg) {
             console.log(errormsg.responseText); bootbox.alert("Error!");

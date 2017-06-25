@@ -218,5 +218,32 @@ namespace Business.Queries
             }
         }
 
+
+        public static void updateOrderStatus(int id)
+        {
+            using (DB_entities db = new DB_entities())
+            {
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    var ord = (from e in db.orders where e.id == id select e).FirstOrDefault();
+
+                    ord.status_id += 1;
+
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.error("updateOrderStatus - Update.cs", DateTime.Now, ex);
+                    }
+                    scope.Complete();
+                }
+            }
+        }
+
+
+
+
     }
 }

@@ -1,5 +1,5 @@
 ﻿var productList;
-var itemsOnPage = 5;
+var itemsOnPage = 20;
 var startingProdIndex = 0;
 var searchString;
 

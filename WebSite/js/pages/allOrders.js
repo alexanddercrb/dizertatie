@@ -1,17 +1,38 @@
-﻿var productList;
-var list;
+﻿var orderList;
+var itemsOnPage = 10;
+var start = 0;
 
 $(document).ready(function () {
 
     initPage();
+
+    $('#btnNext').on('click', function () {
+        start += itemsOnPage;
+        renderOrderList(orderList, itemsOnPage, start);
+        if (orderList.length <= itemsOnPage + start)
+        {
+            $('#btnNext').addClass("hidden");
+        }
+        $('#btnPrevious').removeClass('hidden');
+    });
+
+    $('#btnPrevious').on('click', function () {
+        start -= itemsOnPage;
+        renderOrderList(orderList, itemsOnPage, start);
+        if (start == 0) {
+            $('#btnPrevious').addClass("hidden");
+        }
+        if (orderList.length > itemsOnPage + start) {
+            $('#btnNext').removeClass('hidden');
+        }
+    });
 
 });
 
 
 function initPage() {
 
-    var cookie = readCookie('customerId');
-    if (cookie == "") {
+    if (readCookie('userType') != "1") {
         window.location.replace("../index.html");
         return;
     }
@@ -19,10 +40,10 @@ function initPage() {
     //ajax to get order list from db
     //on success render order list
     $.ajax({
-        type: "POST",
+        type: "GET",
         contentType: "application/json; charset=utf-8",
-        url: "../../WebService.svc/getOrdersByUser",
-        data: JSON.stringify({ id: readCookie('customerId') }),
+        url: "../../WebService.svc/getAllOrders",
+        data: "",
         processData: true,
         dataType: "json",
         success: function (response) {
@@ -32,7 +53,13 @@ function initPage() {
                 $('#orderList').append("No orders");
                 return;
             }
-            renderOrderList(list);
+            orderList = list;
+            renderOrderList(orderList, itemsOnPage, 0);
+
+            if (orderList.length > itemsOnPage + start)
+            {
+                $('#btnNext').removeClass('hidden');
+            }    
         },
         error: function (errormsg) {
             console.log(errormsg.responseText); bootbox.alert("Error!");
@@ -41,8 +68,15 @@ function initPage() {
 }
 
 
-function renderOrderList(orders) {
-    for (var i = 0; i < orders.length; i++) {
+function renderOrderList(orders, items, start) {
+
+    var limit = 0;
+    if (orders.length <= items + start)
+        limit = orders.length;
+    else
+        limit = start + items;
+    $('#orderList').html("");
+   for (var i = start; i < limit; i++) {
 
         var template = $('#itemList').html();
         var item = $(template).clone();
@@ -58,7 +92,8 @@ function renderOrderList(orders) {
 
         $(item).find('button').attr("onClick", 'renderOrderDetails(' + orders[i].id + ')');
         $('#orderList').append(item);
-    }
+   }
+
 }
 
 

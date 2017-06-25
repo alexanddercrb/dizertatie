@@ -119,7 +119,7 @@
         $('#drpCategoryName ul').html('');
     }
 
-    function deleteCategory() {
+    function Category() {
         var id = $('#displayCategoryName').val();
         if (id == '0')
         {

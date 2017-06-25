@@ -78,6 +78,8 @@
     <Content Include="css\shop-homepage.css" />
     <Content Include="css\ShowProduct.css" />
     <Content Include="css\summernote.css" />
+    <Content Include="html\admin\pendingOrders.html" />
+    <Content Include="html\admin\allOrders.html" />
     <Content Include="html\admin\userProfile.html" />
     <Content Include="html\base_template.html" />
     <Content Include="html\common\footer.html" />
@@ -114,8 +116,10 @@
     <Content Include="js\bootstrap.js" />
     <Content Include="js\cookies.js" />
     <Content Include="js\bootbox.min.js" />
+    <Content Include="js\pages\pendingOrders.js" />
     <Content Include="js\pages\editForms.js" />
     <Content Include="js\pages\favorites.js" />
+    <Content Include="js\pages\allOrders.js" />
     <Content Include="js\pages\orders.js" />
     <Content Include="js\pages\Register.js" />
     <Content Include="js\pages\searchResultsSidebar.js" />

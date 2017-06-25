@@ -223,9 +223,9 @@ namespace WebSite
         }
 
         [OperationContract]
-        public string gerOrdersByUser(int id)
+        public string getOrdersByUser(int id)
         {
-            return convertToJson(Get.gerOrdersByUser(id));
+            return convertToJson(Get.getOrdersByUser(id));
         }
 
         [OperationContract]
@@ -239,7 +239,20 @@ namespace WebSite
         {
             return convertToJson(Get.getOrderProds(id));
         }
-        
+
+        [OperationContract]
+        [WebGet(ResponseFormat = WebMessageFormat.Json)] //remove for post
+        public string getAllOrders()
+        {
+            return convertToJson(Get.getAllOrders());
+        }
+
+        [OperationContract]
+        [WebGet(ResponseFormat = WebMessageFormat.Json)] //remove for post
+        public string getPendingOrders()
+        {
+            return convertToJson(Get.getPendingOrders());
+        }
 
         #endregion
 
@@ -353,6 +366,13 @@ namespace WebSite
                             float price, float offer, int items, String[] uploadedImages)
         {
             Update.updateProduct(id, type, filters, name, code, specs, price, offer, items, uploadedImages);
+        }
+
+
+        [OperationContract]
+        public void updateOrderStatus(int id)
+        {
+            Update.updateOrderStatus(id);
         }
 
         #endregion

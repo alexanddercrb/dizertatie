@@ -455,7 +455,7 @@ namespace Business.Queries
         }
 
 
-        public static List<object> gerOrdersByUser(int id)
+        public static List<object> getOrdersByUser(int id)
         {
             using (DB_entities db = new DB_entities())
             {
@@ -534,6 +534,46 @@ namespace Business.Queries
                 catch (Exception ex)
                 {
                     Log.error("getOrderProds - get.cs", DateTime.Now, ex);
+                    return null;
+                }
+            }
+        }
+
+
+        public static List<object> getAllOrders()
+        {
+            using (DB_entities db = new DB_entities())
+            {
+                try
+                {
+                    var result = from o in db.orders
+                                 join s in db.order_status on o.status_id equals s.id
+                                 select new { id = o.id, dt = "" + o.dt.Day + "-" + o.dt.Month + "-" + o.dt.Year + " " + o.dt.Hour + ":" + o.dt.Minute, total = o.total, status = s.name };
+                    return result.ToList<object>();
+                }
+                catch (Exception ex)
+                {
+                    Log.error("getAllOrders - get.cs", DateTime.Now, ex);
+                    return null;
+                }
+            }
+        }
+
+        public static List<object> getPendingOrders()
+        {
+            using (DB_entities db = new DB_entities())
+            {
+                try
+                {
+                    var result = from o in db.orders
+                                 join s in db.order_status on o.status_id equals s.id
+                                 where s.id != 3
+                                 select new { id = o.id, dt = "" + o.dt.Day + "-" + o.dt.Month + "-" + o.dt.Year + " " + o.dt.Hour + ":" + o.dt.Minute, total = o.total, status = s.name };
+                    return result.ToList<object>();
+                }
+                catch (Exception ex)
+                {
+                    Log.error("getPendingOrders - get.cs", DateTime.Now, ex);
                     return null;
                 }
             }

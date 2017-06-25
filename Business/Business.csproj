@@ -53,6 +53,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\Get.cs" />
+    <Compile Include="Queries\Delete.cs" />
     <Compile Include="Queries\Update.cs" />
     <Compile Include="Queries\Insert.cs" />
     <Compile Include="Queries\Homepage.cs" />

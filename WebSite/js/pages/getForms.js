@@ -3,10 +3,19 @@
         window.location.replace("../index.html");
         return;
     }
+
+    $('.container input').on('change', function () {
+        $('#errorDisplay').addClass('hidden');
+    });
 });
+
+    function resetAll() {
+        location.reload();
+    }
 
     function resetFilters(startingFilter) {
 
+        $('#errorDisplay').addClass('hidden');
         switch (startingFilter) {
             case 'category':
                 resetSubcategory();
@@ -76,7 +85,7 @@
             dataType: "json",
             success: function () {
                 bootbox.alert("Success!");
-                goBack();
+                resetAll();
             },
             error: function (errormsg) {
                 console.log(errormsg.responseText); bootbox.alert("Error!");
@@ -135,7 +144,7 @@
             dataType: "json",
             success: function () {
                 bootbox.alert("Success!");
-                goBack();
+                resetAll();
             },
             error: function (errormsg) {
                 console.log(errormsg.responseText); bootbox.alert("Error!");
@@ -200,7 +209,7 @@
             dataType: "json",
             success: function () {
                 bootbox.alert("Success!");
-                goBack();
+                resetAll();
             },
             error: function (errormsg) {
                 console.log(errormsg.responseText); bootbox.alert("Error!");
@@ -265,7 +274,7 @@
             dataType: "json",
             success: function () {
                 bootbox.alert("Success!");
-                goBack();
+                resetAll();
             },
             error: function (errormsg) {
                 console.log(errormsg.responseText); bootbox.alert("Error!");
@@ -328,7 +337,7 @@
             dataType: "json",
             success: function () {
                 bootbox.alert("Success!");
-                goBack();
+                resetAll();
             },
             error: function (errormsg) {
                 console.log(errormsg.responseText); bootbox.alert("Error!");
@@ -423,7 +432,7 @@
             dataType: "json",
             success: function () {
                 bootbox.alert("Success!");
-                goBack();
+                location.reload();
             },
             error: function (errormsg) {
                 console.log(errormsg.responseText); bootbox.alert("Error!");

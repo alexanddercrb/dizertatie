@@ -335,6 +335,38 @@ namespace WebSite
         #endregion
 
 
+        #region Delete
+        [OperationContract]
+        public int deleteCategory(int id)
+        {
+            return Delete.deleteCategory(id);
+        }
+
+        [OperationContract]
+        public int deleteSubcategory(int id)
+        {
+            return Delete.deleteSubcategory(id);
+        }
+
+        [OperationContract]
+        public int deleteType(int id)
+        {
+            return Delete.deleteType(id);
+        }
+
+        [OperationContract]
+        public int deleteFilter(int id)
+        {
+            return Delete.deleteFilter(id);
+        }
+
+        [OperationContract]
+        public int deleteFilterValue(int id)
+        {
+            return Delete.deleteFilterValue(id);
+        }
+        #endregion
+
         private string convertToJson(object obj)
         {
             JavaScriptSerializer js = new JavaScriptSerializer();

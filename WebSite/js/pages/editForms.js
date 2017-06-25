@@ -3,10 +3,14 @@
         window.location.replace("../index.html");
         return;
     }
+
+    $('.container input').on('change', function() {
+        $('#errorDisplay').addClass('hidden');
+    });
 });
 
     function resetFilters(startingFilter) {
-
+        $('#errorDisplay').addClass('hidden');
         switch (startingFilter) {
             case 'category':
                 resetCategory();
@@ -14,6 +18,7 @@
                 resetType();
                 resetFilter();
                 resetFilterValue();
+                getCategory();
             case 'subcategory':
                 resetSubcategory();
                 resetType();
@@ -114,6 +119,43 @@
         $('#drpCategoryName ul').html('');
     }
 
+    function deleteCategory() {
+        var id = $('#displayCategoryName').val();
+        if (id == '0')
+        {
+            $('#errorDisplay').html("Please select a category to delete");
+            $('#errorDisplay').removeClass('hidden');
+            return;
+        }
+
+        //ajax to delete
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            url: "../../WebService.svc/deleteCategory",
+            data: JSON.stringify({ id: id }),
+            processData: true,
+            dataType: "json",
+            success: function (response) {
+                if (response.d == '1') {
+                    bootbox.alert("Success!");
+                    resetFilters('category');
+                }
+                else
+                {
+                    $('#errorDisplay').html("Can't delete. There are more usages of this record. Remove them first!");
+                    $('#errorDisplay').removeClass('hidden');
+                }
+
+            },
+            error: function (errormsg) {
+                $('#errorDisplay').html("Can't delete. There are more usages of this record. Remove them first!");
+                console.log(errormsg.responseText);
+            }
+        });
+
+    }
+
 
     function getSubcategory(id) {
         $.ajax({
@@ -178,6 +220,41 @@
         $('#displaySubcategoryName').text('Select subcategory');
         $('#displaySubcategoryName').attr('value', '0');
         $('#drpSubcategoryName ul').html('');
+    }
+
+    function deleteSubcategory() {
+        var id = $('#displaySubcategoryName').val();
+        if (id == '0') {
+            $('#errorDisplay').html("Please select a subcategory to delete");
+            $('#errorDisplay').removeClass('hidden');
+            return;
+        }
+
+        //ajax to delete
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            url: "../../WebService.svc/deleteSubcategory",
+            data: JSON.stringify({ id: id }),
+            processData: true,
+            dataType: "json",
+            success: function (response) {
+                if (response.d == '1') {
+                    bootbox.alert("Success!");
+                    resetFilters('category');
+                }
+                else {
+                    $('#errorDisplay').html("Can't delete. There are more usages of this record. Remove them first!");
+                    $('#errorDisplay').removeClass('hidden');
+                }
+
+            },
+            error: function (errormsg) {
+                $('#errorDisplay').html("Can't delete. There are more usages of this record. Remove them first!");
+                console.log(errormsg.responseText);
+            }
+        });
+
     }
 
 
@@ -247,6 +324,40 @@
         $('#drpTypeName ul').html('');
     }
 
+    function deleteType() {
+        var id = $('#displayTypeName').val();
+        if (id == '0') {
+            $('#errorDisplay').html("Please select a type to delete");
+            $('#errorDisplay').removeClass('hidden');
+            return;
+        }
+
+        //ajax to delete
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            url: "../../WebService.svc/deleteType",
+            data: JSON.stringify({ id: id }),
+            processData: true,
+            dataType: "json",
+            success: function (response) {
+                if (response.d == '1') {
+                    bootbox.alert("Success!");
+                    resetFilters('category');
+                }
+                else {
+                    $('#errorDisplay').html("Can't delete. There are more usages of this record. Remove them first!");
+                    $('#errorDisplay').removeClass('hidden');
+                }
+
+            },
+            error: function (errormsg) {
+                $('#errorDisplay').html("Can't delete. There are more usages of this record. Remove them first!");
+                console.log(errormsg.responseText);
+            }
+        });
+
+    }
 
 
     function getFilter(id) {
@@ -314,6 +425,41 @@
         $('#drpFilterName ul').html('');
     }
 
+    function deleteFilter() {
+        var id = $('#displayFilterName').val();
+        if (id == '0') {
+            $('#errorDisplay').html("Please select a filter to delete");
+            $('#errorDisplay').removeClass('hidden');
+            return;
+        }
+
+        //ajax to delete
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            url: "../../WebService.svc/deleteFilter",
+            data: JSON.stringify({ id: id }),
+            processData: true,
+            dataType: "json",
+            success: function (response) {
+                if (response.d == '1') {
+                    bootbox.alert("Success!");
+                    resetFilters('category');
+                }
+                else {
+                    $('#errorDisplay').html("Can't delete. There are more usages of this record. Remove them first!");
+                    $('#errorDisplay').removeClass('hidden');
+                }
+
+            },
+            error: function (errormsg) {
+                $('#errorDisplay').html("Can't delete. There are more usages of this record. Remove them first!");
+                console.log(errormsg.responseText);
+            }
+        });
+
+    }
+
     function getFilterValue(id) {
         $.ajax({
             type: "POST",
@@ -375,6 +521,40 @@
         $('#drpFilterValue ul').html('');
     }
 
+    function deleteFilterValue() {
+        var id = $('#displayFilterValue').val();
+        if (id == '0') {
+            $('#errorDisplay').html("Please select a filter value to delete");
+            $('#errorDisplay').removeClass('hidden');
+            return;
+        }
+
+        //ajax to delete
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            url: "../../WebService.svc/deleteFilterValue",
+            data: JSON.stringify({ id: id }),
+            processData: true,
+            dataType: "json",
+            success: function (response) {
+                if (response.d == '1') {
+                    bootbox.alert("Success!");
+                    resetFilters('category');
+                }
+                else {
+                    $('#errorDisplay').html("Can't delete. There are more usages of this record. Remove them first!");
+                    $('#errorDisplay').removeClass('hidden');
+                }
+
+            },
+            error: function (errormsg) {
+                $('#errorDisplay').html("Can't delete. There are more usages of this record. Remove them first!");
+                console.log(errormsg.responseText);
+            }
+        });
+
+    }
 
 
     function addProductFilter() {

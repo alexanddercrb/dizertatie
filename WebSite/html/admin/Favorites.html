@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="../../js/jquery.js" type="text/javascript"></script>
+    <script src="../../js/bootstrap.js" type="text/javascript"></script>
+    <script src="../../js/angular.js" type="text/javascript"></script>
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <script src="../../js/bootbox.min.js" type="text/javascript"></script>
+    <script src="../../js/cookies.js" type="text/javascript"></script>
+    <link href="../../css/ShoppingCart.css" rel="stylesheet">
+
+    <meta charset="utf-8" />
+    <script>
+        $(document)
+            .ready(function () {
+                $("#header").load("../common/header.html");
+                $("#footer").load("../common/footer.html");
+                $("#sidebar").load("../common/userSidebar.html");
+            });
+    </script>
+
+    <script src="../../js/pages/favorites.js" type="text/javascript"></script>
+</head>
+
+
+
+<body id="userFavorites">
+
+    <div id="header"></div>
+
+    <div class="main-content">
+        <div class="container">
+            <div id="sidebar" class="col-md-2">
+            </div>
+            <div id="productDetails" class="col-md-8">
+            </div>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+
+
+
+    <script id="itemList" type="text/x-custom-template">
+        <div>
+            <div id='ProdDisplay' class="productDisplay floatLeft">
+                <div class="product_promo inline floatLeft">
+                    <a id="imageLink" class="inline floatLeft" href="">
+                        <img src="../../Media/Images/Default/defaultUpload.jpg" alt="" id="TeaserImage" class="thumbnailProduct">
+                    </a>
+                    <div class="caption inline floatLeft">
+                        <h4>
+                            <a href="#" id="ProductTitle"></a>
+                        </h4>
+                        <div class="prices">
+                            <h3 id="price"></h3>
+                            <h3 id="offer" class="hidden" style="color: red;"></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="quantity inline floatRight">
+                    <div class="form-group">
+                        <div class="dropdown">
+                            <div class="inline floatRight">
+                                <button class="btn btn-danger glyphicon glyphicon-remove" style="margin-right:10px;"> Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+
+</body>
+
+</html>

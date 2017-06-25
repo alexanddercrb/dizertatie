@@ -104,6 +104,7 @@
     <Content Include="html\forms\ShoppingCart.html" />
     <Content Include="html\index.html" />
     <Content Include="html\Page_Base.html" />
+    <Content Include="html\admin\Favorites.html" />
     <Content Include="html\products\searchResults.html" />
     <Content Include="html\products\ListByType.html" />
     <Content Include="html\products\subSearch.html" />
@@ -112,6 +113,7 @@
     <Content Include="js\cookies.js" />
     <Content Include="js\bootbox.min.js" />
     <Content Include="js\pages\editForms.js" />
+    <Content Include="js\pages\favorites.js" />
     <Content Include="js\pages\Register.js" />
     <Content Include="js\pages\searchResultsSidebar.js" />
     <Content Include="js\pages\searchResults.js" />

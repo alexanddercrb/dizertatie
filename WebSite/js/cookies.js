@@ -29,6 +29,20 @@ function writeCookie(name, value) {
     document.cookie = name + "=" + value + expires + "; path=/";
 }
 
+function clearCookie(name) {
+    var time = 0; //12h
+    var date, expires;
+    if (time) {
+        date = new Date();
+        date.setTime(0) //time = hours
+        expires = "; expires=" + date.toGMTString();
+    }
+    else {
+        expires = "";
+    }
+
+    document.cookie = name + "=" + "" + expires + "; path=/";
+}
 
 function writeProductCookie(name, product, items) {
     var time = 12; //12h

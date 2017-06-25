@@ -408,7 +408,51 @@ namespace Business.Queries
             }
         }
 
-        
+        public static List<Product> getFavProducts(int id)
+        {
+            List<Product> prods = new List<Product>();
+            using (var db = new DB_entities())
+            {
+                try
+                {
+                    var query = from a in db.products
+                                join b in db.userFavorites on a.id equals b.product_id
+                                join c in db.users on b.user_id equals c.id
+                                where c.id == id
+                                orderby a.id descending
+                                select a;
+
+                    foreach (var item in query)
+                    {
+                        Product prod = new Product();
+                        prod.id = item.id;
+                        prod.name = item.name;
+                        prod.code = item.code;
+                        prod.price = item.price;
+                        prod.offer = item.offer;
+                        prod.specs = item.specs;
+                        prod.items = item.items;
+
+                        List<pic> pictures = db.pics.Where(x => x.product_id == prod.id).ToList();
+                        int i = 0;
+                        prod.pics = new string[15];
+                        foreach (var picture in pictures)
+                        {
+                            prod.pics[i] = picture.pic_path;
+                            i++;
+                        }
+
+                        prods.Add(prod);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Log.error("getFavProducts - Get.cs", DateTime.Now, ex);
+                    return null;
+                }
+            }
+            return prods;
+        }
 
     }
 }

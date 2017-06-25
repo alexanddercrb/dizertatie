@@ -146,5 +146,30 @@ namespace Business.Queries
                 }
             }
         }
+
+        public static void deleteFromFav(int id, int userId)
+        {
+            using (DB_entities db = new DB_entities())
+            {
+                using (TransactionScope scope = new TransactionScope())
+                {
+
+
+                    var favItem = (from p in db.userFavorites where p.product_id == id && p.user_id == userId select p).FirstOrDefault();
+
+                    try
+                    {
+                        db.userFavorites.Remove(favItem);
+                        db.SaveChanges();
+                        scope.Complete();
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.error("deleteFromFav - Delete.cs", DateTime.Now, ex);
+                    }
+
+                }
+            }
+        }
     }
 }

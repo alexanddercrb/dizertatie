@@ -34,7 +34,8 @@
 
 
         function logOut() {
-            writeCookie('customerId', '', 0)
+            clearCookie('customerId');
+            clearCookie('userType');
             $('#menuRegister').removeClass('hidden');
             $('#menuLogin').removeClass('hidden');
             $('#menuAccount').addClass('hidden');

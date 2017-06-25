@@ -89,6 +89,12 @@ namespace WebSite
             return convertToJson(Homepage.returnSearchResults(searchString, startingPrice, endingPrice, sortBy));
         }
 
+        [OperationContract]
+        public string getFavProducts(int id)
+        {
+            return convertToJson(Get.getFavProducts(id));
+        }
+
 
         #endregion
 
@@ -365,6 +371,14 @@ namespace WebSite
         {
             return Delete.deleteFilterValue(id);
         }
+
+        [OperationContract]
+        public void deleteFromFav(int id, int userId)
+        {
+            Delete.deleteFromFav(id, userId);
+        }
+        
+
         #endregion
 
         private string convertToJson(object obj)

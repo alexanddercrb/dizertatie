@@ -388,7 +388,7 @@
             $('#selectedFilters').append('<button type="button" class="btn btn-default btn-sm" onclick="$(this).remove()" value="' + value + '">' + filter + ': ' + valueName + ' <span class="glyphicon glyphicon-remove"></span></button>');
     }
 
-    function addProductFilter(name, value, filterName) {
+    function addProductFilterValues(name, value, filterName) {
         if ($('#selectedFilters').find("button[value='" + value + "']").length > 0)
             return;
         if (value != "0")
@@ -396,7 +396,7 @@
     }
 
 
-    function updateProduct() {
+    function updateProduct(id) {
         if (validateRequired() == 1)
             return;
 
@@ -437,6 +437,7 @@
             contentType: "application/json; charset=utf-8",
             url: "../../WebService.svc/updateProduct",
             data: JSON.stringify({
+                id: id,
                 type: type,
                 filters: filters,
                 name: name,
@@ -451,7 +452,6 @@
             dataType: "json",
             success: function () {
                 bootbox.alert("Success!");
-                goBack();
             },
             error: function (errormsg) {
                 console.log(errormsg.responseText); bootbox.alert("Error!");
@@ -544,8 +544,8 @@
         $(item).find('#productItems').val(product.items);
         $(item).find('#productPrice').val(product.price);
         $(item).find('#productOffer').val(product.offer);
-        $(item).find('#productSpecs').val(product.specs).summernote()
-
+        $(item).find('#productSpecs').val(product.specs).summernote();
+        $(item).find('#confirmUpdate').attr("onclick", "updateProduct(" + product.id + ")");
 
         $('#productDetails').append(item);
 
@@ -583,7 +583,7 @@
                 var items = JSON.parse(result.d);
                 for (var i = 0; i<items.length; i++)
                 {
-                    addProductFilter(items[i].name, items[i].value, items[i].filterName);
+                    addProductFilterValues(items[i].name, items[i].value, items[i].filterName);
                 }
                 //selectCategory(type.CategoryId, type.SubcategoryId, type.TypeId);
             },

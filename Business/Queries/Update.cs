@@ -154,5 +154,69 @@ namespace Business.Queries
         }
 
 
+        public static void updateProduct(int id, int type, int[] filters, String name,
+            String code, String specs, float price, float offer, int items, String[] uploadedImages)
+        {
+            using (DB_entities db = new DB_entities())
+            {
+                using (TransactionScope scope = new TransactionScope())
+                {
+
+
+                    var prod = (from p in db.products where p.id == id select p).FirstOrDefault();
+                    prod.name = name;
+                    prod.code = code;
+                    prod.specs = specs;
+                    prod.price = price;
+                    prod.offer = offer;
+                    prod.items = items;
+                    prod.prodtype_id = type;
+
+                    try
+                    {
+                        db.SaveChanges();
+
+                        var picsDel = from p in db.pics where p.product_id == id select p;
+                        foreach(var item in picsDel)
+                        {
+                            db.pics.Remove(item);
+                        }
+
+                        pic pics = new pic();
+                        for (int i = 0; i < uploadedImages.Length; i++)
+                        {
+                            pics.pic_path = uploadedImages[i];
+                            pics.product_id = id;
+                            db.pics.Add(pics);
+                            db.SaveChanges();
+                        }
+
+
+                        var filterDel = from p in db.product_filters where p.product_id == id select p;
+                        foreach (var item in filterDel)
+                        {
+                            db.product_filters.Remove(item);
+                        }
+                        product_filters filterList = new product_filters();
+                        for (int i = 0; i < filters.Length; i++)
+                        {
+                            filterList.value_id = filters[i];
+                            filterList.product_id = id;
+                            db.product_filters.Add(filterList);
+                            db.SaveChanges();
+                        }
+
+                        db.SaveChanges();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.error("updateProduct - Update.cs", DateTime.Now, ex);
+                    }
+                    scope.Complete();
+                }
+            }
+        }
+
     }
 }

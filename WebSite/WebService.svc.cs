@@ -325,6 +325,13 @@ namespace WebSite
             Update.updateFilterValue(id, value);
         }
 
+        [OperationContract]
+        public void updateProduct(int id, int type, int[] filters, String name, String code, String specs,
+                            float price, float offer, int items, String[] uploadedImages)
+        {
+            Update.updateProduct(id, type, filters, name, code, specs, price, offer, items, uploadedImages);
+        }
+
         #endregion
 
 

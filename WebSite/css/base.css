@@ -47,6 +47,12 @@
     cursor: pointer;
 }
 
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
 .hidden {
     display: none;
 }

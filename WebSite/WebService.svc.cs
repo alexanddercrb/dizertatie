@@ -222,6 +222,23 @@ namespace WebSite
             return convertToJson(Get.getFilterValuesByProduct(id));
         }
 
+        [OperationContract]
+        public string gerOrdersByUser(int id)
+        {
+            return convertToJson(Get.gerOrdersByUser(id));
+        }
+
+        [OperationContract]
+        public string getOrderInfo(int id)
+        {
+            return convertToJson(Get.getOrderInfo(id));
+        }
+
+        [OperationContract]
+        public string getOrderProds(int id)
+        {
+            return convertToJson(Get.getOrderProds(id));
+        }
         
 
         #endregion

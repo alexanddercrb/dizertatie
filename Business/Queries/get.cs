@@ -454,5 +454,90 @@ namespace Business.Queries
             return prods;
         }
 
+
+        public static List<object> gerOrdersByUser(int id)
+        {
+            using (DB_entities db = new DB_entities())
+            {
+                try
+                {
+                    var result = from c in db.customer_orders
+                                 join o in db.orders on c.order_id equals o.id
+                                 join s in db.order_status on o.status_id equals s.id
+                                 where c.customer_id == id
+                                 select new { id = o.id, dt = "" + o.dt.Day + "-" + o.dt.Month + "-" + o.dt.Year + " " + o.dt.Hour + ":" + o.dt.Minute, total = o.total, status = s.name };
+                    return result.ToList<object>();
+                }
+                catch (Exception ex)
+                {
+                    Log.error("gerOrdersByUser - get.cs", DateTime.Now, ex);
+                    return null;
+                }
+            }
+        }
+
+
+        public static object getOrderInfo(int id)
+        {
+            using (DB_entities db = new DB_entities())
+            {
+                try
+                {
+                    var result = from o in db.orders
+                                 join s in db.shippings on o.shipping_id equals s.id
+                                 join sts in db.order_status on o.status_id equals sts.id
+                                 where o.id == id
+                                 select new
+                                 {
+                                     first_name = o.first_name,
+                                     last_name = o.last_name,
+                                     location = o.location,
+                                     phone = o.phone,
+                                     email = o.email,
+                                     date = "" + o.dt.Day + "-" + o.dt.Month + "-" + o.dt.Year + " " + o.dt.Hour + ":" + o.dt.Minute,
+                                     status = sts.name,
+                                     shipping = s.name,
+                                     shippingCost = s.cost,
+                                     total = o.total
+                                };
+
+                    return result.FirstOrDefault();
+                }
+                catch (Exception ex)
+                {
+                    Log.error("getOrderInfo - get.cs", DateTime.Now, ex);
+                    return null;
+                }
+            }
+        }
+
+
+        public static List<object> getOrderProds(int id)
+        {
+            using (DB_entities db = new DB_entities())
+            {
+                try
+                {
+                    var result = from c in db.product_list
+                                 join p in db.products on c.product_id equals p.id
+                                 where c.order_id == id
+                                 select new
+                                 {
+                                     totalPrice = c.price,
+                                     items = c.no_items,
+                                     prodId = p.id,
+                                     name = p.name,
+                                     pic = p.pics.FirstOrDefault().pic_path
+                                 };
+                    return result.ToList<object>();
+                }
+                catch (Exception ex)
+                {
+                    Log.error("getOrderProds - get.cs", DateTime.Now, ex);
+                    return null;
+                }
+            }
+        }
+
     }
 }

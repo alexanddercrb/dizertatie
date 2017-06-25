@@ -1,0 +1,28 @@
+﻿.orderInfo{
+    margin-top:15px;
+    margin-left: 20px;
+}
+
+#orderTotalStatus{
+    margin-right: 50px;
+    margin-left: 20px;
+}
+
+.form-group{
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+
+.order-informations{
+    padding: 15px;
+}
+
+.orderInformations
+{
+    margin-left: 10px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 100%;
+    background-color:lightgrey;
+}

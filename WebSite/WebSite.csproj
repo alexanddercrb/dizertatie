@@ -71,6 +71,7 @@
     <Content Include="css\base.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\orders.css" />
     <Content Include="css\ProductList.css" />
     <Content Include="css\Register.css" />
     <Content Include="css\ShoppingCart.css" />
@@ -105,6 +106,7 @@
     <Content Include="html\index.html" />
     <Content Include="html\Page_Base.html" />
     <Content Include="html\admin\Favorites.html" />
+    <Content Include="html\admin\orders.html" />
     <Content Include="html\products\searchResults.html" />
     <Content Include="html\products\ListByType.html" />
     <Content Include="html\products\subSearch.html" />
@@ -114,6 +116,7 @@
     <Content Include="js\bootbox.min.js" />
     <Content Include="js\pages\editForms.js" />
     <Content Include="js\pages\favorites.js" />
+    <Content Include="js\pages\orders.js" />
     <Content Include="js\pages\Register.js" />
     <Content Include="js\pages\searchResultsSidebar.js" />
     <Content Include="js\pages\searchResults.js" />

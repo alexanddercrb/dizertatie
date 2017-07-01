@@ -141,9 +141,9 @@
     <Content Include="js\pages\userSidebar.js" />
     <Content Include="js\summernote.js" />
     <Content Include="Media\Images\Default\defaultUpload.jpg" />
+    <Content Include="Media\Images\HomepageCarousel\logo1.png" />
     <Content Include="Media\Images\HomepageCarousel\logo2.png" />
     <Content Include="Media\Images\HomepageCarousel\logo3.png" />
-    <Content Include="Media\Images\HomepageCarousel\logo1.png" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
